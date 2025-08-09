@@ -342,4 +342,3 @@ After earning my BSc in Architecture in Addis Ababa, I have continued to explore
     </div>
   )
 }
-s
