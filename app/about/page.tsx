@@ -74,43 +74,43 @@ export default function AboutPage({ isDark: propIsDark, toggleTheme: propToggleT
     {
       title: "Threads of Time",
       year: "2023",
-      venue: "Contemporary Art Museum",
+      venue: "Venue 1",
       location: "Addis Ababa, Ethiopia",
       type: "Solo Exhibition",
     },
     {
       title: "Woven Narratives",
       year: "2022",
-      venue: "Smithsonian Institution",
-      location: "Washington, DC",
+      venue: "Venue 2",
+      location: "Addis Ababa, Ethiopia",
       type: "Group Exhibition",
     },
     {
       title: "Cultural Crossroads",
       year: "2021",
-      venue: "Museum of African Art",
-      location: "New York, NY",
+      venue: "Venue 3",
+      location: "Addis Ababa, Ethiopia",
       type: "Featured Artist",
     },
     {
       title: "Ancestral Echoes",
       year: "2019",
-      venue: "Gallery Asni",
+      venue: "Venue 4",
       location: "Addis Ababa, Ethiopia",
       type: "Solo Exhibition",
     },
     {
       title: "Contemporary Voices",
       year: "2018",
-      venue: "Venice Biennale",
-      location: "Venice, Italy",
+      venue: "Venue 5",
+      location: "Addis Ababa, Ethiopia",
       type: "International Pavilion",
     },
     {
       title: "Textile Traditions",
       year: "2017",
-      venue: "African Heritage Foundation",
-      location: "London, UK",
+      venue: "Venue 6",
+      location: "Addis Ababa, Ethiopia",
       type: "Collaborative Show",
     },
   ]
@@ -234,9 +234,7 @@ export default function AboutPage({ isDark: propIsDark, toggleTheme: propToggleT
                 </p>
 
                 <p className={isDark ? "text-neutral-300" : "text-neutral-600"}>
-                  After completing my MFA at Yale University, I returned to Ethiopia with a renewed perspective on the
-                  global art world and my place within it. My work now spans multiple mediums, always returning to
-                  themes of cultural memory, trade relationships, and the material expressions of identity.
+After earning my BSc in Architecture in Addis Ababa, I have continued to explore the intersections between space, culture, and artistic expression. My work spans multiple mediums, consistently engaging with themes of cultural memory, trade relationships, and the material expressions of identity.
                 </p>
 
                 <p className={isDark ? "text-neutral-300" : "text-neutral-600"}>
@@ -257,24 +255,24 @@ export default function AboutPage({ isDark: propIsDark, toggleTheme: propToggleT
                     className={`p-4 rounded border ${isDark ? "bg-neutral-800/50 border-neutral-700" : "bg-neutral-50 border-neutral-200"}`}
                   >
                     <div className={`font-medium ${isDark ? "text-white" : "text-black"}`}>
-                      MFA Interdisciplinary Arts
+                      BSc Architecture
                     </div>
                     <div
                       className={`text-sm font-serif ${isDark ? "text-neutral-400" : "text-neutral-500"}`}
                       style={{ fontFamily: "Times New Roman, serif" }}
                     >
-                      Yale University, 2019
+                      Addis Ababa University, 2019
                     </div>
                   </div>
                   <div
                     className={`p-4 rounded border ${isDark ? "bg-neutral-800/50 border-neutral-700" : "bg-neutral-50 border-neutral-200"}`}
                   >
-                    <div className={`font-medium ${isDark ? "text-white" : "text-black"}`}>BA Fine Arts</div>
+                    <div className={`font-medium ${isDark ? "text-white" : "text-black"}`}>Fine Arts</div>
                     <div
                       className={`text-sm font-serif ${isDark ? "text-neutral-400" : "text-neutral-500"}`}
                       style={{ fontFamily: "Times New Roman, serif" }}
                     >
-                      Addis Ababa University, 2015
+                      Addis Ababa University, 2020
                     </div>
                   </div>
                 </div>
@@ -344,3 +342,4 @@ export default function AboutPage({ isDark: propIsDark, toggleTheme: propToggleT
     </div>
   )
 }
+s
