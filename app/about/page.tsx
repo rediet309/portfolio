@@ -68,13 +68,15 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       <Navigation currentPath="/about" />
 
-      {/* Hero Section - Matching Home Page Layout with Previous Text Content */}
-      <section className="min-h-screen flex items-center pl-12 lg:pl-20 pt-20 shadow-2xl">
-        <div className="w-full flex">
-          {/* Left Column - Text Content (1/3 width) */}
-          <div className="w-1/3 flex flex-col justify-center pr-12">
-            <div className="space-y-8 pl-2">
-              <div className="text-sm uppercase tracking-[0.3em] text-neutral-400 font-light">VISUAL ARTIST</div>
+      {/* Hero Section */}
+      <section className="h-screen flex items-center pl-4 md:pl-8 lg:pl-12 xl:pl-20 relative pt-16 md:pt-20 shadow-xl">
+        <div className="w-full flex flex-col lg:flex-row">
+          {/* Left side - Text content */}
+          <div className="flex-1 lg:flex-none lg:w-1/3 flex flex-col justify-center pr-4 md:pr-8 lg:pr-12 mb-8 lg:mb-0">
+            <div className="mb-6 md:mb-8">
+              <div className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-neutral-400 font-light mb-4 md:mb-6 pl-1 md:pl-2">
+                VISUAL ARTIST
+              </div>
 
               <h1 className="text-5xl lg:text-6xl font-light leading-tight text-black">
                 Rediet
@@ -83,36 +85,48 @@ export default function AboutPage() {
                 <br />
                 Yalew
               </h1>
+            </div>
 
-              <div className="w-16 h-px bg-black"></div>
+            <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
+              <div className="w-12 md:w-16 h-px bg-black ml-1 md:ml-2 mb-4 md:mb-6"></div>
+              <div className="text-base md:text-lg lg:text-xl leading-relaxed font-light text-neutral-600">
+                <p className="text-lg md:text-base mb-4 text-justify pl-1 md:pl-2">
+                  Interdisciplinary artist exploring memory, migration, and material culture through experimental
+                  storytelling.
+                </p>
+              </div>
+            </div>
 
-              <p className="text-lg font-light text-neutral-600 leading-relaxed">
-                Interdisciplinary artist exploring memory, migration, and material culture through experimental
-                storytelling.
-              </p>
-
-              <Link
-                href="/contact"
-                className="group inline-flex items-center space-x-3 text-black hover:text-neutral-600 transition-colors duration-300"
-              >
-                <span className="text-lg font-light">Get in touch</span>
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <div className="pl-1 md:pl-2">
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
+                >
+                  Get in touch
+                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+                </Button>
               </Link>
             </div>
           </div>
 
-          {/* Right Column - Image Placeholder (2/3 width) */}
+          {/* Right side - Image holder */}
           <div className="flex-1 flex items-center">
-            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-[868px]">
+            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-full max-h-[868px] xl:h-[90vh]">
               <Image
-                src="/images/Hero.webp?height=800&width=1000&text=About+Portrait"
+                src="/images/Hero.webp"
                 alt="About Portrait"
                 width={2200}
-                height={800}
+                height={600}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-px h-12 md:h-16 bg-neutral-300 animate-pulse"></div>
         </div>
       </section>
 
