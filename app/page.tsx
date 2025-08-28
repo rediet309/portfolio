@@ -57,7 +57,7 @@ export default function HomePage() {
 
           {/* Right side - Image holder */}
           <div className="flex-1 flex items-center">
-            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-full max-h-[868px] xl:h-[90vh]">
+            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-full max-h-[868px] xl:h-[80vh]">
               <Image
                 src="/images/hero 2e.webp"
                 alt="Hero Portrait"
