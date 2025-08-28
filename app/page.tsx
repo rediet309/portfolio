@@ -23,41 +23,41 @@ export default function HomePage() {
       <Navigation currentPath="/" />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pl-12 lg:pl-20 relative pt-20 shadow-xl">
-        <div className="w-full flex">
-          {/* Left side - Text content (fixed width 1/3) */}
-          <div className="w-1/3 flex flex-col justify-center pr-12">
-            <div className="mb-8">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-stardom leading-none text-black">
-                <div className="text-left pl-2">Visual</div>
-                <div className="text-left pl-2">Artist</div>
+      <section className="h-screen flex items-center pl-4 md:pl-8 lg:pl-12 xl:pl-20 relative pt-16 md:pt-20 shadow-xl">
+        <div className="w-full flex flex-col lg:flex-row">
+          {/* Left side - Text content */}
+          <div className="flex-1 lg:flex-none lg:w-1/3 flex flex-col justify-center pr-4 md:pr-8 lg:pr-12 mb-8 lg:mb-0">
+            <div className="mb-6 md:mb-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-stardom leading-none text-black">
+                <div className="text-left pl-1 md:pl-2">Visual</div>
+                <div className="text-left pl-1 md:pl-2">Artist</div>
               </h1>
             </div>
 
-            <div className="space-y-6 mb-8">
-              <div className="text-lg md:text-xl leading-relaxed font-times text-neutral-600">
-                <p className="text-sm md:text-base mb-4 text-justify pl-2">
+            <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
+              <div className="text-base md:text-lg lg:text-xl leading-relaxed font-times text-neutral-600">
+                <p className="text-sm md:text-base mb-4 text-justify pl-1 md:pl-2">
                   Multidisciplinary artist working across Film, installation, textile and clothing.
                 </p>
               </div>
             </div>
 
-            <div className="pl-2">
+            <div className="pl-1 md:pl-2">
               <Link href="/shop">
                 <Button
                   variant="outline"
-                  className="px-8 py-3 text-base rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
+                  className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-base rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
                 >
                   Visit Shop
-                  <ArrowUpRight className="ml-2 h-5 w-5" />
+                  <ArrowUpRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* Right side - Image holder (expands to the right edge) */}
+          {/* Right side - Image holder */}
           <div className="flex-1 flex items-center">
-            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-[868px]">
+            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-full max-h-[868px] xl:h-[90vh]">
               <Image
                 src="/images/hero 2e.webp"
                 alt="Hero Portrait"
@@ -70,20 +70,20 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-px h-16 bg-neutral-300 animate-pulse"></div>
+        <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-px h-12 md:h-16 bg-neutral-300 animate-pulse"></div>
         </div>
       </section>
 
       {/* Selected Works Section - Made more compact */}
-      <section id="work" className="py-4 px-12 lg:px-20">
+      <section id="work" className="py-4 px-4 md:px-8 lg:px-12 xl:px-20">
         <div className="w-full pt-4">
           <div className="mb-6">
-            <h2 className="text-xl md:text-2xl font-stardom text-black mb-2">Selected Works</h2>
-            <div className="w-12 h-px bg-neutral-300"></div>
+            <h2 className="text-lg md:text-xl lg:text-2xl font-stardom text-black mb-2">Selected Works</h2>
+            <div className="w-8 md:w-12 h-px bg-neutral-300"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-6">
             {[
               {
                 title: "sKINs: East Ethiopia Textile Installation",
@@ -110,7 +110,10 @@ export default function HomePage() {
               <Link key={index} href={work.href} className="group cursor-pointer block">
                 <div className="aspect-square rounded-sm overflow-hidden mb-2 bg-neutral-100">
                   <Image
-                    src={work.image || "/images/webp/02_installations/01_sKINs_East Ethiopia textile installation/01_front.webp"}
+                    src={
+                      work.image ||
+                      "/images/webp/02_installations/01_sKINs_East Ethiopia textile installation/01_front.webp"
+                    }
                     alt={work.title}
                     width={100}
                     height={100}
@@ -133,7 +136,7 @@ export default function HomePage() {
             <Link href="/projects">
               <Button
                 variant="outline"
-                className="px-6 py-2 text-sm rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
+                className="px-4 md:px-6 py-2 text-sm rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
               >
                 View All Projects
                 <ArrowUpRight className="ml-2 h-4 w-4" />
