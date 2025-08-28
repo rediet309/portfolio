@@ -5,6 +5,7 @@ import { Navigation } from "@/components/navigation"
 import { ArrowRight, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 export default function AboutPage() {
   const [mounted, setMounted] = useState(false)
