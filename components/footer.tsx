@@ -49,6 +49,21 @@ export function Footer() {
               <Mail className="h-5 w-5" />
             </a>
           </div>
+
+          <div className="text-center">
+            <p className="text-xs text-neutral-500 mb-1">
+              powered and developed by{" "}
+              <a
+                href="https://vbeni.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-neutral-800 transition-colors underline"
+              >
+                vbeni
+              </a>
+            </p>
+            
+          </div>
         </div>
       </div>
     </footer>
