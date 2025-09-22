@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Navigation } from "@/components/navigation"
 import { Calendar, Archive, MapPin } from "lucide-react"
 import { InstallationModal } from "@/components/installation-modal"
+import { VerticalImageModal } from "@/components/vertical-image-modal"
 
 interface Project {
   id: string
@@ -32,8 +33,7 @@ const archiveProjects: Project[] = [
     medium: "Photography archive",
     description: "Comprehensive photographic archive from the MSFTS x Ethiopia skateboarding collaboration.",
     detailedDescription: "",
-    image:
-      "/images/c1-1.webp?height=600&width=800&text=MSFTS+Skate+Archive",
+    image: "/images/c1-1.webp?height=600&width=800&text=MSFTS+Skate+Archive",
     location: "Studio Archive",
     status: "Digital Archive",
     tags: ["photography", "skateboarding", "behind-the-scenes", "collaboration"],
@@ -41,7 +41,7 @@ const archiveProjects: Project[] = [
     images: [
       // 5 landscape photos (16:9 ratio)
       "/images/a1-1.webp",
-      "/images/a12-1.webp", 
+      "/images/a12-1.webp",
       "/images/a4-1.webp",
       "/images/b2-1.webp",
       "/images/a3-1.webp",
@@ -82,12 +82,7 @@ const archiveProjects: Project[] = [
     status: "Fashion Archive",
     tags: ["fashion", "jewelry", "traditional", "gold"],
     photoCount: 4,
-    images: [
-      "/images/a2-3.webp", 
-      "/images/a3-3.webp", 
-      "/images/a4-3.webp", 
-      "/images/a1-3.webp", 
-    ],
+    images: ["/images/a2-3.webp", "/images/a3-3.webp", "/images/a4-3.webp", "/images/a1-3.webp"],
   },
   {
     id: "in-red-photos-archive",
@@ -106,14 +101,14 @@ const archiveProjects: Project[] = [
     photoCount: 6,
     images: [
       // 3 small 9:16 images
-      "/images/a2-4.webp", 
-      "/images/a3-4.webp", 
-      "/images/a4-4.webp", 
-      "/images/a6-4.webp",   
+      "/images/a2-4.webp",
+      "/images/a3-4.webp",
+      "/images/a4-4.webp",
+      "/images/a6-4.webp",
       // 3 landscape images
-      "/images/a1-4.webp", 
-      "/images/a5-4.webp", 
-      "/images/a6-4.webp",  
+      "/images/a1-4.webp",
+      "/images/a5-4.webp",
+      "/images/a6-4.webp",
     ],
   },
   {
@@ -130,12 +125,7 @@ const archiveProjects: Project[] = [
     status: "Conceptual Archive",
     tags: ["conceptual", "utopia", "alternative reality", "surreal"],
     photoCount: 4,
-    images: [
-      "/images/a.webp",
-      "/images/b.webp",
-      "/images/c.webp",
-      "/images/d.webp",
-    ],
+    images: ["/images/a.webp", "/images/b.webp", "/images/c.webp", "/images/d.webp"],
   },
   {
     id: "decoding-legends-photos-archive",
@@ -175,23 +165,23 @@ const archiveProjects: Project[] = [
     slidesLayout: [1, 5, 7, 6], // 1 photo in first slide, 5 in second slide, 7 in third, 6 in fourth
     images: [
       // 17 small 9:16 images
-     "/images//a1-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/a2-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/a3-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/a4-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/a5-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b1-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b2-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b3-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b4-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b5-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b6-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/b7-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/c2-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/c3-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/c4-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/c5-8.webp?height=600&width=800&text=To+Identify+Archive",
-     "/images/c6-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images//a1-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/a2-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/a3-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/a4-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/a5-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b1-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b2-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b3-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b4-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b5-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b6-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/b7-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/c2-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/c3-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/c4-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/c5-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/c6-8.webp?height=600&width=800&text=To+Identify+Archive",
       // 1 landscape image
       "/images/c1-8.webp?height=600&width=800&text=To+Identify+Archive",
     ],
@@ -263,8 +253,7 @@ const archiveProjects: Project[] = [
     description: "Collection of graphic design work including posters and visual identity projects.",
     detailedDescription:
       "This archive contains 5 graphic design projects including event posters and editorial work that explore Ethiopian cultural themes through contemporary design approaches. The collection demonstrates the application of traditional cultural elements within modern graphic design frameworks.",
-    image:
-      "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
+    image: "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
     location: "Design Archive",
     status: "Design Collection",
     tags: ["graphic design", "posters", "visual identity", "cultural themes"],
@@ -283,14 +272,24 @@ const archiveProjects: Project[] = [
 export default function ArchivePage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isVerticalModalOpen, setIsVerticalModalOpen] = useState(false)
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project)
-    setIsModalOpen(true)
+    if (project.id === "decoding-legends-photos-archive" || project.id === "graphic-posters-illustrations-archive") {
+      setIsVerticalModalOpen(true)
+    } else {
+      setIsModalOpen(true)
+    }
   }
 
   const closeModal = () => {
     setIsModalOpen(false)
+    setSelectedProject(null)
+  }
+
+  const closeVerticalModal = () => {
+    setIsVerticalModalOpen(false)
     setSelectedProject(null)
   }
 
@@ -441,7 +440,18 @@ export default function ArchivePage() {
       </main>
 
       {/* Archive Modal */}
-      {selectedProject && <InstallationModal project={selectedProject} isOpen={isModalOpen} onClose={closeModal} />}
+      {selectedProject && !isVerticalModalOpen && (
+        <InstallationModal project={selectedProject} isOpen={isModalOpen} onClose={closeModal} />
+      )}
+
+      {selectedProject && isVerticalModalOpen && (
+        <VerticalImageModal
+          images={selectedProject.images || []}
+          title={selectedProject.title}
+          isOpen={isVerticalModalOpen}
+          onClose={closeVerticalModal}
+        />
+      )}
     </div>
   )
 }
