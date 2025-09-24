@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Calendar, Building, User, Users } from "lucide-react"
 import { InstallationModal } from "@/components/installation-modal"
@@ -36,8 +37,7 @@ const installationProjects: InstallationProject[] = [
       "An immersive textile installation and film screening exploring the r/s between skin, fabric, and cultural identity in Eastern Ethiopia.",
     detailedDescription:
       "This large-scale installation features traditional textiles from Eastern Ethiopia arranged in a contemporary gallery context, creating dialogue between historical textile practices and modern artistic expression. The work transforms gallery space into a meditation on cultural memory and material heritage. Currently available for sale, this installation represents the culmination of extensive research into Ethiopian textile traditions.",
-    image:
-      "/images/01_front.webp?height=600&width=800&text=sKINs+East+Ethiopia+Installation",
+    image: "/images/01_front.webp?height=600&width=800&text=sKINs+East+Ethiopia+Installation",
     position: "Textile Artist, Director, Producer, Cinematographer, Writer",
     materials: ["Traditional textiles", "Contemporary display systems", "Lighting", "Sound"],
     tags: ["textile", "identity", "cultural heritage", "for sale"],
@@ -64,15 +64,14 @@ const installationProjects: InstallationProject[] = [
       "“YAL / Ye Abayn Lij” explores ritual and design, named for the paradox of lacking one's own abundance.",
     detailedDescription:
       "The YAL (Young African Leaders) exhibition features multimedia installations that examine leadership, youth culture, and artistic innovation in modern Ethiopia. The exhibition includes 17 distinct photographic works alongside an immersive walkthrough video experience that guides viewers through the conceptual framework of contemporary Ethiopian artistic practice.",
-    image:
-      "/images/IMG_2859.webp?height=600&width=800&text=YAL+Exhibition",
+    image: "/images/IMG_2859.webp?height=600&width=800&text=YAL+Exhibition",
     position: "Textile Artist and curator ",
     materials: ["Photography", "Video installations", "Interactive displays", "Sound systems"],
     tags: ["contemporary", "multimedia", "youth", "leadership"],
     photoCount: 17,
     videoUrl: "https://drive.google.com/file/d/1AV8mLySkKCYWztSNfcE5uOuKVSwCGzb7/view?usp=sharing",
     images: [
-      "/images/IMG_2859.webp", 
+      "/images/IMG_2859.webp",
       "/images/IMG_4340.webp",
       "/images/IMG_4341.webp",
       "/images//IMG_5008.webp",
@@ -100,8 +99,7 @@ const installationProjects: InstallationProject[] = [
       "“Bet/Bota” reimagines the Ethiopian home, exploring memory and history through immersive sets and everyday objects.",
     detailedDescription:
       "“Bet/Bota” reimagines the Ethiopian home as a space where memory and history intersect with imagination. Set against 1970s Addis Ababa, the project unfolds through eight immersive sets ranging from elemental abstractions to reconstructed living spaces. At its heart, a dining room unites these worlds, revealing the quiet power of everyday objects. Both house and archive, “Bet/Bota” invites reflection on how space shapes us, and how we, in turn, shape space.",
-    image:
-      "/images/a4a.webp?height=600&width=800&text=Bet+Bota+Installation",
+    image: "/images/a4a.webp?height=600&width=800&text=Bet+Bota+Installation",
     position: "Model, Director",
     materials: ["Traditional textiles", "Architectural elements", "Lighting systems", "Interactive spaces"],
     tags: ["architecture", "domestic", "cultural memory", "space"],
@@ -128,7 +126,7 @@ const installationProjects: InstallationProject[] = [
       "/images/a8_nostalgia_a.webp",
       "/images/a8a.webp",
       "/images/a9_gathering.webp",
-      ],  
+    ],
   },
   {
     id: "hulet-neteb-installation",
@@ -139,14 +137,13 @@ const installationProjects: InstallationProject[] = [
       "“Hulet Neteb / Two Dots” uses the Ethiopian “:” to explore identity and heritage through hand-painted and pre-owned garments.",
     detailedDescription:
       "Building on the themes from the experimental film of the same name, this installation creates an immersive environment where visitors can physically engage with the concept of 'Hulet Neteb' (two things). The work demonstrates how philosophical concepts can be experienced through spatial and tactile engagement, documented through 7 comprehensive photographs.",
-    image:
-      "/images/IMG_4342.webp?height=600&width=800&text=Hulet+Neteb+Installation",
+    image: "/images/IMG_4342.webp?height=600&width=800&text=Hulet+Neteb+Installation",
     position: "Director, Producer, Curator, and Textile Artist",
     materials: ["Interactive sensors", "Digital displays", "Physical objects", "Sound design"],
     tags: ["interactive", "philosophy", "duality", "digital"],
     photoCount: 7,
     images: [
-      "/images/IMG_4342.webp", 
+      "/images/IMG_4342.webp",
       "/images/FUA19675.webp",
       "/images/FUA19684.webp",
       "/images/FUA19689.webp",
@@ -164,8 +161,7 @@ const installationProjects: InstallationProject[] = [
       "“Ete'ya” reimagines traditional Ethiopian attire with a blue cloak, red pants, and headscarf, honoring the legendary queen.",
     detailedDescription:
       "Created during the prestigious Gojo residency program, this immersive work combines video, sound, textile, and sculptural elements to create an environment where visitors can experience legendary narratives through multiple sensory channels. The installation demonstrates how traditional storytelling can be transformed through contemporary artistic methodologies, documented through 9 comprehensive photographs.",
-    image:
-      "/images/IMG_5082.webp?height=600&width=800&text=Decoding+Legends+Installation",
+    image: "/images/IMG_5082.webp?height=600&width=800&text=Decoding+Legends+Installation",
     position: "Creative director, costume design",
     materials: ["Video screens", "Traditional artifacts", "Audio systems", "Lighting", "Textiles"],
     tags: ["legends", "multimedia", "storytelling", "gojo residency"],
@@ -177,7 +173,7 @@ const installationProjects: InstallationProject[] = [
       "/images/IMG_5109.webp",
       "/images/IMG_5124.webp",
       "/images/photo_2021-09-24_22-16-46.webp",
-      "/imagesphoto_2021-09-24_22-16-49.webp",
+      "/images/photo_2021-09-24_22-16-49.webp",
       "/images/photo_2021-09-24_22-16-51.webp",
       "/images/photo_2021-09-24_22-16-55.webp",
     ],
@@ -219,7 +215,7 @@ export default function InstallationPage() {
 
           {/* Projects Grid - Full width with proper alignment */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {installationProjects.map((project) => (
+            {installationProjects.map((project, index) => (
               <div
                 key={project.id}
                 className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
@@ -228,10 +224,16 @@ export default function InstallationPage() {
                 <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      loading={index < 4 ? "eager" : "lazy"}
+                      quality={85}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
 
                     {/* Category Badge */}

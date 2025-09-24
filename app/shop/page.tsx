@@ -35,7 +35,7 @@ export default function ShopPage() {
       category: "textile-art",
       price: "Email for Price",
       image: "/images/01_front.webp?height=600&width=480&text=Dire+Dawa+Installation",
-      hoverImage: "/images/01_front.webp?height=600&width=480&text=Installation+Detail",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Installation+Detail",
       available: true,
       isEmailPrice: true,
       description:
@@ -49,7 +49,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$230",
       image: "/images/1.webp?height=600&width=480&text=Cargo+Jacket",
-      hoverImage: "/images/1.webp?height=600&width=480&text=Jacket+Back+Panels",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Jacket+Back+Panels",
       available: true,
       linkedPhotos: "Kins of Abay.1/back panels",
       description:
@@ -61,7 +61,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$290",
       image: "/images/Swapable.webp?height=600&width=480&text=Haori+Kimono",
-      hoverImage: "/images/Swapable.webp?height=600&width=480&text=Kimono+Panels",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Kimono+Panels",
       available: true,
       linkedPhotos: "Kins of Abay.1/back panels + changeable swapping panels",
       description:
@@ -73,7 +73,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$110",
       image: "/images/a3-9.webp?height=600&width=480&text=Cargo+Pants",
-      hoverImage: "/images/a3-9.webp?height=600&width=480&text=Swappable+Panels",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Swappable+Panels",
       available: true,
       linkedPhotos: "changeable swapping panels",
       description:
@@ -85,7 +85,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$70",
       image: "/images/red-skins-all_01.webp?height=600&width=480&text=sKINs+Collection",
-      hoverImage: "/images/red-skins-all_01.webp?height=600&width=480&text=Collection+Variety",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Collection+Variety",
       available: true,
       description:
         "Versatile collection including tops, durags, neck gaiters, and sleeve/leg extensions. Each piece designed for layering and personal expression.",
@@ -97,7 +97,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$70",
       image: "/images/Sheret 09.webp?height=600&width=480&text=Sheret+Project",
-      hoverImage: "/images/Sheret 09.webp?height=600&width=480&text=Reversible+Design",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Reversible+Design",
       available: true,
       description:
         "Innovative reversible clothing line featuring short sleeve shirts, full suits, and coats. Each piece offers two distinct looks in one garment.",
@@ -109,7 +109,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "Currently Sold Out",
       image: "/images/coming-soon.jpg?height=600&width=480&text=Angel+Eyes",
-      hoverImage: "/images/coming-soon.jpg?height=600&width=480&text=Hand+Painted+Detail",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Hand+Painted+Detail",
       available: false,
       description:
         "Artisanal jackets and vests featuring hand-painted designs and intricate embroidery. Each piece is unique and tells its own visual story.",
@@ -121,7 +121,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "Currently Sold Out",
       image: "/images/01_ The four elements-a.jpg?height=600&width=480&text=Hulet+Neteb",
-      hoverImage: "/images/01_ The four elements-a.jpg?height=600&width=480&text=Capsule+Collection",
+      hoverImage: "/placeholder.svg?height=600&width=480&text=Capsule+Collection",
       available: false,
       description:
         "Limited capsule collection of structured jackets combining traditional Ethiopian motifs with contemporary tailoring techniques.",
@@ -240,7 +240,12 @@ export default function ShopPage() {
                       alt={item.title}
                       width={480}
                       height={600}
+                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="w-full h-full object-cover transition-all duration-500 group-hover:opacity-0"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                      quality={85}
                     />
 
                     {/* Hover Image */}
@@ -249,7 +254,12 @@ export default function ShopPage() {
                       alt={`${item.title} - alternate view`}
                       width={480}
                       height={600}
+                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                      quality={85}
                     />
 
                     {/* Sold Out Overlay (always visible when not available) */}

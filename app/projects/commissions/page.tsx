@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { FilmModal } from "@/components/film-modal"
 import { InstallationModal } from "@/components/installation-modal"
@@ -104,11 +105,11 @@ const commissionProjects: Project[] = [
     type: "photo",
     images: [
       "/images/a1-0.webp",
-      "/images/a2-0.webp", 
+      "/images/a2-0.webp",
       "/images/a3-0.webp",
       "/images/a4-0.webp",
-      "/images/a5-0.webp", 
-      "/images/a6-0.webp", 
+      "/images/a5-0.webp",
+      "/images/a6-0.webp",
       "/images/a7-0.webp",
       "/images/a8-0.webp",
     ],
@@ -150,7 +151,7 @@ export default function CommissionsPage() {
 
           {/* Projects Grid - Enhanced responsive layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {commissionProjects.map((project) => (
+            {commissionProjects.map((project, index) => (
               <div
                 key={project.id}
                 className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
@@ -159,10 +160,16 @@ export default function CommissionsPage() {
                 <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      loading={index < 4 ? "eager" : "lazy"}
+                      quality={80}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
 
                     {/* Category Badge */}

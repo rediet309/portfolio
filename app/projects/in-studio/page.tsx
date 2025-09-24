@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Calendar, Camera, User, Users } from "lucide-react"
 import { InstallationModal } from "@/components/installation-modal"
@@ -34,8 +35,7 @@ const studioProjects: StudioProject[] = [
       "This sub-collection honors ancestral skin markings as symbols of protection, beauty, and spirituality. Inspired by the artist's late great-grandmother, transforms these sacred symbols into garments that carry memory, meaning, and resilience.",
     detailedDescription:
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
-    image:
-      "/images/skins-all_04.webp?height=600&width=800&text=sKINs+North+Ethiopia",
+    image: "/images/skins-all_04.webp?height=600&width=800&text=sKINs+North+Ethiopia",
     position: "Director, cinematographer, writer, and Textile Artist",
     tags: ["documentation", "photography", "cultural practices", "preservation"],
     images: [
@@ -54,8 +54,7 @@ const studioProjects: StudioProject[] = [
       '"Hulet Neteb / Two Dots" uses the Ethiopian ":" to explore identity and heritage through hand-painted and pre-owned garments.',
     detailedDescription:
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
-    image:
-      "/images/northern lines.webp?height=600&width=800&text=Hulet+Neteb",
+    image: "/images/northern lines.webp?height=600&width=800&text=Hulet+Neteb",
     position: " Director, Producer, Curator, and Textile Artist",
     tags: ["documentation", "photography", "cultural practices", "preservation"],
     images: [
@@ -92,12 +91,12 @@ const studioProjects: StudioProject[] = [
     position: "Textile Artist and researcher",
     tags: ["documentation", "photography", "cultural practices", "preservation"],
     images: [
-      "/images/00_Coat.webp", 
-      "/images/a-11.webp", 
-      "/images/b-11.webp", 
-      "/images/c-11.webp", 
-      "/images/Convertable.webp", 
-      "/images/IMG_0612 (2).webp", 
+      "/images/00_Coat.webp",
+      "/images/a-11.webp",
+      "/images/b-11.webp",
+      "/images/c-11.webp",
+      "/images/Convertable.webp",
+      "/images/IMG_0612 (2).webp",
     ],
   },
   {
@@ -151,7 +150,7 @@ export default function InStudioPage() {
 
           {/* Projects Grid - Enhanced responsive layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {studioProjects.map((project) => (
+            {studioProjects.map((project, index) => (
               <div
                 key={project.id}
                 className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
@@ -160,10 +159,16 @@ export default function InStudioPage() {
                 <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      loading={index < 4 ? "eager" : "lazy"}
+                      quality={80}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
 
                     {/* Category Badge */}
