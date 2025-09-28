@@ -61,7 +61,7 @@ export function Navigation({ currentPath }: NavigationProps) {
             setIsMobileMenuOpen(false)
           }}
         >
-          <Image src="/images/logo.webp" alt="Rediet Haddis" width={800} height={300} className="h-28 w-auto" />
+          <Image src="/images/logo.webp" alt="Rediet Haddis" width={400} height={200} className="h-28 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
