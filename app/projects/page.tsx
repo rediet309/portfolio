@@ -126,7 +126,7 @@ const allProjectsData = [
     images: [
       "/images/skins-all_04.webp",
       "/images/skins-all_01.webp",
-      "/image/skins-all_02.webp",
+      "/images/skins-all_02.webp",
       "/images/skins-all_03.webp",
     ],
     position: "Filmmaker and textile artist",
