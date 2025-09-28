@@ -49,7 +49,7 @@ export default function CheckoutPage() {
 
   const bankAccounts = [
     {
-      name: "Telebirr",
+      name: "WISE",
       account: "+251-911-234567",
       type: "Mobile Money",
       icon: "📱",
@@ -57,18 +57,6 @@ export default function CheckoutPage() {
     {
       name: "Commercial Bank of Ethiopia (CBE)",
       account: "1000123456789",
-      type: "Bank Account",
-      icon: "🏦",
-    },
-    {
-      name: "Bank of Abyssinia (BOA)",
-      account: "0987654321012",
-      type: "Bank Account",
-      icon: "🏦",
-    },
-    {
-      name: "Dashen Bank",
-      account: "1122334455667",
       type: "Bank Account",
       icon: "🏦",
     },
@@ -176,7 +164,7 @@ This is an automated order request from Red Suk online store.`,
       <nav className="w-full z-50 bg-white border-b border-neutral-200">
         <div className="w-full px-12 lg:px-20 flex justify-between items-center py-0">
           <Link href="/" className="hover:opacity-70 transition-opacity">
-            <Image src="/images/logo.webp" alt="Rediet Haddis" width={800} height={300} className="h-28 w-auto" />
+            <Image src="/images/logo.webp" alt="Rediet Haddis" width={800} height={300} className="h-16 w-auto" />
           </Link>
         </div>
       </nav>
