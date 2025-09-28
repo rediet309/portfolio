@@ -35,7 +35,7 @@ export default function ShopPage() {
       category: "textile-art",
       price: "Email for Price",
       image: "/images/01_front.webp?height=600&width=480&text=Dire+Dawa+Installation",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Installation+Detail",
+      hoverImage: "/images/01_front.webp?height=600&width=480&text=Installation+Detail",
       available: true,
       isEmailPrice: true,
       description:
@@ -49,7 +49,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$230",
       image: "/images/1.webp?height=600&width=480&text=Cargo+Jacket",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Jacket+Back+Panels",
+      hoverImage: "/images/1.webp?height=600&width=480&text=Jacket+Back+Panels",
       available: true,
       linkedPhotos: "Kins of Abay.1/back panels",
       description:
@@ -61,7 +61,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$290",
       image: "/images/Swapable.webp?height=600&width=480&text=Haori+Kimono",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Kimono+Panels",
+      hoverImage: "/images/Swapable.webp?height=600&width=480&text=Kimono+Panels",
       available: true,
       linkedPhotos: "Kins of Abay.1/back panels + changeable swapping panels",
       description:
@@ -73,7 +73,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$110",
       image: "/images/a3-9.webp?height=600&width=480&text=Cargo+Pants",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Swappable+Panels",
+      hoverImage: "/images/a3-9.webp?height=600&width=480&text=Swappable+Panels",
       available: true,
       linkedPhotos: "changeable swapping panels",
       description:
@@ -85,7 +85,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$70",
       image: "/images/red-skins-all_01.webp?height=600&width=480&text=sKINs+Collection",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Collection+Variety",
+      hoverImage: "/images/red-skins-all_01.webp?height=600&width=480&text=Collection+Variety",
       available: true,
       description:
         "Versatile collection including tops, durags, neck gaiters, and sleeve/leg extensions. Each piece designed for layering and personal expression.",
@@ -97,7 +97,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "$70",
       image: "/images/Sheret 09.webp?height=600&width=480&text=Sheret+Project",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Reversible+Design",
+      hoverImage: "/images/Sheret 09.webp?height=600&width=480&text=Reversible+Design",
       available: true,
       description:
         "Innovative reversible clothing line featuring short sleeve shirts, full suits, and coats. Each piece offers two distinct looks in one garment.",
@@ -109,7 +109,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "Currently Sold Out",
       image: "/images/coming-soon.jpg?height=600&width=480&text=Angel+Eyes",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Hand+Painted+Detail",
+      hoverImage: "/images/coming-soon.jpg?height=600&width=480&text=Hand+Painted+Detail",
       available: false,
       description:
         "Artisanal jackets and vests featuring hand-painted designs and intricate embroidery. Each piece is unique and tells its own visual story.",
@@ -121,7 +121,7 @@ export default function ShopPage() {
       category: "clothing",
       price: "Currently Sold Out",
       image: "/images/01_ The four elements-a.jpg?height=600&width=480&text=Hulet+Neteb",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Capsule+Collection",
+      hoverImage: "/images/01_ The four elements-a.jpg?height=600&width=480&text=Capsule+Collection",
       available: false,
       description:
         "Limited capsule collection of structured jackets combining traditional Ethiopian motifs with contemporary tailoring techniques.",
@@ -135,7 +135,7 @@ export default function ShopPage() {
       category: "posters",
       price: "$15 - $35",
       image: "/images/coming-soon.jpg?height=600&width=480&text=Ethiopia+Posters",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Postcard+Collection",
+      hoverImage: "/images/coming-soon.jpg?height=600&width=480&text=Postcard+Collection",
       available: false,
       description:
         "Beautiful collection of posters and postcards celebrating Ethiopian culture, landscapes, and traditions. Perfect for home decoration or sharing with friends.",
@@ -146,7 +146,7 @@ export default function ShopPage() {
       category: "posters",
       price: "$12",
       image: "/images/coming-soon.jpg?height=600&width=480&text=Red+Sticker+Set",
-      hoverImage: "/placeholder.svg?height=600&width=480&text=Sticker+Details",
+      hoverImage: "/images/coming-soon.jpg?height=600&width=480&text=Sticker+Details",
       available: false,
       description:
         "Curated set of red-themed stickers featuring cultural symbols, patterns, and artistic elements. High-quality vinyl stickers perfect for personalizing your belongings.",
