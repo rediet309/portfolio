@@ -411,7 +411,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       <nav className="w-full z-50 bg-white border-b border-neutral-200">
         <div className="w-full px-12 lg:px-20 flex justify-between items-center py-0">
           <Link href="/" className="hover:opacity-70 transition-opacity">
-            <Image src="/images/logo.webp" alt="Rediet Haddis" width={800} height={300} className="h-28 w-auto" />
+            <Image src="/images/logo.webp" alt="Rediet Haddis" width={800} height={300} className="h-16 w-auto" />
           </Link>
 
           <div className="flex items-center space-x-4">
