@@ -36,7 +36,7 @@ const archiveProjects: Project[] = [
     image: "/images/c1-1.webp?height=600&width=800&text=MSFTS+Skate+Archive",
     location: "Studio Archive",
     status: "Digital Archive",
-    tags: ["photography", "skateboarding", "behind-the-scenes", "collaboration"],
+    tags: ["photography", "skateboarding", "behind-the-scenes"],
     photoCount: 24,
     images: [
       // 5 landscape photos (16:9 ratio)
@@ -80,7 +80,7 @@ const archiveProjects: Project[] = [
     image: "/images/a1-3.webp?height=600&width=800&text=Tilla+Photoshoot+Archive",
     location: "Studio Archive",
     status: "Fashion Archive",
-    tags: ["fashion", "jewelry", "traditional", "gold"],
+    tags: ["fashion", "traditional"],
     photoCount: 4,
     images: ["/images/a2-3.webp", "/images/a3-3.webp", "/images/a4-3.webp", "/images/a1-3.webp"],
   },
@@ -97,18 +97,19 @@ const archiveProjects: Project[] = [
     image: "/images/a1-4.webp?height=600&width=800&text=In+Red+Archive",
     location: "Various locations",
     status: "Artistic Archive",
-    tags: ["color study", "cultural significance", "photography", "red"],
+    tags: ["photography", "red"],
     photoCount: 6,
     images: [
       // 3 small 9:16 images
-      "/images/a2-4.webp",
+      "/images/a7-4.webp",
       "/images/a3-4.webp",
       "/images/a4-4.webp",
-      "/images/a6-4.webp",
       // 3 landscape images
-      "/images/a1-4.webp",
+      "/images/a2-4.webp",
       "/images/a5-4.webp",
+      "/images/a1-4.webp",
       "/images/a6-4.webp",
+
     ],
   },
   {
@@ -123,29 +124,9 @@ const archiveProjects: Project[] = [
     image: "/images/j.webp?height=600&width=800&text=Portal+U-thiopia+Archive",
     location: "Conceptual Archive",
     status: "Conceptual Archive",
-    tags: ["conceptual", "utopia", "alternative reality", "surreal"],
+    tags: ["conceptual", "utopia", "alternative reality"],
     photoCount: 4,
     images: ["/images/a.webp", "/images/b.webp", "/images/c.webp", "/images/d.webp"],
-  },
-  {
-    id: "decoding-legends-photos-archive",
-    title: "Decoding Legends",
-    year: "2021",
-    category: "Archive",
-    medium: "Documentary photography",
-    description: "Photographic documentation supporting the Decoding Legends film series and installation work.",
-    detailedDescription:
-      "This archive contains 3 key photographs from the extensive research and documentation that supported the Decoding Legends project, including location scouting, cultural research, and process documentation that provided the foundation for the larger multimedia project.",
-    image: "/images/a2-5.webp?height=600&width=800&text=Decoding+Legends+Archive",
-    location: "Research Archive",
-    status: "Research Collection",
-    tags: ["documentary", "research", "legends", "cultural documentation"],
-    photoCount: 3,
-    images: [
-      "/images/a1-5.webp?height=600&width=800&text=Decoding+Legends+Archive",
-      "/images/a2-5.webp?height=600&width=800&text=Decoding+Legends+Archive",
-      "/images/a3-5.webp?height=600&width=800&text=Decoding+Legends+Archive",
-    ],
   },
   {
     id: "to-identify-photos-archive",
@@ -160,12 +141,12 @@ const archiveProjects: Project[] = [
     image: "/images/vnfn-8.webp?height=600&width=800&text=To+Identify+Archive",
     location: "Global locations",
     status: "Personal Archive",
-    tags: ["identity", "diaspora", "personal", "belonging"],
+    tags: ["identity", "patriotism"],
     photoCount: 18,
     slidesLayout: [1, 5, 7, 6], // 1 photo in first slide, 5 in second slide, 7 in third, 6 in fourth
     images: [
       // 17 small 9:16 images
-      "/images//a1-8.webp?height=600&width=800&text=To+Identify+Archive",
+      "/images/a1-8.webp?height=600&width=800&text=To+Identify+Archive",
       "/images/a2-8.webp?height=600&width=800&text=To+Identify+Archive",
       "/images/a3-8.webp?height=600&width=800&text=To+Identify+Archive",
       "/images/a4-8.webp?height=600&width=800&text=To+Identify+Archive",
@@ -199,7 +180,7 @@ const archiveProjects: Project[] = [
     image: "/images/a1-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
     location: "Addis Ababa, Ethiopia",
     status: "Cultural Archive",
-    tags: ["cultural documentation", "traditional art", "contemporary", "addis ababa"],
+    tags: ["consumerism", "cultural documentation", "exchange"],
     photoCount: 4,
     images: [
       "/images/a1-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
@@ -219,7 +200,7 @@ const archiveProjects: Project[] = [
     image: "/images/a2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
     location: "Color Archive",
     status: "Study Collection",
-    tags: ["color theory", "traditional dyes", "cultural meaning", "design"],
+    tags: ["color study", "identity", "experiment"],
     photoCount: 18,
     images: [
       // 11 small 9:16 images
@@ -256,7 +237,7 @@ const archiveProjects: Project[] = [
     image: "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
     location: "Design Archive",
     status: "Design Collection",
-    tags: ["graphic design", "posters", "visual identity", "cultural themes"],
+    tags: ["graphic design", "posters"],
     instagramUrl: "https://www.instagram.com/red_studyo/",
     photoCount: 5,
     images: [
@@ -276,7 +257,7 @@ export default function ArchivePage() {
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project)
-    if (project.id === "decoding-legends-photos-archive" || project.id === "graphic-posters-illustrations-archive") {
+    if (project.id === "decoding-legends-photos-archive") {
       setIsVerticalModalOpen(true)
     } else {
       setIsModalOpen(true)
@@ -315,18 +296,14 @@ export default function ArchivePage() {
           {/* Projects Grid - Full width with proper alignment */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {archiveProjects.map((project) => (
-              <div
-                key={project.id}
-                className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
-                onClick={() => handleProjectClick(project)}
-              >
-                <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={project.id} className="group cursor-pointer" onClick={() => handleProjectClick(project)}>
+                <div className="rounded-lg overflow-hidden bg-white shadow-lg">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover"
                     />
 
                     {/* Category Badge */}
@@ -353,27 +330,17 @@ export default function ArchivePage() {
                       <div className="absolute bottom-4 right-4">
                         <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-2 rounded-full">
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                           </svg>
                         </div>
                       </div>
                     )}
-
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <div className="text-center space-y-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <div className="text-white text-sm font-medium">View Archive</div>
-                        <div className="w-8 h-px bg-white/50 mx-auto" />
-                      </div>
-                    </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-4 space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-lg font-light leading-tight text-black group-hover:text-neutral-600 transition-colors duration-300">
-                        {project.title}
-                      </h3>
+                      <h3 className="text-lg font-light leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-4 text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">
@@ -396,7 +363,7 @@ export default function ArchivePage() {
                       {project.instagramUrl && (
                         <span className="inline-flex items-center ml-2 text-purple-600">
                           <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                           </svg>
                           Instagram
                         </span>
@@ -428,10 +395,10 @@ export default function ArchivePage() {
               href="https://www.instagram.com/red_studyo/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 text-neutral-600 hover:text-black transition-colors duration-300"
+              className="inline-flex items-center space-x-2 text-neutral-600"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
               <span>@red_studyo</span>
             </a>

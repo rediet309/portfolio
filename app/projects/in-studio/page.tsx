@@ -36,8 +36,8 @@ const studioProjects: StudioProject[] = [
     detailedDescription:
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/skins-all_04.webp?height=600&width=800&text=sKINs+North+Ethiopia",
-    position: "Director, cinematographer, writer, and Textile Artist",
-    tags: ["documentation", "photography", "cultural practices", "preservation"],
+    position: "Filmmaker and textile artist",
+    tags: ["kinship", "aesthetics", "architecture"],
     images: [
       "/images/skins-all_01.webp", // Traditional body art documentation
       "/images/skins-all_02.webp", // Ancestral skin markings
@@ -56,26 +56,35 @@ const studioProjects: StudioProject[] = [
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/northern lines.webp?height=600&width=800&text=Hulet+Neteb",
     position: " Director, Producer, Curator, and Textile Artist",
-    tags: ["documentation", "photography", "cultural practices", "preservation"],
+    tags: ["symbology", "textile art", "ethiopian history"],
     images: [
-      "/images/energies.webp",
-      "/images/Flames.webp",
-      "/images/FUA10536.webp",
-      "/images/FUA10675.webp",
-      "/images/FUA10801.webp",
-      "/images/FUA11046.webp",
-      "/images/FUA11079.webp",
-      "/images/FUA11137.webp",
-      "/images/FUA11459.webp",
-      "/images/FUA11650.webp",
-      "/images/FUA13616a.webp",
-      "/images/FUA13681.webp",
-      "/images/FUA13721.webp",
-      "/images/FUA13739.webp",
-      "/images/FUA13850.webp",
-      "/images/FUA13854.webp",
-      "/images/FUA13887.webp",
-      "/images/northern lines.webp",
+      "/images/01_ The four elements-a.webp",
+      "/images/01_ The four elements-b.webp",
+      "/images/01_ The four elements-c.webp",
+      "/images/02_Keber Grace-a.webp",
+      "/images/02_Keber Grace-b.webp",
+      "/images/02_Keber Grace-c.webp",
+      "/images/03_Mebrek Lightning_a.webp",
+      "/images/03_Mebrek Lightning_b.webp",
+      "/images/03_Mebrek Lightning_c.webp",
+      "/images/04_Deshet_a.webp",
+      "/images/04_Deshet_b.webp",
+      "/images/04_Deshet_c.webp",
+      "/images/05_Maya Sight_a.webp",
+      "/images/05_Maya Sight_b.webp",
+      "/images/05_Maya Sight_c.webp",
+      "/images/06_Eteya_a.webp",
+      "/images/06_Eteya_b.webp",
+      "/images/06_Eteya_c.webp",
+      "/images/07_Tente on_study of skies_a.webp",
+      "/images/07_Tente on_study of skies_b.webp",
+      "/images/07_Tente on_study of skies_c.webp",
+      "/images/08_Gerir.webp",
+      "/images/09_Earth_a.webp",
+      "/images/09_Earth_b.webp",
+      "/images/10_day and night_a.webp",
+      "/images/10_day and night_b.webp",
+      "/images/10_day and night_c.webp",
     ],
   },
   {
@@ -89,7 +98,7 @@ const studioProjects: StudioProject[] = [
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/b-11.webp?height=600&width=800&text=Sheret+Project",
     position: "Textile Artist and researcher",
-    tags: ["documentation", "photography", "cultural practices", "preservation"],
+    tags: ["documentation", "preservation"],
     images: [
       "/images/00_Coat.webp",
       "/images/a-11.webp",
@@ -109,8 +118,8 @@ const studioProjects: StudioProject[] = [
     detailedDescription:
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/kins.webp?height=600&width=800&text=YAL+Studio",
-    position: "Textile Artist and curator",
-    tags: ["documentation", "photography", "cultural practices", "preservation"],
+    position: "Artist and curator",
+    tags: ["ritual", "beautification", "functional design"],
     videoUrl: "/vid/Yal launch 8 bit video.mp4",
   },
 ]
@@ -151,19 +160,15 @@ export default function InStudioPage() {
           {/* Projects Grid - Enhanced responsive layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {studioProjects.map((project, index) => (
-              <div
-                key={project.id}
-                className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
-                onClick={() => handleProjectClick(project)}
-              >
-                <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={project.id} className="group cursor-pointer" onClick={() => handleProjectClick(project)}>
+                <div className="rounded-lg overflow-hidden bg-white shadow-lg">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       loading={index < 4 ? "eager" : "lazy"}
                       quality={80}
@@ -191,8 +196,8 @@ export default function InStudioPage() {
                     )}
 
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <div className="text-center space-y-2 sm:space-y-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-black/60 opacity-0 flex items-center justify-center">
+                      <div className="text-center space-y-2 sm:space-y-3 transform translate-y-4 transition-transform duration-500">
                         <div className="text-white text-xs sm:text-sm font-medium">View Studio Work</div>
                         <div className="w-6 sm:w-8 h-px bg-white/50 mx-auto" />
                       </div>
@@ -202,9 +207,7 @@ export default function InStudioPage() {
                   {/* Content */}
                   <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-base sm:text-lg font-light leading-tight text-black group-hover:text-neutral-600 transition-colors duration-300">
-                        {project.title}
-                      </h3>
+                      <h3 className="text-base sm:text-lg font-light leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">

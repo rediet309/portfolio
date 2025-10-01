@@ -34,6 +34,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState<string>("charcoal")
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<string>("")
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const { state, dispatch } = useCart()
 
   // Scroll to top on page load
@@ -47,7 +48,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 1,
         title: "sKINs: Dire Dawa Textile Installation",
         category: "textile-art",
-        price: "$2,500",
+        price: "Email for Price",
         image: "/images/01_front.webp?height=780&width=439&text=Dire+Dawa+Main",
         description:
           "A large-scale textile installation exploring cultural narratives through traditional and contemporary techniques. This immersive piece transforms space through layered textile elements, weaving together stories of heritage, migration, and identity. The installation features hand-woven textiles, natural dyes, and traditional Ethiopian patterns that create a dialogue between past and present.",
@@ -62,6 +63,32 @@ export default function ItemPage({ params }: { params: { id: string } }) {
           "/images/03_back.webp?height=200&width=150&text=Detail+3",
           "/images/04_right.webp?height=200&width=150&text=Detail+4",
         ],
+        imageDescriptions: [
+          {
+            title: "Front Side",
+            content: [
+              "Suspended tent structure incapsulating the sKins film screening within/, hand dyed and embroidered textile mixed with traditional garment fabrics of Dire Dawa, 2025",
+            ],
+          },
+          {
+            title: "Left Side",
+            content: [
+              "Hand printed yellow floral textile with cutouts, and embroidery mixed with traditional garment fabrics of Dire Dawa, 2025.",
+            ],
+          },
+          {
+            title: "Back Side",
+            content: [
+              "Black tea dyed textile with hand embroidery, Image of artists’ mother form 80's, henna paste hand painted decorative art, 2025.",
+            ],
+          },
+          {
+            title: "Right side",
+            content: [
+              "Black textile, silver string textile knotted, love letter of the artists’ parents from the 80's encapsulated, 2025",
+            ],
+          },
+        ],
         detailedDescription:
           "This monumental textile installation draws inspiration from the ancient trading city of Dire Dawa, a crossroads of cultures and commerce in Ethiopia. The piece incorporates traditional weaving techniques passed down through generations, using locally sourced materials and natural dyes. Each section of the installation represents different aspects of the city's rich cultural tapestry - from the bustling markets to the quiet residential quarters where families have lived for centuries. The work invites viewers to walk through and experience the textures, colors, and stories embedded in each carefully crafted textile panel.",
       },
@@ -69,7 +96,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 2,
         title: "Cargo Jacket",
         category: "clothing",
-        price: "$320",
+        price: "$230",
         image: "/images/1.webp?height=780&width=439&text=Cargo+Jacket",
         description:
           "Cargo jacket featuring interchangeable back panels. Each panel tells a different cultural story, allowing for personal expression and narrative customization. The jacket combines utilitarian design with artistic storytelling, creating a versatile piece that adapts to your personal narrative.",
@@ -80,9 +107,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       },
       3: {
         id: 3,
-        title: "Haori Kimono",
+        title: "Haori Jacket",
         category: "clothing",
-        price: "$280",
+        price: "$290 ",
         image: "/images/Swapable.webp?height=780&width=439&text=Haori+Kimono",
         description:
           "Traditional Japanese-inspired kimono with Ethiopian textile influences. Features removable and swappable panels for endless styling possibilities. This fusion piece bridges cultures through textile art, offering a unique blend of Eastern and African design philosophies.",
@@ -95,7 +122,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 4,
         title: "Cargo Pants",
         category: "clothing",
-        price: "$220",
+        price: "$110",
         image: "/images/a3-9.webp?height=780&width=439&text=Cargo+Pants",
         description:
           "Utility-focused cargo pants with modular panel system. These versatile pants feature interchangeable panels that allow you to customize your look while maintaining maximum functionality. Each panel represents different cultural narratives and can be easily swapped to create unique combinations that reflect your personal style and story.",
@@ -106,9 +133,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       },
       5: {
         id: 5,
-        title: "sKINs Collection",
+        title: "sKINs Pack",
         category: "clothing",
-        price: "$45 - $120",
+        price: "$70",
         image: "/images/red-skins-all_01.webp?height=780&width=439&text=sKINs+Collection",
         description:
           "Versatile collection including tops, durags, neck gaiters, and sleeve/leg extensions. Each piece designed for layering and personal expression. The collection celebrates the concept of 'second skin' - garments that become extensions of your identity and cultural expression.",
@@ -120,9 +147,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       },
       6: {
         id: 6,
-        title: "Sheret Project",
+        title: "Sheret Shirts",
         category: "clothing",
-        price: "$180 - $450",
+        price: "$70",
         image: "/images/Sheret 09.webp?height=780&width=439&text=Sheret+Project",
         description:
           "Innovative reversible clothing line featuring short sleeve shirts, full suits, and coats. Each piece offers two distinct looks in one garment.",
@@ -136,7 +163,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 7,
         title: "Angel Eyes",
         category: "clothing",
-        price: "$350 - $520",
+        price: "Sold Out",
         image: "/placeholder.svg?height=780&width=439&text=Angel+Eyes",
         description:
           "Artisanal jackets and vests featuring hand-painted designs and intricate embroidery. Each piece is unique and tells its own visual story. The Angel Eyes collection represents the intersection of fashion and fine art, with each garment serving as a wearable canvas for cultural expression.",
@@ -150,7 +177,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 8,
         title: "Hulet Neteb Jackets",
         category: "clothing",
-        price: "$380",
+        price: "Sold Out",
         image: "/images/01_ The four elements-a.jpg?height=780&width=439&text=Hulet+Neteb",
         description:
           "Limited capsule collection of structured jackets combining traditional Ethiopian motifs with contemporary tailoring techniques. 'Hulet Neteb' translates to 'two breaths' - representing the balance between heritage and innovation in each carefully crafted piece.",
@@ -164,7 +191,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 9,
         title: "Ethiopia Posters and Postcards",
         category: "posters",
-        price: "$15 - $35",
+        price: "Coming Soon",
         image: "/images/coming-soon.jpg?height=780&width=439&text=Ethiopia+Posters",
         description:
           "Beautiful collection of posters and postcards celebrating Ethiopian culture, landscapes, and traditions. Perfect for home decoration or sharing with friends. Each piece captures the essence of Ethiopia's rich cultural heritage through contemporary artistic interpretation.",
@@ -178,7 +205,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         id: 10,
         title: "Red Sticker Set",
         category: "posters",
-        price: "$12",
+        price: "$Coming Soon",
         image: "/images/coming-soon.jpg?height=780&width=439&text=Red+Sticker+Set",
         description:
           "Curated set of red-themed stickers featuring cultural symbols, patterns, and artistic elements. High-quality vinyl stickers perfect for personalizing your belongings. Each sticker in the set represents different aspects of Ethiopian culture and contemporary design.",
@@ -199,6 +226,12 @@ export default function ItemPage({ params }: { params: { id: string } }) {
 
   const colorOptions = [
     {
+      id: "sage",
+      name: "Sage Green",
+      hex: "#253B3A",
+      image: "/images/Sheret 01.webp?height=780&width=439&text=Sheret+Sage",
+    },
+    {
       id: "Yellow Gold",
       name: "Yellow Gold",
       hex: "#F8DF8E",
@@ -210,12 +243,6 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       hex: "#B85450",
       image: "/images/Sheret 11.webp?height=780&width=439&text=Sheret+Terracotta",
     },
-    {
-      id: "sage",
-      name: "Sage Green",
-      hex: "#253B3A",
-      image: "/images/Sheret 01.webp?height=780&width=439&text=Sheret+Sage",
-    },
   ]
 
   const panels: Panel[] = Array.from({ length: item.panelCount }, (_, i) => {
@@ -226,68 +253,68 @@ export default function ItemPage({ params }: { params: { id: string } }) {
 
     if (item.id === 2) {
       const cargoJacketImages = [
-        "/images/webp/Shop/Kins of Abay.1 panels/01.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/02.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/03.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/04.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/05.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/06.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/07.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/08.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/09.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/10.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/11.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/12.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/13.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/14.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/15.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/16.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/17.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/18.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/19.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/20.webp",
+        "/images/01.webp",
+        "/images/02.webp",
+        "/images/03.webp",
+        "/images/04.webp",
+        "/images/05.webp",
+        "/images/06.webp",
+        "/images/07.webp",
+        "/images/08.webp",
+        "/images/09.webp",
+        "/images/10.webp",
+        "/images/11.webp",
+        "/images/12.webp",
+        "/images/13.webp",
+        "/images/14.webp",
+        "/images/15.webp",
+        "/images/16.webp",
+        "/images/17.webp",
+        "/images/18.webp",
+        "/images/19.webp",
+        "/images/20.webp",
       ]
       imageUrl = cargoJacketImages[i] || cargoJacketImages[0]
       panelDescription = `Cargo Jacket Panel ${panelNumber} features military-inspired design with cultural storytelling elements.`
       detailedDescription = `This cargo jacket panel combines tactical functionality with meaningful cultural narratives. Each panel is crafted with weather-resistant materials and features multiple utility pockets while incorporating traditional patterns and motifs that tell stories of resilience, community, and heritage. The modular design allows for easy attachment and removal, making this jacket adaptable to different occasions and personal expressions.`
     } else if (item.id === 3) {
       const haoriKimonoImages = [
-        "/images/webp/Shop/Kins of Abay.1 panels/01.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/02.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/03.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/04.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/05.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/06.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/07.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/08.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/09.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/10.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/11.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/12.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/13.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/14.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/15.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/16.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/17.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/18.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/19.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/20.webp",
+        "/images/01.webp",
+        "/images/02.webp",
+        "/images/03.webp",
+        "/images/04.webp",
+        "/images/05.webp",
+        "/images/06.webp",
+        "/images/07.webp",
+        "/images/08.webp",
+        "/images/09.webp",
+        "/images/10.webp",
+        "/images/11.webp",
+        "/images/12.webp",
+        "/images/13.webp",
+        "/images/14.webp",
+        "/images/15.webp",
+        "/images/16.webp",
+        "/images/17.webp",
+        "/images/18.webp",
+        "/images/19.webp",
+        "/images/20.webp",
       ]
       imageUrl = haoriKimonoImages[i] || haoriKimonoImages[0]
       panelDescription = `Haori Kimono Panel ${panelNumber} features Japanese-Ethiopian fusion design with removable elements.`
       detailedDescription = `This haori kimono panel represents a unique fusion of traditional Japanese design with Ethiopian textile influences. Each panel is crafted with premium fabrics and features removable elements that allow for endless styling possibilities. The design bridges cultures through textile art, offering a unique blend of Eastern and African design philosophies that can be easily swapped to create different looks.`
     } else if (item.id === 4) {
       const cargoPantsImages = [
-        "/images/webp/Shop/Kins of Abay.1 panels/01.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/02.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/03.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/04.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/05.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/06.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/07.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/08.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/09.webp",
-        "/images/webp/Shop/Kins of Abay.1 panels/10.webp",
+        "/images/01.webp",
+        "/images/02.webp",
+        "/images/03.webp",
+        "/images/04.webp",
+        "/images/05.webp",
+        "/images/06.webp",
+        "/images/07.webp",
+        "/images/08.webp",
+        "/images/09.webp",
+        "/images/10.webp",
       ]
       imageUrl = cargoPantsImages[i] || cargoPantsImages[0]
       panelDescription = `Cargo Pants Panel ${panelNumber} features utility-focused design with cultural storytelling elements.`
@@ -449,9 +476,12 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 {item.galleryImages?.map((image, index) => (
                   <button
                     key={index}
-                    onClick={() => setSelectedGalleryImage(image)}
+                    onClick={() => {
+                      setSelectedGalleryImage(image)
+                      setSelectedImageIndex(index)
+                    }}
                     className={`cursor-pointer transition-all duration-200 rounded-sm overflow-hidden ${
-                      selectedGalleryImage === image ? "ring-2 ring-black" : "hover:opacity-80"
+                      selectedGalleryImage === image ? "ring-2 ring-black" : ""
                     }`}
                     style={{ width: "5rem", height: "6.25rem" }}
                   >
@@ -529,19 +559,34 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 <div className="p-6 rounded-lg bg-neutral-50">
                   <div>
                     <h4 className="text-lg font-medium text-black mb-4">About This Textile Installation</h4>
-                    <div className="space-y-4 text-sm text-neutral-600">
-                      <p>
-                        This textile installation represents a contemporary interpretation of traditional Ethiopian
-                        weaving techniques, specifically drawing from the rich textile heritage of Dire Dawa.
-                      </p>
-                      <p className="text-sm leading-relaxed text-neutral-600">
-                        The piece explores themes of cultural identity, migration, and the intersection of traditional
-                        craftsmanship with modern artistic expression.
-                      </p>
-                      <p>
-                        Each element has been carefully considered to create a dialogue between past and present,
-                        honoring ancestral knowledge while pushing creative boundaries.
-                      </p>
+                    <div className="space-y-4 text-sm text-neutral-600 transition-opacity duration-300">
+                      {item.imageDescriptions && item.imageDescriptions[selectedImageIndex] ? (
+                        <>
+                          <h5 className="text-base font-medium text-black">
+                            {item.imageDescriptions[selectedImageIndex].title}
+                          </h5>
+                          {item.imageDescriptions[selectedImageIndex].content.map((paragraph, idx) => (
+                            <p key={idx} className="leading-relaxed">
+                              {paragraph}
+                            </p>
+                          ))}
+                        </>
+                      ) : (
+                        <>
+                          <p>
+                            This textile installation represents a contemporary interpretation of traditional Ethiopian
+                            weaving techniques, specifically drawing from the rich textile heritage of Dire Dawa.
+                          </p>
+                          <p className="leading-relaxed">
+                            The piece explores themes of cultural identity, migration, and the intersection of
+                            traditional craftsmanship with modern artistic expression.
+                          </p>
+                          <p>
+                            Each element has been carefully considered to create a dialogue between past and present,
+                            honoring ancestral knowledge while pushing creative boundaries.
+                          </p>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -588,10 +633,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                             <button
                               key={color.id}
                               onClick={() => setSelectedColor(color.id)}
-                              className={`group relative w-16 h-16 rounded-xl border-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
-                                selectedColor === color.id
-                                  ? "border-black scale-105 shadow-2xl"
-                                  : "border-neutral-200 hover:border-neutral-400"
+                              className={`group relative w-16 h-16 rounded-xl border-3 transition-all duration-300 shadow-lg ${
+                                selectedColor === color.id ? "border-black scale-105 shadow-2xl" : "border-neutral-200"
                               }`}
                               style={{ backgroundColor: color.hex }}
                               title={color.name}
@@ -1105,6 +1148,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                       src={
                         panel.image ||
                         "https://images.unsplash.com/photo-1755532016921-f4c99febe732?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by-1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ||
+                        "/placeholder.svg" ||
+                        "/placeholder.svg" ||
                         "/placeholder.svg" ||
                         "/placeholder.svg"
                       }

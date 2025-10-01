@@ -6,13 +6,122 @@ import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
+import { InstallationModal } from "@/components/installation-modal"
+
+interface SelectedWorkProject {
+  id: string
+  title: string
+  year: string
+  category: string
+  medium: string
+  description: string
+  detailedDescription?: string
+  images?: string[]
+  imageDescriptions?: string[]
+  location?: string
+  materials?: string[]
+  tags: string[]
+  slidesLayout?: number[]
+  role?: string
+}
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<SelectedWorkProject | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const selectedWorks: SelectedWorkProject[] = [
+    {
+      id: "skins-east-ethiopia",
+      title: "sKINs: East Ethiopia Textile Installation",
+      year: "2024",
+      category: "Installation",
+      medium: "Textile Installation",
+      role: "Director, Producer, Cinematographer, Writer, Narrator",
+      description:
+        "An immersive textile installation and film screening exploring the r/s between skin, fabric, and cultural identity in Eastern Ethiopia.",
+      detailedDescription:
+        "This large-scale installation features traditional textiles from Eastern Ethiopia arranged in a contemporary gallery context, creating dialogue between historical textile practices and modern artistic expression. The work transforms gallery space into a meditation on cultural memory and material heritage.",
+      materials: ["Traditional textiles", "Contemporary display systems", "Lighting", "Sound"],
+      tags: ["textile", "handmade", "visual culture"],
+      imageDescriptions: [
+        "Front side view/suspended tent structure incapsulating the sKins film screening within/, hand dyed and embroidered textile mixed with traditional garment fabrics of Dire Dawa, 2025",
+        "Right side view, black textile, silver string textile knotted, love letter of the artists' parents from the 80's encapsulated, 2025",
+        "Left side view, hand printed yellow floral textile with cutouts, and embroidery mixed with traditional garment fabrics of Dire Dawa, 2025.",
+        "Back side view, black tea dyed textile with hand embroidery, Image of artists' mother form 80's, henna paste hand painted decorative art, 2025.",
+      ],
+      images: ["/images/01_front.webp", "/images/04_right.webp", "/images/02_left.webp", "/images/03_back.webp"],
+    },
+    {
+      id: "bet-bota",
+      title: "Bet Bota",
+      year: "2022",
+      category: "Installation",
+      medium: "Film",
+      role: "Director, producer, cinematographer, writer and narrator",
+      description:
+        '"Bet/Bota" reimagines the Ethiopian home, exploring memory and history through immersive sets and everyday objects.',
+      detailedDescription:
+        '"Bet/Bota" reimagines the Ethiopian home as a space where memory and history intersect with imagination. Set against 1970s Addis Ababa, the project unfolds through eight immersive sets ranging from elemental abstractions to reconstructed living spaces. At its heart, a dining room unites these worlds, revealing the quiet power of everyday objects. Both house and archive, "Bet/Bota" invites reflection on how space shapes us, and how we, in turn, shape space.',
+      materials: ["Traditional textiles", "Architectural elements", "Lighting systems", "Interactive spaces"],
+      tags: ["architecture", "domestic", "cultural memory"],
+      slidesLayout: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      images: [
+        "/images/a1_of fire.webp",
+        "/images/a1a.webp",
+        "/images/a2_of water.webp",
+        "/images/a2a.webp",
+        "/images/a3_of earth.webp",
+        "/images/a3a.webp",
+        "/images/a4_of air.webp",
+        "/images/a4a.webp",
+        "/images/a5_merger.webp",
+        "/images/a5a.webp",
+        "/images/a6_portal.webp",
+        "/images/a6a.webp",
+        "/images/a7_monochrome.webp",
+        "/images/a7a.webp",
+        "/images/a7b.webp",
+        "/images/a7c.webp",
+        "/images/a8_nostalgia.webp",
+        "/images/a8_nostalgia_a.webp",
+        "/images/a8a.webp",
+        "/images/a9_gathering.webp",
+      ],
+    },
+    {
+      id: "skins-north-ethiopia",
+      title: "sKINs: North Ethiopia",
+      year: "2025",
+      category: "In Studio",
+      medium: "Textile",
+      description:
+        "This sub-collection honors ancestral skin markings as symbols of protection, beauty, and spirituality. Inspired by the artist's late great-grandmother, transforms these sacred symbols into garments that carry memory, meaning, and resilience.",
+      detailedDescription:
+        "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      tags: ["kinship", "aesthetics", "architecture"],
+      images: [
+        "/images/skins-all_01.webp",
+        "/images/skins-all_02.webp",
+        "/images/skins-all_03.webp",
+        "/images/skins-all_04.webp",
+      ],
+    },
+  ]
+
+  const handleProjectClick = (project: SelectedWorkProject) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
+  }
 
   if (!mounted) {
     return <div className="min-h-screen bg-white" />
@@ -57,7 +166,7 @@ export default function HomePage() {
 
           {/* Right side - Image holder */}
           <div className="flex-1 flex items-center">
-            <div className="overflow-hidden bg-neutral-100 group cursor-pointer w-full rounded-none h-[60vh] sm:h-[70vh] lg:h-[90vh]">
+            <div className="overflow-hidden bg-neutral-100 w-full rounded-none h-[60vh] sm:h-[70vh] lg:h-[90vh]">
               <Image
                 src="/images/hero 2e.webp"
                 alt="Rediet Haddis - Visual Artist Portrait"
@@ -65,7 +174,7 @@ export default function HomePage() {
                 height={800}
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 50vw"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 quality={85}
@@ -94,57 +203,31 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-12 mb-8 lg:mb-12">
-            {[
-              {
-                title: "sKINs: East Ethiopia Textile Installation",
-                year: "2024",
-                medium: "Textile Installation",
-                image: "/images/01_front.webp",
-                href: "/projects/installation",
-              },
-              {
-                title: "Bet Bota",
-                year: "2022",
-                medium: "Installation",
-                image: "/images/a4a.webp",
-                href: "/projects/films",
-              },
-              {
-                title: "sKINs: North Ethiopia",
-                year: "2025",
-                medium: "Textile",
-                image: "/images/skins-all_04.webp",
-                href: "/projects/in-studio",
-              },
-            ].map((work, index) => (
-              <Link
-                key={index}
-                href={work.href}
-                className="group cursor-pointer block transform transition-all duration-500 hover:scale-105"
-              >
-                <div className="aspect-square rounded-sm overflow-hidden mb-4 bg-neutral-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Image
-                    src={work.image || "/placeholder.svg"}
-                    alt={`${work.title} - ${work.medium} by Rediet Haddis (${work.year})`}
-                    width={400}
-                    height={400}
-                    loading="lazy"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                    quality={85}
-                  />
+            {selectedWorks.map((work, index) => (
+              <div key={index} onClick={() => handleProjectClick(work)} className="group cursor-pointer block">
+                <div className="space-y-4">
+                  <div className="aspect-square rounded-sm overflow-hidden mb-4 bg-neutral-100 shadow-lg">
+                    <Image
+                      src={work.images?.[0] || "/placeholder.svg"}
+                      alt={`${work.title} - ${work.medium} by Rediet Haddis (${work.year})`}
+                      width={400}
+                      height={400}
+                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="w-full h-full object-cover"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                      quality={85}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-base sm:text-lg font-stardom text-black">{work.title}</h3>
+                    <p className="text-sm font-times text-neutral-500">
+                      {work.medium}, {work.year}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-base sm:text-lg font-stardom text-black group-hover:text-neutral-600 transition-colors duration-300">
-                    {work.title}
-                  </h3>
-                  <p className="text-sm font-times text-neutral-500">
-                    {work.medium}, {work.year}
-                  </p>
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
 
@@ -152,7 +235,7 @@ export default function HomePage() {
             <Link href="/projects">
               <Button
                 variant="outline"
-                className="px-6 sm:px-8 py-3 text-sm sm:text-base rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent transform hover:scale-105"
+                className="px-6 sm:px-8 py-3 text-sm sm:text-base rounded-full border-2 font-times border-neutral-300 text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
               >
                 View All Projects
                 <ArrowUpRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
@@ -161,6 +244,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* InstallationModal component */}
+      {selectedProject && <InstallationModal project={selectedProject} isOpen={isModalOpen} onClose={closeModal} />}
     </div>
   )
 }

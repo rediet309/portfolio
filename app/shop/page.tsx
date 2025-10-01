@@ -133,8 +133,8 @@ export default function ShopPage() {
       id: 9,
       title: "Ethiopia Posters and Postcards",
       category: "posters",
-      price: "$15 - $35",
-      image: "/images/coming-soon.jpg?height=600&width=480&text=Ethiopia+Posters",
+      price: "Coming Soon",
+      image: "/images/posters.webp?height=600&width=480&text=Ethiopia+Posters",
       hoverImage: "/images/coming-soon.jpg?height=600&width=480&text=Postcard+Collection",
       available: false,
       description:
@@ -144,8 +144,8 @@ export default function ShopPage() {
       id: 10,
       title: "Red Sticker Set",
       category: "posters",
-      price: "$12",
-      image: "/images/coming-soon.jpg?height=600&width=480&text=Red+Sticker+Set",
+      price: "Coming Soon",
+      image: "/images/stickers.webp?height=600&width=480&text=Red+Sticker+Set",
       hoverImage: "/images/coming-soon.jpg?height=600&width=480&text=Sticker+Details",
       available: false,
       description:
@@ -214,11 +214,11 @@ export default function ShopPage() {
                   }, 100)
                 }}
               >
-                <div className="space-y-4 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+                <div className="space-y-4">
                   <div className="aspect-[4/5] bg-neutral-100 rounded-sm overflow-hidden relative">
                     {/* Category Badge */}
                     <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2 py-1 text-xs font-medium bg-white/90 text-black rounded-full transition-all duration-300 group-hover:bg-white group-hover:shadow-sm">
+                      <span className="px-2 py-1 text-xs font-medium bg-white/90 text-black rounded-full">
                         {item.category === "textile-art" && "Textile Art"}
                         {item.category === "clothing" && "Clothing"}
                         {item.category === "posters" && "Paper Goods"}
@@ -228,7 +228,7 @@ export default function ShopPage() {
                     {/* Email Price Badge */}
                     {item.isEmailPrice && (
                       <div className="absolute top-3 right-3 z-10">
-                        <span className="px-2 py-1 text-xs font-medium bg-amber-100 text-amber-800 rounded-full transition-all duration-300 group-hover:bg-amber-200">
+                        <span className="px-2 py-1 text-xs font-medium bg-amber-100 text-amber-800 rounded-full">
                           Email for Price
                         </span>
                       </div>
@@ -242,21 +242,7 @@ export default function ShopPage() {
                       height={600}
                       loading="lazy"
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="w-full h-full object-cover transition-all duration-500 group-hover:opacity-0"
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                      quality={85}
-                    />
-
-                    {/* Hover Image */}
-                    <Image
-                      src={item.hoverImage || "/placeholder.svg"}
-                      alt={`${item.title} - alternate view`}
-                      width={480}
-                      height={600}
-                      loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      className="w-full h-full object-cover"
                       placeholder="blur"
                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       quality={85}
@@ -276,19 +262,11 @@ export default function ShopPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="text-lg font-medium text-black transition-colors duration-300 group-hover:text-neutral-700">
-                      {item.title}
-                    </h3>
+                    <h3 className="text-lg font-medium text-black">{item.title}</h3>
 
-                    <p className="text-lg font-medium text-black transition-colors duration-300 group-hover:text-neutral-700">
-                      {item.price}
-                    </p>
+                    <p className="text-lg font-medium text-black">{item.price}</p>
 
-                    {item.subcategory && (
-                      <p className="text-sm text-neutral-600 line-clamp-2 transition-colors duration-300 group-hover:text-neutral-800">
-                        {item.subcategory}
-                      </p>
-                    )}
+                    {item.subcategory && <p className="text-sm text-neutral-600 line-clamp-2">{item.subcategory}</p>}
                   </div>
                 </div>
               </Link>

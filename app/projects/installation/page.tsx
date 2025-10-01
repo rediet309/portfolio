@@ -38,9 +38,9 @@ const installationProjects: InstallationProject[] = [
     detailedDescription:
       "This large-scale installation features traditional textiles from Eastern Ethiopia arranged in a contemporary gallery context, creating dialogue between historical textile practices and modern artistic expression. The work transforms gallery space into a meditation on cultural memory and material heritage. Currently available for sale, this installation represents the culmination of extensive research into Ethiopian textile traditions.",
     image: "/images/01_front.webp?height=600&width=800&text=sKINs+East+Ethiopia+Installation",
-    position: "Textile Artist, Director, Producer, Cinematographer, Writer",
+    position: "Textile artist",
     materials: ["Traditional textiles", "Contemporary display systems", "Lighting", "Sound"],
-    tags: ["textile", "identity", "cultural heritage", "for sale"],
+    tags: ["textile", "handmade", "visual culture"],
     photoCount: 4,
     imageDescriptions: [
       "Front side view/suspended tent structure incapsulating the sKins film screening within/, hand dyed and embroidered textile mixed with traditional garment fabrics of Dire Dawa, 2025",
@@ -65,9 +65,9 @@ const installationProjects: InstallationProject[] = [
     detailedDescription:
       "The YAL (Young African Leaders) exhibition features multimedia installations that examine leadership, youth culture, and artistic innovation in modern Ethiopia. The exhibition includes 17 distinct photographic works alongside an immersive walkthrough video experience that guides viewers through the conceptual framework of contemporary Ethiopian artistic practice.",
     image: "/images/IMG_2859.webp?height=600&width=800&text=YAL+Exhibition",
-    position: "Textile Artist and curator ",
+    position: "Artist and curator",
     materials: ["Photography", "Video installations", "Interactive displays", "Sound systems"],
-    tags: ["contemporary", "multimedia", "youth", "leadership"],
+    tags: ["ritual", "beautification", "functional design"],
     photoCount: 17,
     videoUrl: "https://drive.google.com/file/d/1AV8mLySkKCYWztSNfcE5uOuKVSwCGzb7/view?usp=sharing",
     images: [
@@ -102,7 +102,7 @@ const installationProjects: InstallationProject[] = [
     image: "/images/a4a.webp?height=600&width=800&text=Bet+Bota+Installation",
     position: "Model, Director",
     materials: ["Traditional textiles", "Architectural elements", "Lighting systems", "Interactive spaces"],
-    tags: ["architecture", "domestic", "cultural memory", "space"],
+    tags: ["architecture", "domestic", "cultural memory"],
     photoCount: 18,
     slidesLayout: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], // 2 photos per carousel slide
     images: [
@@ -140,7 +140,7 @@ const installationProjects: InstallationProject[] = [
     image: "/images/IMG_4342.webp?height=600&width=800&text=Hulet+Neteb+Installation",
     position: "Director, Producer, Curator, and Textile Artist",
     materials: ["Interactive sensors", "Digital displays", "Physical objects", "Sound design"],
-    tags: ["interactive", "philosophy", "duality", "digital"],
+    tags: ["symbology", "textile art", "ethiopian history"],
     photoCount: 7,
     images: [
       "/images/IMG_4342.webp",
@@ -160,12 +160,12 @@ const installationProjects: InstallationProject[] = [
     description:
       "“Ete'ya” reimagines traditional Ethiopian attire with a blue cloak, red pants, and headscarf, honoring the legendary queen.",
     detailedDescription:
-      "Created during the prestigious Gojo residency program, this immersive work combines video, sound, textile, and sculptural elements to create an environment where visitors can experience legendary narratives through multiple sensory channels. The installation demonstrates how traditional storytelling can be transformed through contemporary artistic methodologies, documented through 9 comprehensive photographs.",
+      "Created during the prestigious Gojo residency program, this immersive work combines video, sound, textile, and sculptural elements to create an environment where visitors can experience legendary narratives through multiple sensory channels. The installation demonstrates how traditional storytelling can be transformed through contemporary artistic methodologies, documented through 12 comprehensive photographs.",
     image: "/images/IMG_5082.webp?height=600&width=800&text=Decoding+Legends+Installation",
     position: "Creative director, costume design",
     materials: ["Video screens", "Traditional artifacts", "Audio systems", "Lighting", "Textiles"],
-    tags: ["legends", "multimedia", "storytelling", "gojo residency"],
-    photoCount: 9,
+    tags: ["history", "story telling", "costume"],
+    photoCount: 12,
     images: [
       "/images/IMG_5082.webp",
       "/images/IMG_5093.webp",
@@ -176,6 +176,9 @@ const installationProjects: InstallationProject[] = [
       "/images/photo_2021-09-24_22-16-49.webp",
       "/images/photo_2021-09-24_22-16-51.webp",
       "/images/photo_2021-09-24_22-16-55.webp",
+      "/images/a1-5.webp",
+      "/images/a2-5.webp",
+      "/images/a3-5.webp",
     ],
   },
 ]
@@ -216,19 +219,15 @@ export default function InstallationPage() {
           {/* Projects Grid - Full width with proper alignment */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {installationProjects.map((project, index) => (
-              <div
-                key={project.id}
-                className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
-                onClick={() => handleProjectClick(project)}
-              >
-                <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={project.id} className="group cursor-pointer" onClick={() => handleProjectClick(project)}>
+                <div className="rounded-lg overflow-hidden bg-white shadow-lg">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       loading={index < 4 ? "eager" : "lazy"}
                       quality={85}
@@ -256,8 +255,8 @@ export default function InstallationPage() {
                     )}
 
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <div className="text-center space-y-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-black/60 opacity-0 flex items-center justify-center">
+                      <div className="text-center space-y-3 transform translate-y-4 transition-transform duration-500">
                         <div className="text-white text-sm font-medium">View Installation</div>
                         <div className="w-8 h-px bg-white/50 mx-auto" />
                       </div>
@@ -267,9 +266,7 @@ export default function InstallationPage() {
                   {/* Content */}
                   <div className="p-4 space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-lg font-light leading-tight text-black group-hover:text-neutral-600 transition-colors duration-300">
-                        {project.title}
-                      </h3>
+                      <h3 className="text-lg font-light leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-4 text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">

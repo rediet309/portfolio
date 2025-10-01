@@ -122,7 +122,7 @@ export default function TextilePage() {
             {textileProjects.map((project) => (
               <div
                 key={project.id}
-                className="group cursor-pointer bg-white border border-neutral-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-500"
+                className="group cursor-pointer bg-white border border-neutral-200 rounded-sm overflow-hidden"
                 onClick={() => handleProjectClick(project)}
               >
                 {/* Image */}
@@ -130,7 +130,7 @@ export default function TextilePage() {
                   <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover"
                   />
 
                   {/* Category Badge */}
@@ -143,8 +143,8 @@ export default function TextilePage() {
                   </div>
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                    <div className="text-center space-y-2 sm:space-y-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 flex items-center justify-center">
+                    <div className="text-center space-y-2 sm:space-y-3 transform translate-y-4 transition-transform duration-500">
                       <div className="text-white text-xs sm:text-sm font-medium">View Textile</div>
                       <div className="w-6 sm:w-8 h-px bg-white/50 mx-auto" />
                     </div>
@@ -154,9 +154,7 @@ export default function TextilePage() {
                 {/* Content */}
                 <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
                   <div className="space-y-2">
-                    <h3 className="text-lg sm:text-xl font-light leading-tight text-black group-hover:text-amber-500 transition-colors duration-300">
-                      {project.title}
-                    </h3>
+                    <h3 className="text-lg sm:text-xl font-light leading-tight text-black">{project.title}</h3>
 
                     <p className="text-xs sm:text-sm text-neutral-600">{project.medium}</p>
 

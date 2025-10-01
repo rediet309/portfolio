@@ -29,43 +29,14 @@ const filmProjects: FilmProject[] = [
     title: "sKINs: Dire Dawa",
     year: "2025",
     category: "Films",
-    medium: "Documentary film",
+    medium: "Film",
     description: "A documentary exploring the textile traditions and cultural identity of Dire Dawa, Ethiopia.",
     detailedDescription:
-      "sKINs: Dire Dawa is a documentary that delves into the intricate relationship between skin, fabric, and cultural memory in Eastern Ethiopia. This film explores how traditional textile practices continue to shape contemporary identity in Dire Dawa, examining the connections between personal and cultural narratives through the lens of textile heritage. Available through private Google Drive link.",
-    image: "/images/01_front.webp?height=600&width=800&text=sKINs+Dire+Dawa",
+      "sKINs, Film screening inside a Textile art tent structure suspended inside a 3X3X3 meter wooden frame cube, National Library, Addis Ababa, Ethiopia, 2025. An immersive textile installation and film screening exploring the relationship between skin, fabric, and cultural identity in Eastern Ethiopia.",
+    image: "/images/skins-diredawa.webp?height=600&width=800&text=sKINs+Dire+Dawa",
     location: "Dire Dawa, Ethiopia",
-    tags: ["documentary", "textile", "culture", "identity"],
-    videoUrl: "Private Google Drive link",
-  },
-  {
-    id: "the-river",
-    title: "The River",
-    year: "2024",
-    category: "Films",
-    medium: "Documentary film",
-    description:
-      "A contemplative documentary about the relationship between communities and water sources in Ethiopia.",
-    detailedDescription:
-      "The River explores environmental conservation and water rights through intimate storytelling, examining how rivers shape both landscape and culture in Ethiopian communities. This film captures the essential role of water in Ethiopian life through compelling cinematography and personal narratives.",
-    image: "/images/river.webp?height=600&width=800&text=The+River",
-    location: "Ethiopia",
-    tags: ["documentary", "environment", "water", "community"],
-    videoUrl: "https://youtu.be/z_ijqn0ewM0?si=mbFQK0oZc8tatslH",
-  },
-  {
-    id: "msfts-ethiopia-skate",
-    title: "MSFTS x Ethiopia Skate",
-    year: "2024",
-    category: "Films",
-    medium: "Collaboration documentary",
-    description: "A collaborative film documenting the intersection of skateboarding culture and Ethiopian youth.",
-    detailedDescription:
-      "This collaborative film captures the vibrant skateboarding scene in Ethiopia, showcasing how young Ethiopians are embracing and redefining skateboarding culture within their own cultural context. The film follows several skaters as they navigate urban landscapes and create their own unique style.",
-    image: "/images/c4-1.webp?height=600&width=800&text=MSFTS+Ethiopia+Skate",
-    location: "Addis Ababa, Ethiopia",
-    tags: ["skateboarding", "youth culture", "collaboration", "urban"],
-    videoUrl: "https://drive.google.com/file/d/1EguZ8WEBDYJItUhAVcpyyAoVgcxfwnMA/view?usp=sharing",
+    tags: ["documentary", "migration", "culture"],
+    videoUrl: "https://drive.google.com/file/d/1A7-FUXr5hK2-l2IoXyvif2LRU8qOCETl/view?usp=sharing",
   },
   {
     id: "hulet-neteb",
@@ -78,10 +49,10 @@ const filmProjects: FilmProject[] = [
       "Hulet Neteb (meaning 'two things' in Amharic) examines the tensions and harmonies between tradition and modernity, individual and collective identity, past and present. Through innovative cinematographic techniques and thoughtful narrative structure, the film creates a meditative exploration of Ethiopian philosophical concepts.",
     image: "/images/05_Maya Sight_d.webp?height=600&width=800&text=Hulet+Neteb",
     location: "Ethiopia",
-    tags: ["experimental", "philosophy", "duality", "culture"],
+    tags: ["symbology", "textile art", "ethiopian history"],
     videoUrl: "https://drive.google.com/file/d/1mF4sGEPb7YrYdEeUFYA2vZERRdR9F7G5/view?usp=sharing",
   },
-  {
+{
     id: "decoding-legends",
     title: "Decoding Legends",
     year: "2021",
@@ -89,12 +60,12 @@ const filmProjects: FilmProject[] = [
     medium: "Documentary series",
     description: "A documentary series exploring Ethiopian legends and their contemporary relevance in modern society.",
     detailedDescription:
-      "Decoding Legends is a documentary series that delves into the rich tapestry of Ethiopian folklore and mythology, examining how these ancient stories continue to shape contemporary Ethiopian identity and culture. Through interviews with elders, historians, and cultural practitioners, the series reveals the hidden meanings and enduring wisdom embedded in traditional legends.",
+      "“Ete’ya,” a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete’ya’s angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete’ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete’ya’s legacy.",
     image: "/images/DecodingLegends.webp?height=600&width=800&text=Decoding+Legends",
     location: "Ethiopia",
-    tags: ["documentary", "legends", "culture", "identity"],
+    tags: ["history", "story telling", "costume"],
     videoUrl: "https://youtu.be/0v1vwgnqHRU?si=uJkjUumPFlwMwHJy",
-  },
+},
 ]
 
 export default function FilmsPage() {
@@ -133,19 +104,15 @@ export default function FilmsPage() {
           {/* Projects Grid - Enhanced responsive layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {filmProjects.map((project, index) => (
-              <div
-                key={project.id}
-                className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
-                onClick={() => handleProjectClick(project)}
-              >
-                <div className="rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={project.id} className="group cursor-pointer" onClick={() => handleProjectClick(project)}>
+                <div className="rounded-lg overflow-hidden bg-white shadow-lg">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       loading={index < 4 ? "eager" : "lazy"}
                       quality={80}
@@ -173,8 +140,8 @@ export default function FilmsPage() {
                     )}
 
                     {/* Play Button Overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <div className="text-center space-y-2 sm:space-y-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-black/60 opacity-0 flex items-center justify-center">
+                      <div className="text-center space-y-2 sm:space-y-3 transform translate-y-4 transition-transform duration-500">
                         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                           <div className="w-0 h-0 border-l-[8px] sm:border-l-[12px] border-l-white border-t-[6px] sm:border-t-[8px] border-t-transparent border-b-[6px] sm:border-b-[8px] border-b-transparent ml-1" />
                         </div>
@@ -187,9 +154,7 @@ export default function FilmsPage() {
                   {/* Content */}
                   <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-base sm:text-lg font-light leading-tight text-black group-hover:text-neutral-600 transition-colors duration-300">
-                        {project.title}
-                      </h3>
+                      <h3 className="text-base sm:text-lg font-light leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">
