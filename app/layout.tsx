@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://rediethaddis.com"),
-  generator: "vbeni",
-  title: "Rediet Haddis - Visual Artist",
+  generator: "v0.dev",
+  title: "Rachel Haddis - Visual Artist",
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   icons: {
     icon: "/images/logo.ico",
@@ -18,13 +18,14 @@ export const metadata: Metadata = {
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
     url: "https://rediethaddis.com",
-    siteName: "Rachel Haddis",
+    siteName: "Rediet Haddis",
     images: [
       {
-        url: "/Screenshot 2025-10-02 012037.png",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://rediethaddis.com"}/Screenshot 2025-10-02 012037.jpg`,
         width: 1200,
         height: 630,
         alt: "Rediet Haddis - Visual Artist Portfolio",
+        type: "image/png",
       },
     ],
     type: "website",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    images: ["/Screenshot 2025-10-02 012037.png"],
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL || "https://rediethaddis.com"}/Screenshot 2025-10-02 012037.jpg`],
   },
 }
 
