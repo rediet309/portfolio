@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Rediet Haddis",
     images: [
       {
-        url: "https://rediethaddis.com/images/Screenshot 2025-10-02 012037.png", // ✅ clean file path + extension
+        url: "/images/Screenshot 2025-10-02 012037.png", // ✅ clean file path + extension
         width: 1200,
         height: 630,
         alt: "Rediet Haddis - Visual Artist Portfolio",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    images: ["https://rediethaddis.com/images/Screenshot 2025-10-02 012037.png"], // ✅ must match OpenGraph image
+    images: ["/images/Screenshot 2025-10-02 012037.png"], // ✅ must match OpenGraph image
   },
 }
 
