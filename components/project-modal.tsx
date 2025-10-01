@@ -145,7 +145,7 @@ export function ProjectModal({ project, isOpen, onClose, relatedProjects = [] }:
           <img
             src={currentCard.image || "/placeholder.svg"}
             alt={currentCard.title}
-            className="w-full h-full object-cover transition-all duration-500"
+            className="w-full h-full object-cover"
             style={{ aspectRatio: "2718/2682" }}
           />
         </div>
@@ -156,11 +156,10 @@ export function ProjectModal({ project, isOpen, onClose, relatedProjects = [] }:
           <div className="flex-1 overflow-y-auto">
             <div className="space-y-6">
               {/* Subtitle */}
+              <div className="text-sm text-neutral-500 font-medium">{currentCard.subtitle}</div>
 
               {/* Title */}
-              <h2 className="text-3xl font-stardom text-black leading-tight transition-all duration-300">
-                {currentCard.title}
-              </h2>
+              <h2 className="text-3xl font-stardom text-black leading-tight">{currentCard.title}</h2>
 
               {/* Metadata */}
               <div className="grid grid-cols-2 gap-4 text-sm">
@@ -202,7 +201,7 @@ export function ProjectModal({ project, isOpen, onClose, relatedProjects = [] }:
               <div className="text-sm text-neutral-500 font-medium">{currentCard.medium}</div>
 
               {/* Description */}
-              <p className="text-neutral-700 leading-relaxed transition-all duration-300">{currentCard.description}</p>
+              <p className="text-neutral-700 leading-relaxed">{currentCard.description}</p>
             </div>
           </div>
 

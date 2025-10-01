@@ -144,7 +144,7 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
             {/* Description */}
             <div className="space-y-3 sm:space-y-4">
               <h3 className="text-base sm:text-lg font-medium text-black">About</h3>
-              <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
+              <p className="text-neutral-700 leading-relaxed text-sm">
                 {project.detailedDescription || project.description}
               </p>
             </div>

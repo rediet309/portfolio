@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { Play, Palette, Briefcase, Calendar, Clock, User, Ruler, ExternalLink } from 'lucide-react'
+import { Play, Palette, Briefcase, Calendar, Clock, User, Ruler } from "lucide-react"
 
 interface Project {
   id: string
@@ -70,7 +69,7 @@ export function ProjectGrid({ projects, isDark, isLoading, onProjectClick }: Pro
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className={`group relative bg-neutral-50 dark:bg-neutral-800/50 rounded-sm overflow-hidden border ${isDark ? "border-neutral-800" : "border-neutral-200"} hover:shadow-2xl transition-all duration-500 cursor-pointer`}
+            className={`group relative bg-neutral-50 dark:bg-neutral-800/50 rounded-sm overflow-hidden border ${isDark ? "border-neutral-800" : "border-neutral-200"} cursor-pointer`}
             onMouseEnter={() => setHoveredProject(project.id)}
             onMouseLeave={() => setHoveredProject(null)}
             onClick={() => onProjectClick?.(project)}
@@ -79,9 +78,7 @@ export function ProjectGrid({ projects, isDark, isLoading, onProjectClick }: Pro
             {/* Featured Badge */}
             {project.featured && (
               <div className="absolute top-4 right-4 z-10">
-                <div className="bg-amber-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-                  Featured
-                </div>
+                <div className="bg-amber-500 text-white text-xs px-2 py-1 rounded-full font-medium">Featured</div>
               </div>
             )}
 
@@ -90,7 +87,7 @@ export function ProjectGrid({ projects, isDark, isLoading, onProjectClick }: Pro
               <img
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
 
               {/* Category Badge */}
@@ -104,10 +101,8 @@ export function ProjectGrid({ projects, isDark, isLoading, onProjectClick }: Pro
               </div>
 
               {/* Hover Overlay */}
-              <div
-                className={`absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center`}
-              >
-                <div className="text-center space-y-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className={`absolute inset-0 bg-black/60 opacity-0 flex items-center justify-center`}>
+                <div className="text-center space-y-3 transform translate-y-4 transition-transform duration-500">
                   <div className="text-white text-sm font-medium">View Project</div>
                   <div className="w-8 h-px bg-white/50 mx-auto" />
                 </div>
@@ -117,9 +112,7 @@ export function ProjectGrid({ projects, isDark, isLoading, onProjectClick }: Pro
             {/* Content */}
             <div className="p-6 space-y-4">
               <div className="space-y-2">
-                <h3
-                  className={`font-stardom text-xl font-light leading-tight ${isDark ? "text-white" : "text-black"} group-hover:text-amber-500 transition-colors duration-300`}
-                >
+                <h3 className={`font-stardom text-xl font-light leading-tight ${isDark ? "text-white" : "text-black"}`}>
                   {project.title}
                 </h3>
 

@@ -23,6 +23,7 @@ interface InstallationProject {
   slidesLayout?: number[]
   client?: string
   instagramUrl?: string
+  role?: string
 }
 
 interface InstallationModalProps {
@@ -65,6 +66,167 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
 
   if (!isOpen || !project) return null
 
+  if (project.id === "decoding-legends-installation") {
+    return (
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-2xl w-[95vw] h-[96vh] flex overflow-hidden relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+          >
+            <X className="h-5 w-5 text-black" />
+          </button>
+
+          {/* Left side: Grid with varying aspect ratios, 2 rows visible */}
+          <div className="w-full md:w-[65%] lg:w-[70%] p-6 overflow-y-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {project.images?.map((image, index) => {
+                let aspectRatio = "aspect-square" // Default
+
+                // Images 1, 2, 6, 7 (indices 0, 1, 5, 6): 4:3 aspect ratio
+                if ([0, 1, 5, 6].includes(index)) {
+                  aspectRatio = "aspect-[4/3]"
+                }
+                // Images 3, 4, 5, 8, 9 (indices 2, 3, 4, 7, 8): 3:4 aspect ratio
+                else if ([2, 3, 4, 7, 8].includes(index)) {
+                  aspectRatio = "aspect-[3/4]"
+                }
+                // Images 10, 11, 12 (indices 9, 10, 11): square aspect ratio
+                else if ([9, 10, 11].includes(index)) {
+                  aspectRatio = "aspect-square"
+                }
+
+                return (
+                  <div key={index} className={`${aspectRatio} relative overflow-hidden rounded-lg bg-neutral-100`}>
+                    <img
+                      src={image || "/placeholder.svg"}
+                      alt={`${project.title} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Right side: metadata panel */}
+          <div className="hidden md:flex md:w-[35%] lg:w-[30%] p-6 flex-col border-l border-neutral-200 overflow-y-auto">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-stardom text-black leading-tight">{project.title}</h2>
+
+              <div className="grid grid-cols-1 gap-4 text-sm">
+                <div className="flex items-center space-x-2 text-neutral-600">
+                  <Calendar className="h-4 w-4" />
+                  <span>{project.year}</span>
+                </div>
+
+                {project.location && (
+                  <div className="flex items-center space-x-2 text-neutral-600">
+                    <MapPin className="h-4 w-4" />
+                    <span>{project.location}</span>
+                  </div>
+                )}
+
+                {project.dimensions && (
+                  <div className="flex items-center space-x-2 text-neutral-600">
+                    <Ruler className="h-4 w-4" />
+                    <span>{project.dimensions}</span>
+                  </div>
+                )}
+
+                {project.visitors && (
+                  <div className="flex items-center space-x-2 text-neutral-600">
+                    <Users className="h-4 w-4" />
+                    <span>{project.visitors.toLocaleString()} visitors</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
+
+              {project.role && (
+                <div className="text-sm text-neutral-600 italic">
+                  <span className="font-medium">Role: </span>
+                  {project.role}
+                </div>
+              )}
+
+              <p className="text-neutral-700 leading-relaxed">{project.detailedDescription || project.description}</p>
+
+              {project.materials && project.materials.length > 0 && (
+                <div className="space-y-2">
+                  <h3 className="text-sm font-medium text-neutral-800">Materials</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.materials.map((material) => (
+                      <span
+                        key={material}
+                        className="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full font-medium"
+                      >
+                        {material}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="text-xs text-neutral-400 pt-4 border-t border-neutral-200">
+                {project.photoCount} photographs
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (project.id === "yal-studio") {
+    return (
+      <div className="fixed inset-0 bg-black/20 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+        >
+          <X className="h-5 w-5 text-black" />
+        </button>
+
+        <div className="w-full max-w-sm max-h-full aspect-[9/16] bg-neutral-900 rounded-lg flex items-center justify-center">
+          {project.videoUrl ? (
+            <iframe
+              src={project.videoUrl}
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div className="text-white">
+                <div className="text-lg font-medium">{project.title}</div>
+                <div className="text-sm text-white/70">1080 × 1920</div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   const createSlides = () => {
     const slides = []
     let imageIndex = 0
@@ -97,11 +259,11 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
         images: project.images || [],
         title: project.title,
         gridLayout:
-          project.id === "yal-exhibition" ||
-          project.id === "hulet-neteb-project" ||
-          project.id === "except-thise-time-nothing-returns-from-the-ashes"
+          project.id === "yal-exhibition" || project.id === "except-thise-time-nothing-returns-from-the-ashes"
             ? "4x4"
-            : "3x3",
+            : project.id === "hulet-neteb-project"
+              ? "3x9"
+              : "3x3",
       })
     } else if (project.id === "yal-studio") {
       slides.push({
@@ -182,8 +344,67 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
         const slideImages = project.images.slice(imageIndex, imageIndex + photosPerSlide)
 
         let slideTitle = `${project.title} - Photos ${imageIndex + 1}-${imageIndex + photosPerSlide}`
+        let slideDescription = ""
 
-        if (project.id === "msfts-ethiopia-skate-photos") {
+        if (project.id === "bet-bota") {
+          const betBotaSlides = [
+            {
+              title: "Fire",
+              description:
+                "Dominated by deep reds, the living room radiates energy and emotion. At its center stands a burnt couch, a symbol of resilience and transformation, referencing both the fire’s destructive force and the way television consumes our attention. A framed photograph of the same couch burning underscores the theme of media as fire—consuming, reshaping, yet binding communal life.",
+            },
+            {
+              title: "Water",
+              description:
+                "The bathroom set, inspired by water, is a calm, introspective space in soothing blue tones. At its center is an empty blue bathtub, symbolizing transformation",
+            },
+            {
+              title: "Earth",
+              description:
+                "The bedroom set, inspired by the grounding element of earth, transforms into a surreal, upside-down dreamscape in rich brown tones. Viewed from above, this flipped design plays with perception, capturing the surreal essence of dreams and inviting viewers to see the space in a whole new way.",
+            },
+            {
+              title: "Air",
+              description:
+                "The corridor/ air-inspired set, bathed in vibrant yellow, symbolizes the fluidity and adaptability of Ethiopian spaces. At its center, five traditional Berchuma chairs, lightweight and portable by design, are suspended within a 2m x 2m cube. This framing highlights the dynamic nature of the Berchuma, a chair without a fixed place, effortlessly moved to fit any space.",
+            },
+            {
+              title: "The Merger",
+              description:
+                "At the core sits the dining space, tying the elements together. A circular white table anchors the room, surrounded by four chairs upholstered in red, yellow, blue, and brown—each facing outward toward its corresponding set. Above hangs a fabric sack filled with everyday household items, exposing rather than concealing the typical Ethiopian habit of storage and hoarding. Here, the question arises: what do the things we keep say about us? This installation transforms the dining area into both a connector and a reflective node, the heart of the home and the exhibition.",
+            },
+            {
+              title: "Portal",
+              description:
+                "A lone door marks the transition—both threshold and symbolic portal—leading visitors into the second section.",
+            },
+            {
+              title: "Monochrome Memories",
+              description:
+                "Evoking the black-and-white portraits of Addis Ababa’s photo studios, this set immerses visitors in shades of grey. At its center hangs a vintage grey raincoat, splattered with red, yellow, and green paint. Behind it, three mirrors reflect an artwork painted on its back—revealing only in reflection the unspoken weight of patriotism, identity, and struggle carried by a generation shaped by the 1970s. The dripping flag colors embody the fluid and fragile nature of belonging.",
+            },
+            {
+              title: "Monochrome Memories",
+              description:
+                "Evoking the black-and-white portraits of Addis Ababa’s photo studios, this set immerses visitors in shades of grey. At its center hangs a vintage grey raincoat, splattered with red, yellow, and green paint. Behind it, three mirrors reflect an artwork painted on its back—revealing only in reflection the unspoken weight of patriotism, identity, and struggle carried by a generation shaped by the 1970s. The dripping flag colors embody the fluid and fragile nature of belonging.",
+            },
+            {
+              title: "Nostalgia",
+              description:
+                "A stand-alone wall becomes an archive of the 1990s. One side is plastered with old newspapers; the other covered in postcards and posters. A mat on the floor and a horizontal storage box—once used by the artist’s grandmother as she fled her hometown searching for her missing husband—ground the installation in lived experience. This set represents the compact, resourceful lifestyle of a bachelor studio, where memory and survival coexist in the objects that fill small spaces.",
+            },
+            {
+              title: "Gathering",
+              description:
+                "Between these two sets, 25 meticulously selected and reupholstered chairs line the hall. They serve as both sculptural dividers and functional seating for conversations and seminars during the exhibition’s opening, reinforcing the show’s theme of space as both divider and unifier.",
+            },
+          ]
+
+          if (i < betBotaSlides.length) {
+            slideTitle = betBotaSlides[i].title
+            slideDescription = betBotaSlides[i].description
+          }
+        } else if (project.id === "msfts-ethiopia-skate-photos") {
           slideTitle =
             i === 0 ? `${project.title} - Landscape Photos (16:9)` : `${project.title} - Portrait Photos (9:16)`
         } else if (project.id === "vibrant-hues") {
@@ -197,6 +418,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
           type: "photos",
           images: slideImages,
           title: slideTitle,
+          description: slideDescription, // Adding description property to slides
         })
         imageIndex += photosPerSlide
       }
@@ -420,17 +642,18 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
             <div className="w-full h-full p-6 overflow-y-auto">
               <div
                 className={`grid gap-4 ${
-                  currentSlide.gridLayout === "4x4" ? "grid-cols-4 auto-rows-fr" : "grid-cols-3 auto-rows-fr"
+                  currentSlide.gridLayout === "4x4"
+                    ? "grid-cols-4 auto-rows-fr"
+                    : currentSlide.gridLayout === "3x9"
+                      ? "grid-cols-3 grid-rows-9 auto-rows-fr"
+                      : "grid-cols-3 auto-rows-fr"
                 }`}
               >
                 {currentSlide.images.map((image, index) => {
-                  let aspectRatio = "aspect-[4/3]" // Default aspect ratio
+                  let aspectRatio = "aspect-square" // Default to square aspect ratio
 
                   if (project.id === "hulet-neteb-project") {
-                    // Images 3, 7, and 15 (0-indexed: 2, 6, 14) should be aspect-[9/16]
-                    if ([2, 6, 14].includes(index)) {
-                      aspectRatio = "aspect-[9/16]"
-                    }
+                    aspectRatio = "aspect-square"
                   } else if (project.id === "yal-exhibition") {
                     aspectRatio = "aspect-[4/3]"
                   } else if (project.id === "hulet-neteb-installation") {
@@ -450,7 +673,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`${currentSlide.title} ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
@@ -470,7 +693,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                     <img
                       src={image || "/placeholder.svg"}
                       alt={`${currentSlide.title} ${index + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                       loading="lazy"
                       sizes="(max-width: 768px) 80vw, (max-width: 1024px) 60vw, 40vw"
                     />
@@ -527,7 +750,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                     className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-medium hover:from-purple-700 hover:to-pink-700 transition-all duration-300"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919-.058 1.265-.069 1.645-.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771 4.919 4.919-1.266.058-1.644.073-4.849.073-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.059-1.28.073-1.689.073-4.948 0-3.259.013-3.583.07-4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919-.058 1.265-.069 1.645-.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771 4.919 4.919-1.266.058-1.644.073-4.849.073zm0-2.163c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                     <span>Visit @red_studyo</span>
                   </a>
@@ -546,7 +769,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       "/placeholder.svg"
                     }
                     alt="MSFTS Landscape 1"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -558,7 +781,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       "/placeholder.svg"
                     }
                     alt="MSFTS Landscape 2"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -570,7 +793,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       "/placeholder.svg"
                     }
                     alt="MSFTS Landscape 3"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -582,7 +805,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       "/placeholder.svg"
                     }
                     alt="MSFTS Landscape 4"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -594,7 +817,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       "/placeholder.svg"
                     }
                     alt="MSFTS Landscape 5"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -612,7 +835,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                         "/placeholder.svg"
                       }
                       alt={`MSFTS Portrait ${i + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                       loading="lazy"
                     />
                   </div>
@@ -632,7 +855,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`MSFTS Landscape ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
@@ -647,7 +870,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`MSFTS Portrait ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 25vw"
                       />
@@ -667,7 +890,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={image || "/placeholder.svg"}
                             alt={`To Identify Portrait ${index + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 25vw"
                           />
@@ -682,7 +905,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={image || "/placeholder.svg"}
                             alt={`To Identify Landscape ${index + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
@@ -700,7 +923,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={image || "/placeholder.svg"}
                             alt={`Tibeb Square ${index + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 25vw"
                           />
@@ -718,7 +941,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={image || "/placeholder.svg"}
                             alt={`Vibrant Portrait ${index + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 25vw"
                           />
@@ -733,7 +956,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={image || "/placeholder.svg"}
                             alt={`Vibrant Landscape ${index + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
@@ -756,7 +979,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={currentSlide.images[0] || "/placeholder.svg"}
                             alt={`${currentSlide.title} Portrait 1`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 33vw"
                           />
@@ -766,7 +989,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={currentSlide.images[1] || "/placeholder.svg"}
                             alt={`${currentSlide.title} Portrait 2`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 33vw"
                           />
@@ -776,7 +999,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           <img
                             src={currentSlide.images[2] || "/placeholder.svg"}
                             alt={`${currentSlide.title} Portrait 3`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 33vw"
                           />
@@ -787,7 +1010,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                             <img
                               src={currentSlide.images[3] || "/placeholder.svg"}
                               alt={`${currentSlide.title} Landscape 1`}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                               sizes="(max-width: 768px) 100vw, 66vw"
                             />
@@ -802,7 +1025,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                             <img
                               src={currentSlide.images[0] || "/placeholder.svg"}
                               alt={`${currentSlide.title} Portrait 1`}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                               sizes="(max-width: 768px) 100vw, 33vw"
                             />
@@ -811,7 +1034,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                             <img
                               src={currentSlide.images[1] || "/placeholder.svg"}
                               alt={`${currentSlide.title} Portrait 2`}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                               sizes="(max-width: 768px) 100vw, 33vw"
                             />
@@ -823,7 +1046,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                             <img
                               src={currentSlide.images[2] || "/placeholder.svg"}
                               alt={`${currentSlide.title} Portrait 3`}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                               sizes="(max-width: 768px) 100vw, 33vw"
                             />
@@ -832,7 +1055,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                             <img
                               src={currentSlide.images[3] || "/placeholder.svg"}
                               alt={`${currentSlide.title} Landscape 1`}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                               sizes="(max-width: 768px) 100vw, 33vw"
                             />
@@ -851,7 +1074,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[0] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Portrait 1`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -861,7 +1084,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[1] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Portrait 2`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -871,7 +1094,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[2] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Portrait 3`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -882,7 +1105,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[3] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Square`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -893,7 +1116,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[4] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Landscape 1`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -903,7 +1126,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[5] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Landscape 2`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -913,7 +1136,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[6] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Landscape 3`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -933,7 +1156,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                         <img
                           src={image || "/placeholder.svg"}
                           alt={`${currentSlide.title} ${index + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
@@ -947,7 +1170,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                         <img
                           src={image || "/placeholder.svg"}
                           alt={`${currentSlide.title} ${index + 3}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
@@ -967,7 +1190,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`${currentSlide.title} ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
@@ -987,7 +1210,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`${currentSlide.title} Portrait ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 25vw"
                       />
@@ -1000,7 +1223,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={currentSlide.images[17] || "/placeholder.svg"}
                         alt={`${currentSlide.title} Landscape 1`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
@@ -1020,7 +1243,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`${currentSlide.title} ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
@@ -1030,11 +1253,11 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                   {/* 5th image as square, spanning center */}
                   {currentSlide.images[4] && (
                     <div className="md:col-span-2 flex justify-center">
-                      <div className="relative overflow-hidden rounded-lg bg-neutral-100 aspect-square w-full md:w-1/2">
+                      <div className="relative overflow-hidden rounded-lg bg-neutral-100 aspect-square w-full md:w-1/4">
                         <img
                           src={currentSlide.images[4] || "/placeholder.svg"}
                           alt={`${currentSlide.title} Square`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 25vw"
                         />
@@ -1045,31 +1268,31 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
               )}
 
               {currentSlide.gridType === "4-column-five-images" && (
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-full max-h-[85vh] items-start">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 h-full max-h-[85vh] items-start px-4 md:px-0">
                   {/* First 4 images with aspect-[3/4] */}
                   {currentSlide.images.slice(0, 4).map((image, index) => (
                     <div
                       key={index}
-                      className="relative overflow-hidden rounded-lg bg-neutral-100 aspect-[3/4] md:h-[60vh]"
+                      className="relative overflow-hidden rounded-lg bg-neutral-100 aspect-[3/4] w-full md:h-[60vh]"
                     >
                       <img
                         src={image || "/placeholder.svg"}
                         alt={`${currentSlide.title} ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 25vw"
                       />
                     </div>
                   ))}
 
-                  {/* 5th image as square, centered in remaining space */}
+                  {/* 5th image as square, aligned to the left */}
                   {currentSlide.images[4] && (
-                    <div className="md:col-span-4 flex justify-center md:mt-4">
+                    <div className="md:col-span-4 flex justify-start md:mt-4">
                       <div className="relative overflow-hidden rounded-lg bg-neutral-100 aspect-square w-full md:w-1/4">
                         <img
                           src={currentSlide.images[4] || "/placeholder.svg"}
                           alt={`${currentSlide.title} Square`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 25vw"
                         />
@@ -1092,7 +1315,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                         <img
                           src={image || "/placeholder.svg"}
                           alt={`${currentSlide.title} Portrait ${index + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 16vw"
                         />
@@ -1107,7 +1330,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                         <img
                           src={currentSlide.images[17] || "/placeholder.svg"}
                           alt={`${currentSlide.title} Landscape 1`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
@@ -1245,10 +1468,26 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
 
                 <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
 
+                {project.role && (
+                  <div className="text-sm text-neutral-600 italic">
+                    <span className="font-medium">Role: </span>
+                    {project.role}
+                  </div>
+                )}
+
                 {project.id === "skins-east-ethiopia" && currentSlide?.description ? (
                   <p className="text-neutral-700 leading-relaxed font-medium bg-gray-80 p-4 rounded-lg border-l-4 border-amber-400">
                     {currentSlide.description}
                   </p>
+                ) : project.id === "bet-bota" && currentSlide?.description ? (
+                  <div className="space-y-4">
+                    <p className="text-neutral-700 leading-relaxed font-medium bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm text-sm text-xs">
+                      {currentSlide.description}
+                    </p>
+                    <p className="text-neutral-700 leading-relaxed font-medium bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                      {project.detailedDescription || project.description}
+                    </p>
+                  </div>
                 ) : (
                   <p className="text-neutral-700 leading-relaxed">
                     {project.detailedDescription || project.description}
