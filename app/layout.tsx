@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
     images: [
       {
-        url: "https://www.rediethaddis.com/images/Screenshot 2025-10-02 012037",
+        url: "https://www.rediethaddis.com/images/Screenshot 2025-10-02 012037.png",
         width: 1200,
         height: 630,
         alt: "Rediet Haddis - Visual Artist Portfolio",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    images: ["https://www.rediethaddis.com/images/Screenshot 2025-10-02 012037"],
+    images: ["https://www.rediethaddis.com/images/Screenshot 2025-10-02 012037.png"],
   },
 }
 
