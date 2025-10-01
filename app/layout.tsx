@@ -4,8 +4,9 @@ import ClientLayout from "./ClientLayout"
 import "./globals.css" // Imported globals.css file
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://rachelhaddis.com"),
   generator: "vbeni",
-  title: "Rediet Haddis - Visual Artist",
+  title: "Rachel Haddis - Visual Artist",
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   icons: {
     icon: "/images/logo.ico",
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+    siteName: "Rediet Haddis",
   },
   twitter: {
     card: "summary_large_image",
