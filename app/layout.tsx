@@ -1,11 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import ClientLayout from "./ClientLayout"
-import "./globals.css" // Imported globals.css file
+import "./globals.css"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://rediethaddis.com"),
-  generator: "v0.dev",
+  generator: "vbeni",
   title: "Rediet Haddis - Visual Artist",
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   icons: {
@@ -14,8 +17,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    url: "/",
-    siteName: "Rediet Haddis",
+    url: "https://rediethaddis.com",
+    siteName: "Rachel Haddis",
     images: [
       {
         url: "/Screenshot 2025-10-02 012037.png",
@@ -40,5 +43,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <ClientLayout>{children}</ClientLayout>
+  return (
+    <html lang="en">
+      <body className={`${inter.className} min-h-screen bg-white text-black`}>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  )
 }
