@@ -6,7 +6,7 @@ import "./globals.css" // Imported globals.css file
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://rediethaddis.com"),
   generator: "v0.dev",
-  title: "Rachel Haddis - Visual Artist",
+  title: "Rediet Haddis - Visual Artist",
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   icons: {
     icon: "/images/logo.ico",
