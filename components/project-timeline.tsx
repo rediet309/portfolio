@@ -424,6 +424,13 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
                       <p className={`text-sm font-times ${isDark ? "text-neutral-400" : "text-neutral-600"} mb-2`}>
                         {project.medium}
                       </p>
+                      {project.position && (
+                        <p
+                          className={`text-sm font-times italic ${isDark ? "text-neutral-500" : "text-neutral-500"} mb-2`}
+                        >
+                          {project.position}
+                        </p>
+                      )}
                       <p
                         className={`text-sm font-times ${isDark ? "text-neutral-300" : "text-neutral-700"} mb-3 line-clamp-2`}
                       >
