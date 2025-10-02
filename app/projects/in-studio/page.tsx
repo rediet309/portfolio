@@ -39,10 +39,10 @@ const studioProjects: StudioProject[] = [
     position: "Filmmaker and textile artist",
     tags: ["kinship", "aesthetics", "architecture"],
     images: [
-      "/images/skins-all_01.webp", // Traditional body art documentation
-      "/images/skins-all_02.webp", // Ancestral skin markings
-      "/images/skins-all_03.webp", // Cultural preservation work
-      "/images/skins-all_04.webp", // Northern Ethiopian traditions
+      "/images/skins-all_01.webp",
+      "/images/skins-all_02.webp",
+      "/images/skins-all_03.webp",
+      "/images/skins-all_04.webp",
     ],
   },
   {
@@ -55,7 +55,7 @@ const studioProjects: StudioProject[] = [
     detailedDescription:
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/northern lines.webp?height=600&width=800&text=Hulet+Neteb",
-    position: " Director, Producer, Curator, and Textile Artist",
+    position: "Director, Producer, Curator, and Textile Artist",
     tags: ["symbology", "textile art", "ethiopian history"],
     images: [
       "/images/01_ The four elements-a.webp",

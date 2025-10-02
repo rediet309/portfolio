@@ -22,6 +22,7 @@ interface Project {
   slidesLayout?: number[]
   instagramUrl?: string
   images?: string[]
+  position?: string // Added position field for artist role
 }
 
 const archiveProjects: Project[] = [
@@ -36,6 +37,7 @@ const archiveProjects: Project[] = [
     image: "/images/c1-1.webp?height=600&width=800&text=MSFTS+Skate+Archive",
     location: "Studio Archive",
     status: "Digital Archive",
+    position: "Photographer and creative director", // Added artist role
     tags: ["photography", "skateboarding", "behind-the-scenes"],
     photoCount: 24,
     images: [
@@ -80,6 +82,7 @@ const archiveProjects: Project[] = [
     image: "/images/a1-3.webp?height=600&width=800&text=Tilla+Photoshoot+Archive",
     location: "Studio Archive",
     status: "Fashion Archive",
+    position: "Fashion photographer and stylist", // Added artist role
     tags: ["fashion", "traditional"],
     photoCount: 4,
     images: ["/images/a2-3.webp", "/images/a3-3.webp", "/images/a4-3.webp", "/images/a1-3.webp"],
@@ -97,6 +100,7 @@ const archiveProjects: Project[] = [
     image: "/images/a1-4.webp?height=600&width=800&text=In+Red+Archive",
     location: "Various locations",
     status: "Artistic Archive",
+    position: "Photographer and visual artist", // Added artist role
     tags: ["photography", "red"],
     photoCount: 6,
     images: [
@@ -109,7 +113,6 @@ const archiveProjects: Project[] = [
       "/images/a5-4.webp",
       "/images/a1-4.webp",
       "/images/a6-4.webp",
-
     ],
   },
   {
@@ -124,6 +127,7 @@ const archiveProjects: Project[] = [
     image: "/images/j.webp?height=600&width=800&text=Portal+U-thiopia+Archive",
     location: "Conceptual Archive",
     status: "Conceptual Archive",
+    position: "Conceptual artist and photographer", // Added artist role
     tags: ["conceptual", "utopia", "alternative reality"],
     photoCount: 4,
     images: ["/images/a.webp", "/images/b.webp", "/images/c.webp", "/images/d.webp"],
@@ -141,6 +145,7 @@ const archiveProjects: Project[] = [
     image: "/images/vnfn-8.webp?height=600&width=800&text=To+Identify+Archive",
     location: "Global locations",
     status: "Personal Archive",
+    position: "Documentary photographer", // Added artist role
     tags: ["identity", "patriotism"],
     photoCount: 18,
     slidesLayout: [1, 5, 7, 6], // 1 photo in first slide, 5 in second slide, 7 in third, 6 in fourth
@@ -180,6 +185,7 @@ const archiveProjects: Project[] = [
     image: "/images/a1-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
     location: "Addis Ababa, Ethiopia",
     status: "Cultural Archive",
+    position: "Cultural documentarian", // Added artist role
     tags: ["consumerism", "cultural documentation", "exchange"],
     photoCount: 4,
     images: [
@@ -200,6 +206,7 @@ const archiveProjects: Project[] = [
     image: "/images/a2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
     location: "Color Archive",
     status: "Study Collection",
+    position: "Visual researcher and photographer", // Added artist role
     tags: ["color study", "identity", "experiment"],
     photoCount: 18,
     images: [
@@ -237,6 +244,7 @@ const archiveProjects: Project[] = [
     image: "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
     location: "Design Archive",
     status: "Design Collection",
+    position: "Graphic designer", // Added artist role
     tags: ["graphic design", "posters"],
     instagramUrl: "https://www.instagram.com/red_studyo/",
     photoCount: 5,
@@ -356,6 +364,8 @@ export default function ArchivePage() {
                       </div>
 
                       <p className="text-xs text-neutral-400">{project.medium}</p>
+
+                      {project.position && <p className="text-xs text-neutral-600 italic">{project.position}</p>}
                     </div>
 
                     <p className="text-sm leading-relaxed text-neutral-600 line-clamp-3">

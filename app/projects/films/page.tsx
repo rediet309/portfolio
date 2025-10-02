@@ -21,6 +21,7 @@ interface FilmProject {
   tags: string[]
   videoUrl?: string
   client?: string
+  position?: string // Added position field for artist role
 }
 
 const filmProjects: FilmProject[] = [
@@ -35,8 +36,41 @@ const filmProjects: FilmProject[] = [
       "sKINs, Film screening inside a Textile art tent structure suspended inside a 3X3X3 meter wooden frame cube, National Library, Addis Ababa, Ethiopia, 2025. An immersive textile installation and film screening exploring the relationship between skin, fabric, and cultural identity in Eastern Ethiopia.",
     image: "/images/skins-diredawa.webp?height=600&width=800&text=sKINs+Dire+Dawa",
     location: "Dire Dawa, Ethiopia",
+    position: "Director, producer, cinematographer, writer and narrator",
     tags: ["documentary", "migration", "culture"],
     videoUrl: "https://drive.google.com/file/d/1A7-FUXr5hK2-l2IoXyvif2LRU8qOCETl/view?usp=sharing",
+  },
+  {
+    id: "the-river",
+    title: "The River",
+    year: "2024",
+    category: "Films",
+    medium: "Film",
+    description:
+      "A contemplative short documentary about the relationship between communities and water sources in Ethiopia.",
+    detailedDescription:
+      "The River explores environmental conservation and water rights through intimate storytelling, examining how rivers shape both landscape and culture in Ethiopian communities. This film captures the essential role of water in Ethiopian life through compelling cinematography and personal narratives.",
+    image: "/images/river.webp?height=600&width=800&text=The+River",
+    location: "Ethiopia",
+    position: "",
+    tags: ["community", "women", "water"],
+    videoUrl: "https://youtu.be/z_ijqn0ewM0?si=mbFQK0oZc8tatslH",
+  },
+  {
+    id: "msfts-ethiopia-skate-film",
+    title: "MSFTS x Ethiopia Skate",
+    year: "2024",
+    category: "Films",
+    medium: "Brand Collaboration Documentary",
+    description:
+      "A dynamic documentary capturing the emerging skateboarding culture in Ethiopia through the lens of fashion and youth expression.",
+    detailedDescription:
+      "This collaborative film captures the vibrant skateboarding scene in Ethiopia, showcasing how young Ethiopians are embracing and redefining skateboarding culture within their own cultural context. The film follows several skaters as they navigate urban landscapes and create their own unique style.",
+    image: "/images/c4-1.webp?height=600&width=800&text=MSFTS+Ethiopia+Skate",
+    location: "Addis Ababa, Ethiopia",
+    position: "Creative Direction, stylist, and video contributions",
+    tags: ["youth", "community", "skateboarding"],
+    videoUrl: "https://drive.google.com/file/d/1EguZ8WEBDYJItUhAVcpyyAoVgcxfwnMA/view?usp=sharing",
   },
   {
     id: "hulet-neteb",
@@ -49,10 +83,11 @@ const filmProjects: FilmProject[] = [
       "Hulet Neteb (meaning 'two things' in Amharic) examines the tensions and harmonies between tradition and modernity, individual and collective identity, past and present. Through innovative cinematographic techniques and thoughtful narrative structure, the film creates a meditative exploration of Ethiopian philosophical concepts.",
     image: "/images/05_Maya Sight_d.webp?height=600&width=800&text=Hulet+Neteb",
     location: "Ethiopia",
+    position: "",
     tags: ["symbology", "textile art", "ethiopian history"],
     videoUrl: "https://drive.google.com/file/d/1mF4sGEPb7YrYdEeUFYA2vZERRdR9F7G5/view?usp=sharing",
   },
-{
+  {
     id: "decoding-legends",
     title: "Decoding Legends",
     year: "2021",
@@ -60,12 +95,13 @@ const filmProjects: FilmProject[] = [
     medium: "Documentary series",
     description: "A documentary series exploring Ethiopian legends and their contemporary relevance in modern society.",
     detailedDescription:
-      "“Ete’ya,” a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete’ya’s angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete’ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete’ya’s legacy.",
+      "\"Ete'ya,\" a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete'ya's angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete'ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete'ya's legacy.",
     image: "/images/DecodingLegends.webp?height=600&width=800&text=Decoding+Legends",
     location: "Ethiopia",
+    position: "",
     tags: ["history", "story telling", "costume"],
     videoUrl: "https://youtu.be/0v1vwgnqHRU?si=uJkjUumPFlwMwHJy",
-},
+  },
 ]
 
 export default function FilmsPage() {
@@ -176,6 +212,8 @@ export default function FilmsPage() {
                       </div>
 
                       <p className="text-xs text-neutral-400">{project.medium}</p>
+
+                      {project.position && <p className="text-xs text-neutral-600 italic">{project.position}</p>}
                     </div>
 
                     <p className="text-xs sm:text-sm leading-relaxed text-neutral-600 line-clamp-3">
