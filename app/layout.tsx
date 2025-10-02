@@ -2,10 +2,10 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import NavBar from "@/components/nav-bar"
-import ThemeProvider from "@/components/theme-provider"
-import ThemeToggle from "@/components/theme-toggle"
-import ScrollToTop from "@/components/scroll-to-top"
+import NavBar from "../components/nav-bar"
+import ThemeProvider from "../components/theme-provider"
+import ThemeToggle from "../components/theme-toggle"
+import ScrollToTop from "../components/scroll-to-top"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   generator: "vbeni",
   icons: {
-    icon: "/images/logo.ico",  
-    shortcut: "/images/logo.ico", 
-    apple: "/images/logo.ico", 
+    icon: "/images/logo.ico",
+    shortcut: "/images/logo.ico",
+    apple: "/images/logo-apple.png",
   },
   openGraph: {
     title: "Rediet Haddis - Visual Artist",
