@@ -6,8 +6,8 @@ export const metadata = {
   title: "Rediet Haddis - Visual Artist",
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   icons: {
-    icon: "/logo.ico",
-    apple: "/logo.ico",
+    icon: "/images/logo.ico",
+    apple: "/images/logo.ico",
   },
   openGraph: {
     title: "Rediet Haddis - Visual Artist",
