@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "Rediet Haddis - Visual Artist",
     images: [
       {
-        url: "https://rediethaddis.com/images/Screenshot-2025-10-02-012037.png"
+        url: "https://rediethaddis.com/images/Screenshot-2025-10-02-012037.png",
         width: 1200,
         height: 1200,
         alt: "Rediet Haddis - Visual Artist",
