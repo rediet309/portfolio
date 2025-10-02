@@ -1,10 +1,12 @@
+import "./globals.css"
 import type React from "react"
+import type { Metadata } from "next"
 import ClientLayout from "./ClientLayout"
 
-export const metadata = {
-  generator: "vbeni",
+export const metadata: Metadata = {
   title: "Rediet Haddis - Visual Artist",
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
+  metadataBase: new URL("https://rediethaddis.com"),
   icons: {
     icon: "/images/logo.ico",
     apple: "/images/logo.ico",
@@ -13,13 +15,13 @@ export const metadata = {
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
     url: "https://rediethaddis.com",
-    siteName: "Rediet Haddis - Visual Artist",
+    siteName: "Rediet Haddis",
     images: [
       {
-        url: "https://rediethaddis.com/images/Screenshot-2025-10-02-012037.png",
+        url: "/1234.png",
         width: 1200,
-        height: 1200,
-        alt: "Rediet Haddis - Visual Artist",
+        height: 630,
+        alt: "Rediet Haddis - Visual Artist Portfolio",
       },
     ],
     locale: "en_US",
@@ -29,7 +31,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    images: ["https://rediethaddis.com/images/Screenshot-2025-10-02-012037.png"],
+    images: ["/1234.png"],
   },
 }
 
@@ -40,5 +42,3 @@ export default function RootLayout({
 }) {
   return <ClientLayout>{children}</ClientLayout>
 }
-
-import "./globals.css"
