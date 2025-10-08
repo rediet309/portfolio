@@ -136,8 +136,8 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
               )}
 
               <div className="flex justify-between col-span-2 sm:col-span-1">
-                <span className="text-neutral-500">Medium</span>
-                <span className="text-black font-medium text-right sm:text-left">{project.medium}</span>
+                <span className="text-neutral-500">Role</span>
+                <span className="text-black font-medium text-right sm:text-left">{project.position}</span>
               </div>
             </div>
 

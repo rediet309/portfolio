@@ -431,11 +431,7 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
                           {project.position}
                         </p>
                       )}
-                      <p
-                        className={`text-sm font-times ${isDark ? "text-neutral-300" : "text-neutral-700"} mb-3 line-clamp-2`}
-                      >
-                        {project.description}
-                      </p>
+                      
 
                       <div className="flex flex-wrap gap-1">
                         {project.tags.slice(0, 3).map((tag) => (
