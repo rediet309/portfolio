@@ -14,10 +14,10 @@ const allProjectsData = [
     medium: "Documentary Film",
     description: "A documentary exploring the textile traditions and cultural identity of Dire Dawa, Ethiopia.",
     detailedDescription:
-      "sKINs: Dire Dawa is a documentary that delves into the intricate relationship between skin, fabric, and cultural memory in Eastern Ethiopia. This film explores how traditional textile practices continue to shape contemporary identity in Dire Dawa, examining the connections between personal and cultural narratives through the lens of textile heritage. Available through private Google Drive link.",
+      "sKINs is a film and textile-based documentary project that traces the movement of visual elements such as motifs, symbols, rituals, and garments across mediums, cultures, and generations. It explores how visual language is exchanged, transformed, and reinterpreted through time. Rooted in the idea that our lives are extensions of our skin: surfaces where culture, memory, and place imprint themselves. The title plays on ‘KIN’, pointing to kinship and shared humanity, while the “s” speaks to skin as both protection and adornment. “Architecture, urban layout, ritual, and aesthetics carry the memory of who we are, shaped by the shared lives of our communities and kins.”",
     image: "/images/skins-diredawa.webp",
     tags: ["documentary", "migration", "culture"],
-    videoUrl: "Private Google Drive link",
+ videoUrl: "https://drive.google.com/file/d/1A7-FUXr5hK2-l2IoXyvif2LRU8qOCETl/view?usp=sharing",
     location: "Dire Dawa, Ethiopia",
     position: "Director, producer, cinematographer, writer and narrator",
   },
@@ -30,7 +30,7 @@ const allProjectsData = [
     description:
       "An immersive textile installation exploring the relationship between skin, fabric, and cultural identity in Eastern Ethiopia.",
     detailedDescription:
-      "This large-scale installation features traditional textiles from Eastern Ethiopia arranged in a contemporary gallery context, creating dialogue between historical textile practices and modern artistic expression. The work transforms gallery space into a meditation on cultural memory and material heritage. Currently available for sale, this installation represents the culmination of extensive research into Ethiopian textile traditions.",
+      "The film follows a circular timeline, mirroring the daily rhythms of Dire Dawa. The project expands beyond film into a textile installation, an abstract tent that houses the story and translates visual memory into physical form. Dire is a place where trade, migration, and memory blur the lines between cultural nuances, where identity is not fixed but continually shaped and reframed through collective experience.",
     image: "/images/01_front.webp",
     tags: ["textile", "handmade", "visual culture"],
     materials: ["Traditional textiles", "Contemporary display systems", "Lighting", "Sound"],
@@ -52,7 +52,7 @@ const allProjectsData = [
     medium: "Mixed media exhibition",
     description: "YAL / Ye Abayn Lij explores ritual and design, named for the paradox of lacking one's own abundance.",
     detailedDescription:
-      "The YAL (Young African Leaders) exhibition features multimedia installations that examine leadership, youth culture, and artistic innovation in modern Ethiopia. The exhibition includes 17 distinct photographic works alongside an immersive walkthrough video experience that guides viewers through the conceptual framework of contemporary Ethiopian artistic practice.",
+      "YAL/Ye Abayn Lij/ is an evolving body of work that houses a growing number of sub-collections each narrating a story focused on ritual, beautification, and functional design. The Amharic phrase “Ye Abayn Lij Weha Temaw” translates to “Thirsty is the child of the Nile” symbolizing the paradox of not benefiting from one’s own abundant resources.",
     image: "/images/IMG_2859.webp",
     tags: ["ritual", "beautification", "functional design"],
     materials: ["Photography", "Video installations", "Interactive displays", "Sound systems"],
@@ -86,9 +86,9 @@ const allProjectsData = [
     category: "Commissioned",
     medium: "Music Video",
     description:
-      "A heartwarming commercial film exploring childhood innocence and dreams through Ethiopian cultural lens.",
+      "",
     detailedDescription:
-      "Heart of a Child is a heartwarming commercial film that captures the universal experience of childhood while celebrating specifically Ethiopian cultural values, family structures, and community relationships. The film combines professional commercial production values with authentic cultural storytelling, creating an emotionally resonant piece that speaks to both local and international audiences.",
+      "",
     image: "/images/HOC.webp?height=600&width=800&text=Heart+of+a+Child",
     tags: [],
     type: "film",
@@ -104,7 +104,7 @@ const allProjectsData = [
     description:
       "This sub-collection honors ancestral skin markings as symbols of protection, beauty, and spirituality. Inspired by the artist's late great-grandmother, transforms these sacred symbols into garments that carry memory, meaning, and resilience.",
     detailedDescription:
-      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      "This sub-collection/middle/ honors ancestral skin markings, where traditional tattoos serve as protection against illness, symbols of strength, expressions of beauty, and are interwoven with spiritual and social symbolism. The project draws personal inspiration from a photograph of the artist’s late great-grandmother /top/, whose neck bears these sacred markings. Her image serves as a quiet yet powerful thread connecting past and present. sKINs N.E. celebrates ancestral body adornment as a form of wearable art, transforming symbols once etched into skin into garments that carry memory, meaning, and resilience. (This sub-project is currently on hold due to ongoing instability in the northern regions of Ethiopia.)",
     image: "/images/skins-all_04.webp",
     tags: ["kinship", "aesthetics", "architecture"],
     images: [
@@ -123,7 +123,7 @@ const allProjectsData = [
     medium: "",
     description: "YAL / Ye Abayn Lij explores ritual and design, named for the paradox of lacking one's own abundance.",
     detailedDescription:
-      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      "Kins of Abay .1 explores modular and transformable clothing. Back panels, sleeve extensions, and pant add-ons shift and adapt to the wearer’s needs. Inspired by adaptable architectural structures, the garments reconfigure themselves blurring the line between body and environment. The panels feature pictorial symbols illustrated with thread, fabric, and acrylic paint. Figures of “KINs of Abay” depicted with elongated necks in anime-influenced style, express frustration and defiance over resource inequality, yet they pulse with youthful energy and sharp self-awareness.",
     image: "/images/kins.webp",
     tags: ["ritual", "beautification", "functional design"],
     videoUrl: "/vid/Yal launch 8 bit video.mp4?height=1080&width=1920&text=YAL+Video",
@@ -138,7 +138,7 @@ const allProjectsData = [
     description:
       "The Sheret/Sarong is a tubular textile from Indonesia, used in East Africa for hot climates, rituals, and protection, and to wrap fallen soldiers.",
     detailedDescription:
-      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      "The Sheret/Sarong/ is a tubular textile usually worn as a long skirt, or scarf by men. Through its dynamic patterns and colorways, it conveys a story from far away /originally from Indonesia/ and has made its way into East African traditions. It is vital in hot climates and preferred during khat chewing rituals/as shown in sKINs: Dire Dawa opening scene/ where it provides a breathable silhouette. For warriors in Ethiopia, it serves as protection from harsh sun and wind; a practical solution when carrying minimal items. During battle its role deepens even more; fallen soldiers are wrapped in their own Sheret when burials aren’t possible.",
     image: "/images/b-11.webp",
     tags: ["documentation", "photography", "cultural practices"],
     images: [
@@ -160,9 +160,9 @@ const allProjectsData = [
     category: "Films",
     medium: "Film",
     description:
-      "A contemplative short documentary about the relationship between communities and water sources in Ethiopia.",
+      "",
     detailedDescription:
-      "The River explores environmental conservation and water rights through intimate storytelling, examining how rivers shape both landscape and culture in Ethiopian communities. This film captures the essential role of water in Ethiopian life through compelling cinematography and personal narratives.",
+      "",
     image: "/images/river.webp?height=600&width=800&text=The+River",
     tags: ["community", "women", "water"],
     videoUrl: "https://youtu.be/z_ijqn0ewM0?si=mbFQK0oZc8tatslH",
@@ -175,9 +175,9 @@ const allProjectsData = [
     category: "Films",
     medium: "Brand Collaboration Documentary",
     description:
-      "A dynamic documentary capturing the emerging skateboarding culture in Ethiopia through the lens of fashion and youth expression.",
+      "",
     detailedDescription:
-      "This collaborative film captures the vibrant skateboarding scene in Ethiopia, showcasing how young Ethiopians are embracing and redefining skateboarding culture within their own cultural context. The film follows several skaters as they navigate urban landscapes and create their own unique style.",
+      "",
     image: "/images/c4-1.webp?height=600&width=800&text=MSFTS+Ethiopia+Skate",
     tags: ["youth", "community", "skateboarding"],
     videoUrl: "https://drive.google.com/file/d/1EguZ8WEBDYJItUhAVcpyyAoVgcxfwnMA/view?usp=sharing",
@@ -191,9 +191,9 @@ const allProjectsData = [
     category: "Commissioned",
     medium: "Commercial advertisement",
     description:
-      "A vibrant commercial celebrating Ethiopian Easter traditions in the historic Arada district of Addis Ababa.",
+      "",
     detailedDescription:
-      "A vibrant commercial celebrating Ethiopian Easter traditions in the historic Arada district of Addis Ababa. This commissioned work captures the energy and spiritual significance of Ethiopian Orthodox Easter celebrations, featuring authentic community participation and traditional ceremonial elements. The commercial successfully balances commercial objectives with cultural authenticity.",
+      "",
     image: "/images/arada.webp?height=600&width=800&text=Arada+Easter+Commercial",
     tags: ["easter", "market", "beverage"],
     type: "film",
@@ -208,9 +208,9 @@ const allProjectsData = [
     category: "Commissioned",
     medium: "Film",
     description:
-      "A commissioned documentary trailer exploring water rights and environmental conservation along Ethiopian rivers.",
+      "",
     detailedDescription:
-      "A commissioned documentary trailer that demonstrates sophisticated understanding of both documentary filmmaking and environmental advocacy, creating compelling visual narratives that highlight the urgent need for water conservation in Ethiopia. The piece serves as both artistic expression and environmental activism, using cinematic techniques to draw attention to critical environmental issues.",
+      "",
     image: "/images/river.webp?height=600&width=800&text=The+River+Commission",
     tags: ["community", "women", "water"],
     type: "film",
@@ -225,9 +225,9 @@ const allProjectsData = [
     category: "Commissioned",
     medium: "Collaboration video",
     description:
-      "A creative collaboration documenting the emerging skateboarding culture in Ethiopia through fashion and lifestyle perspectives.",
+      "",
     detailedDescription:
-      "A commissioned work for MSFTS that captures the intersection of global skateboarding culture with Ethiopian urban youth expression, featuring authentic documentation of skate culture development in Ethiopian cities. The project demonstrates how global youth movements adapt and transform within local cultural contexts.",
+    "",  
     image: "/images/c4-1.webp?height=600&width=800&text=MSFTS+Ethiopia+Skate+Commission",
     tags: ["youth", "community", "skateboarding"],
     type: "photo",
@@ -251,10 +251,10 @@ const allProjectsData = [
     year: 2024,
     category: "Archive",
     medium: "Photography archive",
-    description: "Comprehensive photographic archive from the MSFTS x Ethiopia skateboarding collaboration.",
+    description: "",
     detailedDescription:
-      "This archive contains 24 photographs from the MSFTS collaboration, including 5 landscape format images (16:9 ratio) and 19 portrait format images (9:16 ratio), capturing candid moments, alternative shots, and process documentation that didn't make it into the final campaign. The archive provides insight into the creative process and cultural exchange that occurred during this unique collaboration.",
-    image: "/images/c1-1.webp",
+      "",
+    image: "/images/a12-1.webp?height=600&width=800&text=MSFTS+Ethiopia+Skate+Commission",
     tags: ["photography", "skateboarding", "behind-the-scenes"],
     location: "Studio Archive",
     status: "Digital Archive",
@@ -297,9 +297,9 @@ const allProjectsData = [
     category: "Commissioned",
     medium: "Modeling",
     description:
-      "A high-fashion modeling project exploring themes of transformation, renewal, and resilience through Ethiopian aesthetic frameworks.",
+      "",
     detailedDescription:
-      "This commissioned work challenges conventional fashion photography by incorporating cultural narratives of rebirth and transformation, using modeling and styling to explore how individuals and communities emerge from difficult circumstances. The project's title suggests themes of permanent change and growth, moving beyond cycles of destruction and renewal to embrace lasting transformation.",
+      "",
     image: "/images/a6-0.webp",
     tags: [],
     type: "photo",
@@ -323,9 +323,9 @@ const allProjectsData = [
     category: "Archive",
     medium: "Photography",
     description:
-      "Archive of a fashion photoshoot exploring traditional Ethiopian gold jewelry and contemporary styling.",
+      "",
     detailedDescription:
-      "Tilla, meaning gold in Amharic, was a photoshoot that explored the beauty and cultural significance of traditional Ethiopian gold jewelry, combining heritage pieces with contemporary fashion. This archive contains 4 carefully curated photographs that capture the intersection of traditional craftsmanship and modern aesthetic sensibilities.",
+      "",
     image: "/images/a1-3.webp",
     tags: [],
     location: "Studio Archive",
@@ -342,9 +342,9 @@ const allProjectsData = [
     year: 2022,
     category: "Films",
     medium: "Experimental Film",
-    description: "An experimental film exploring the philosophical concept of duality in Ethiopian culture.",
+    description: "",
     detailedDescription:
-      "Hulet Neteb (meaning 'two things' in Amharic) examines the tensions and harmonies between tradition and modernity, individual and collective identity, past and present. Through innovative cinematographic techniques and thoughtful narrative structure, the film creates a meditative exploration of Ethiopian philosophical concepts.",
+      "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
     image: "/images/05_Maya Sight_d.webp?height=600&width=800&text=Hulet+Neteb",
     tags: ["symbology", "textile art", "ethiopian history"],
     videoUrl: "https://drive.google.com/file/d/1mF4sGEPb7YrYdEeUFYA2vZERRdR9F7G5/view?usp=sharing",
@@ -357,9 +357,9 @@ const allProjectsData = [
     category: "Installation",
     medium: "Architectural intervention",
     description:
-      "Bet/Bota reimagines the Ethiopian home, exploring memory and history through immersive sets and everyday objects.",
+      "",
     detailedDescription:
-      "Bet/Bota reimagines the Ethiopian home as a space where memory and history intersect with imagination. Set against 1970s Addis Ababa, the project unfolds through eight immersive sets ranging from elemental abstractions to reconstructed living spaces. At its heart, a dining room unites these worlds, revealing the quiet power of everyday objects. Both house and archive, Bet/Bota invites reflection on how space shapes us, and how we, in turn, shape space.",
+      "Bet/Bota reimagines the domestic interior as a site where memory, history, and imagination converge. Against the backdrop of 1970s Addis Ababa, the exhibition explores how architecture and the everyday objects we live with shape our emotions, identities, and collective memory. Through eight immersive sets, the work moves between elemental abstractions:- fire, air, water, earth and reconstructions of lived Ethiopian spaces, from the monochrome photo studios to the compact bachelor rooms of the 1970s. A dining room at the center binds these worlds together, its suspended sack of household items exposing what is often hidden: the quiet significance of what we keep and carry. Bet/Bota is both house and history, exhibition and archive- an invitation to reflect on how space holds us, and how we in turn hold space.",
     image: "/images/a4a.webp",
     tags: ["set design", "conceptual storytelling", "immersive design"],
     materials: ["Traditional textiles", "Architectural elements", "Lighting systems", "Interactive spaces"],
@@ -394,10 +394,10 @@ const allProjectsData = [
     category: "Installation",
     medium: "Interactive installation",
     description:
-      "Hulet Neteb / Two Dots uses the Ethiopian ':' to explore identity and heritage through hand-painted and pre-owned garments.",
+      "",
     detailedDescription:
-      "Building on the themes from the experimental film of the same name, this installation creates an immersive environment where visitors can physically engage with the concept of 'Hulet Neteb' (two things). The work demonstrates how philosophical concepts can be experienced through spatial and tactile engagement, documented through 7 comprehensive photographs.",
-    image: "/images/IMG_4342.webp",
+      "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
+    image: "/images/FUA19755.webp",
     tags: ["symbology", "textile art", "ethiopian history"],
     materials: ["Interactive sensors", "Digital displays", "Physical objects", "Sound design"],
     photoCount: 7,
@@ -419,9 +419,9 @@ const allProjectsData = [
     category: "In Studio",
     medium: "Studio documentation",
     description:
-      "Hulet Neteb / Two Dots uses the Ethiopian ':' to explore identity and heritage through hand-painted and pre-owned garments.",
+      "",
     detailedDescription:
-      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
     image: "/images/FUA10675.webp",
     tags: ["symbology", "textile art", "ethiopian history"],
     images: [
@@ -451,9 +451,9 @@ const allProjectsData = [
     category: "Archive",
     medium: "Identity exploration",
     description:
-      "Personal photographic exploration of individual and collective identity within Ethiopian diaspora communities.",
+      "",
     detailedDescription:
-      "To Identify is a personal photographic project exploring questions of identity, belonging, and cultural connection within Ethiopian diaspora communities around the world. Contains 19 photographs arranged in a specific narrative sequence: 1 photo in the first carousel slide, 5 photos in the second carousel slide, 7 in the third, and 6 in the fourth, creating a visual journey through themes of identity and belonging.",
+      "",
     image: "/images/vnfn-8.webp?height=600&width=800&text=To+Identify+Archive",
     tags: ["identity", "patriotism"],
     location: "Global locations",
@@ -490,9 +490,9 @@ const allProjectsData = [
     category: "Archive",
     medium: "Cultural documentation",
     description:
-      "Photographic documentation of traditional Ethiopian art forms and their contemporary interpretations.",
+      "",
     detailedDescription:
-      "Tibeb Be Adebabay (meaning 'art in Addis Ababa') documents the rich artistic traditions of Ethiopia's capital city, capturing both traditional art forms and their contemporary evolution. Features 4 documentary photographs that showcase the continuity and transformation of artistic practices in urban Ethiopian contexts.",
+      "",
     image: "/images/a1-2.webp",
     tags: ["consumerism", "cultural documentation", "exchange"],
     location: "Addis Ababa, Ethiopia",
@@ -507,9 +507,9 @@ const allProjectsData = [
     category: "Archive",
     medium: "Artistic photography",
     description:
-      "A photographic series exploring the color red in Ethiopian culture, from traditional clothing to landscapes.",
+      "",
     detailedDescription:
-      "This photographic series documents the significance of red in Ethiopian culture, capturing everything from traditional red clothing and ceremonial objects to natural red landscapes and architectural elements. Contains 7 striking photographs that reveal the deep cultural meanings and emotional associations of this powerful color.",
+      "",
     image: "/images/a1-4.webp?height=600&width=800&text=In+Red+Archive",
     tags: ["photography", "red"],
     location: "Various locations",
@@ -533,9 +533,9 @@ const allProjectsData = [
     year: 2022,
     category: "Archive",
     medium: "Conceptual photography",
-    description: "Conceptual photographs imagining alternative realities and utopian visions of Ethiopian society.",
+    description: "",
     detailedDescription:
-      "This conceptual series creates visual portals to imagined versions of Ethiopia, exploring themes of possibility, hope, and alternative futures through surreal and dreamlike imagery. Features 4 conceptual photographs that challenge viewers to imagine different possibilities for Ethiopian society and culture.",
+      "",
     image: "/images/j.webp?height=600&width=800&text=Portal+U-thiopia+Archive",
     tags: ["alternate reality", "concept study"],
     location: "Conceptual Archive",
@@ -549,9 +549,9 @@ const allProjectsData = [
     year: 2022,
     category: "Archive",
     medium: "Color studies",
-    description: "An exploration of color in Ethiopian culture, from traditional dyes to contemporary color palettes.",
+    description: "",
     detailedDescription:
-      "This archive explores the rich color traditions of Ethiopian culture, documenting traditional dyeing techniques, ceremonial color usage, and contemporary interpretations of cultural color palettes. Contains 18 photographs that showcase the vibrant spectrum of Ethiopian artistic expression through color.",
+      "",
     image: "/images/a2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
     tags: ["color study", "identity", "experiment"],
     location: "Color Archive",
@@ -589,9 +589,9 @@ const allProjectsData = [
     category: "Films",
     medium: "Documentary Series",
     description:
-      "A documentary series that decodes ancient Ethiopian legends through contemporary perspectives, examining how traditional stories continue to influence modern Ethiopian identity.",
+      "",
     detailedDescription:
-      "Decoding Legends is a documentary series that delves into the rich tapestry of Ethiopian folklore and mythology, examining how these ancient stories continue to shape contemporary Ethiopian identity and culture. Through interviews with elders, historians, and cultural practitioners, the series reveals the hidden meanings and enduring wisdom embedded in traditional legends.",
+      "“Ete’ya,” a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete’ya’s angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete’ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete’ya’s legacy.",
     image: "/images/DecodingLegends.webp?height=600&width=800&text=Decoding+Legends",
     tags: ["history", "story telling", "costume"],
     videoUrl: "https://youtu.be/0v1vwgnqHRU?si=uJkjUumPFlwMwHJy",
@@ -606,11 +606,11 @@ const allProjectsData = [
     description:
       "Ete'ya reimagines traditional Ethiopian attire with a blue cloak, red pants, and headscarf, honoring the legendary queen.",
     detailedDescription:
-      "Created during the prestigious Gojo residency program, this immersive work combines video, sound, textile, and sculptural elements to create an environment where visitors can experience legendary narratives through multiple sensory channels. The installation demonstrates how traditional storytelling can be transformed through contemporary artistic methodologies, documented through 9 comprehensive photographs.",
+      "“Ete’ya,” a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete’ya’s angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete’ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete’ya’s legacy.",
     image: "/images/IMG_5082.webp",
     tags: ["history", "story telling", "costume"],
     materials: ["Video screens", "Traditional artifacts", "Audio systems", "Lighting", "Textiles"],
-    photoCount: 9,
+    photoCount: 12,
     images: [
       "/images/IMG_5082.webp",
       "/images/IMG_5093.webp",
@@ -621,26 +621,12 @@ const allProjectsData = [
       "/images/photo_2021-09-24_22-16-49.webp",
       "/images/photo_2021-09-24_22-16-51.webp",
       "/images/photo_2021-09-24_22-16-55.webp",
+      "/images/a1-5.webp",
+      "/images/a2-5.webp",
+      "/images/a3-5.webp",
     ],
     position: "Creative director, costume design",
   },
-  {
-    id: "decoding-legends-photos-archive",
-    title: "Decoding Legends",
-    year: 2021,
-    category: "Archive",
-    medium: "Documentary photography",
-    description: "Photographic documentation supporting the Decoding Legends film series and installation work.",
-    detailedDescription:
-      "This archive contains 3 key photographs from the extensive research and documentation that supported the Decoding Legends project, including location scouting, cultural research, and process documentation that provided the foundation for the larger multimedia project.",
-    image: "/images/a2-5.webp",
-    tags: ["history", "story telling", "costume"],
-    location: "Research Archive",
-    status: "Research Collection",
-    photoCount: 3,
-    images: ["/images/a1-5.webp", "/images/a2-5.webp", "/images/a3-5.webp"],
-  },
-
   // 2020 Projects
   {
     id: "graphic-posters-illustrations-archive",
@@ -648,9 +634,9 @@ const allProjectsData = [
     year: 2020,
     category: "Archive",
     medium: "Graphic design",
-    description: "Collection of graphic design work including posters and visual identity projects.",
+    description: "",
     detailedDescription:
-      "This archive contains 5 graphic design projects including event posters and editorial work that explore Ethiopian cultural themes through contemporary design approaches. The collection demonstrates the application of traditional cultural elements within modern graphic design frameworks.",
+      "",
     image: "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
     tags: ["graphic design", "posters"],
     location: "Design Archive",

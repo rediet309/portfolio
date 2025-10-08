@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { useCart } from "@/lib/cart-context"
+import { PanelModal } from "@/components/panel-modal"
 
 interface Panel {
   id: number
@@ -248,8 +249,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
   const panels: Panel[] = Array.from({ length: item.panelCount }, (_, i) => {
     const panelNumber = i + 1
     let imageUrl = ""
-    let panelDescription = ""
-    let detailedDescription = ""
+    const panelDescription = "hand embroidered one of a kind back panel."
+    const detailedDescription = ""
 
     if (item.id === 2) {
       const cargoJacketImages = [
@@ -275,8 +276,6 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         "/images/20.webp",
       ]
       imageUrl = cargoJacketImages[i] || cargoJacketImages[0]
-      panelDescription = `Cargo Jacket Panel ${panelNumber} features military-inspired design with cultural storytelling elements.`
-      detailedDescription = `This cargo jacket panel combines tactical functionality with meaningful cultural narratives. Each panel is crafted with weather-resistant materials and features multiple utility pockets while incorporating traditional patterns and motifs that tell stories of resilience, community, and heritage. The modular design allows for easy attachment and removal, making this jacket adaptable to different occasions and personal expressions.`
     } else if (item.id === 3) {
       const haoriKimonoImages = [
         "/images/01.webp",
@@ -301,8 +300,6 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         "/images/20.webp",
       ]
       imageUrl = haoriKimonoImages[i] || haoriKimonoImages[0]
-      panelDescription = `Haori Kimono Panel ${panelNumber} features Japanese-Ethiopian fusion design with removable elements.`
-      detailedDescription = `This haori kimono panel represents a unique fusion of traditional Japanese design with Ethiopian textile influences. Each panel is crafted with premium fabrics and features removable elements that allow for endless styling possibilities. The design bridges cultures through textile art, offering a unique blend of Eastern and African design philosophies that can be easily swapped to create different looks.`
     } else if (item.id === 4) {
       const cargoPantsImages = [
         "/images/01.webp",
@@ -317,18 +314,14 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         "/images/10.webp",
       ]
       imageUrl = cargoPantsImages[i] || cargoPantsImages[0]
-      panelDescription = `Cargo Pants Panel ${panelNumber} features utility-focused design with cultural storytelling elements.`
-      detailedDescription = `This cargo pants panel combines functional design with meaningful cultural narratives. Each panel is crafted with durable materials suitable for everyday wear while incorporating traditional patterns and motifs that tell stories of resilience, community, and heritage. The modular design allows for easy attachment and removal, making these pants adaptable to different occasions and personal expressions.`
     } else {
       imageUrl = `/placeholder.svg?height=1600&width=900&query=panel design ${panelNumber}`
-      panelDescription = `Panel ${panelNumber} features unique design elements.`
-      detailedDescription = `This panel combines functional design with meaningful narratives. Each panel is crafted with quality materials while incorporating traditional patterns and motifs.`
     }
 
     return {
       id: panelNumber,
       name: `Panel ${panelNumber}`,
-      image: imageUrl, // Using Unsplash URLs instead of placeholder images
+      image: imageUrl,
       description: panelDescription,
       detailedDescription,
       available: true,
@@ -1151,6 +1144,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         "/placeholder.svg" ||
                         "/placeholder.svg" ||
                         "/placeholder.svg" ||
+                        "/placeholder.svg" ||
+                        "/placeholder.svg" ||
                         "/placeholder.svg"
                       }
                       alt={panel.name}
@@ -1399,64 +1394,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Panel Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-white border-neutral-200 rounded-md p-6 w-full max-w-2xl">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium text-black">Panel Details</h3>
-            <Button variant="ghost" size="icon" onClick={() => setIsModalOpen(false)}>
-              <X className="h-5 w-5" />
-            </Button>
-          </div>
-
-          {selectedModalPanel && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="bg-neutral-100 rounded-sm overflow-hidden" style={{ aspectRatio: "9/16" }}>
-                  <Image
-                    src={selectedModalPanel.image || "/placeholder.svg"}
-                    alt={selectedModalPanel.name}
-                    width={900}
-                    height={1600}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-sm text-neutral-600">{selectedModalPanel.description}</p>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-md font-medium text-black">{selectedModalPanel.name}</h4>
-                <p className="text-sm text-neutral-600">{selectedModalPanel.detailedDescription}</p>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="font-medium text-black mb-1">Price</p>
-                    <p className="text-neutral-600">{selectedModalPanel.price}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-black mb-1">Material</p>
-                    <p className="text-neutral-600">{selectedModalPanel.material}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-black mb-1">Dimensions</p>
-                    <p className="text-neutral-600">{selectedModalPanel.dimensions}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-black mb-1">Origin</p>
-                    <p className="text-neutral-600">{selectedModalPanel.origin}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-black mb-1">Cultural Significance</p>
-                    <p className="text-neutral-600">{selectedModalPanel.culturalSignificance}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-black mb-1">Artisan</p>
-                    <p className="text-neutral-600">{selectedModalPanel.artisan}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <PanelModal panel={selectedModalPanel} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Video Modal */}
       <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>

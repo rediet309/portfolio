@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   metadataBase: new URL("https://rediethaddis.com"),
   icons: {
-    icon: "/images/logo.ico",
-    apple: "/images/logo.ico",
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.jpg",
   },
   openGraph: {
     title: "Rediet Haddis - Visual Artist",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Rediet Haddis",
     images: [
       {
-        url: "/1234.png",
+        url: "/images/thumbnail.jpg",
         width: 1200,
         height: 630,
         alt: "Rediet Haddis - Visual Artist Portfolio",
@@ -31,8 +31,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    images: ["/1234.png"],
+    images: ["/images/thumbnail.jpg"],
   },
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
