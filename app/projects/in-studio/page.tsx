@@ -32,9 +32,9 @@ const studioProjects: StudioProject[] = [
     year: "2025",
     category: "In Studio",
     description:
-      "",
+      "This sub-collection honors ancestral skin markings as symbols of protection, beauty, and spirituality. Inspired by the artist's late great-grandmother, transforms these sacred symbols into garments that carry memory, meaning, and resilience.",
     detailedDescription:
-      "This sub-collection/middle/ honors ancestral skin markings, where traditional tattoos serve as protection against illness, symbols of strength, expressions of beauty, and are interwoven with spiritual and social symbolism. The project draws personal inspiration from a photograph of the artist’s late great-grandmother /top/, whose neck bears these sacred markings. Her image serves as a quiet yet powerful thread connecting past and present. sKINs N.E. celebrates ancestral body adornment as a form of wearable art, transforming symbols once etched into skin into garments that carry memory, meaning, and resilience. (This sub-project is currently on hold due to ongoing instability in the northern regions of Ethiopia.)",
+      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/skins-all_04.webp?height=600&width=800&text=sKINs+North+Ethiopia",
     position: "Filmmaker and textile artist",
     tags: ["kinship", "aesthetics", "architecture"],
@@ -51,9 +51,9 @@ const studioProjects: StudioProject[] = [
     year: "2022",
     category: "In Studio",
     description:
-      "",
+      '"Hulet Neteb / Two Dots" uses the Ethiopian ":" to explore identity and heritage through hand-painted and pre-owned garments.',
     detailedDescription:
-      "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
+      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/northern lines.webp?height=600&width=800&text=Hulet+Neteb",
     position: "Director, Producer, Curator, and Textile Artist",
     tags: ["symbology", "textile art", "ethiopian history"],
@@ -95,7 +95,7 @@ const studioProjects: StudioProject[] = [
     description:
       "The Sheret/Sarong is a tubular textile from Indonesia, used in East Africa for hot climates, rituals, and protection, and to wrap fallen soldiers.",
     detailedDescription:
-      "The Sheret/Sarong/ is a tubular textile usually worn as a long skirt, or scarf by men. Through its dynamic patterns and colorways, it conveys a story from far away /originally from Indonesia/ and has made its way into East African traditions. It is vital in hot climates and preferred during khat chewing rituals/as shown in sKINs: Dire Dawa opening scene/ where it provides a breathable silhouette. For warriors in Ethiopia, it serves as protection from harsh sun and wind; a practical solution when carrying minimal items. During battle its role deepens even more; fallen soldiers are wrapped in their own Sheret when burials aren’t possible.",
+      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/b-11.webp?height=600&width=800&text=Sheret+Project",
     position: "Textile Artist and researcher",
     tags: ["documentation", "preservation"],
@@ -116,7 +116,7 @@ const studioProjects: StudioProject[] = [
     description:
       '"YAL / Ye Abayn Lij" explores ritual and design, named for the paradox of lacking one\'s own abundance.',
     detailedDescription:
-      "Kins of Abay .1 explores modular and transformable clothing. Back panels, sleeve extensions, and pant add-ons shift and adapt to the wearer’s needs. Inspired by adaptable architectural structures, the garments reconfigure themselves blurring the line between body and environment. The panels feature pictorial symbols illustrated with thread, fabric, and acrylic paint. Figures of “KINs of Abay” depicted with elongated necks in anime-influenced style, express frustration and defiance over resource inequality, yet they pulse with youthful energy and sharp self-awareness.",
+      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/kins.webp?height=600&width=800&text=YAL+Studio",
     position: "Artist and curator",
     tags: ["ritual", "beautification", "functional design"],
@@ -154,7 +154,7 @@ export default function InStudioPage() {
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           {/* Header */}
           <div className="mb-12 sm:mb-16 text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-black mb-4 sm:mb-6">In Studio</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-stardom text-black mb-4 sm:mb-6">In Studio</h1>
           </div>
 
           {/* Projects Grid - Enhanced responsive layout */}
@@ -207,7 +207,7 @@ export default function InStudioPage() {
                   {/* Content */}
                   <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-base sm:text-lg font-light leading-tight text-black">{project.title}</h3>
+                      <h3 className="text-base sm:text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">

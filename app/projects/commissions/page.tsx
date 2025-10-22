@@ -34,9 +34,9 @@ const commissionProjects: Project[] = [
     category: "Commissioned",
     medium: "Music Video",
     description:
-      "",
+      "A heartfelt commercial exploring childhood experiences and emotional development through Ethiopian cultural lens.",
     detailedDescription:
-      "",
+      "Heart of a Child is a heartwarming commercial film that captures the universal experience of childhood while celebrating specifically Ethiopian cultural values, family structures, and community relationships. The film combines professional commercial production values with authentic cultural storytelling, creating an emotionally resonant piece that speaks to both local and international audiences.",
     image: "/images/HOC.webp?height=600&width=800&text=Heart+of+a+Child",
     position: "Art director",
     videoUrl: "https://youtu.be/bLUtlsYxqpU?si=eU5MdCaaTsTjOGsJ",
@@ -49,9 +49,9 @@ const commissionProjects: Project[] = [
     year: "2024",
     category: "Commissioned",
     medium: "Commercial Film",
-    description: "",
+    description: "Easter celebration commercial for Arada showcasing community and tradition.",
     detailedDescription:
-      "",
+      "A vibrant commercial celebrating Ethiopian Easter traditions in the historic Arada district of Addis Ababa. This commissioned work captures the energy and spiritual significance of Ethiopian Orthodox Easter celebrations, featuring authentic community participation and traditional ceremonial elements. The commercial successfully balances commercial objectives with cultural authenticity.",
     image: "/images/arada.webp?height=600&width=800&text=Arada+Easter+Commercial",
     position: "Director, producer, stylist",
     videoUrl: "https://youtu.be/gHnCjF4GLHk?si=X7Zleobndl873NaO",
@@ -64,9 +64,9 @@ const commissionProjects: Project[] = [
     year: "2024",
     category: "Commissioned",
     medium: "Film",
-    description: "",
+    description: "Commissioned documentary trailer exploring water rights and environmental conservation.",
     detailedDescription:
-      "",
+      "A commissioned documentary trailer that demonstrates sophisticated understanding of both documentary filmmaking and environmental advocacy, creating compelling visual narratives that highlight the urgent need for water conservation in Ethiopia. The piece serves as both artistic expression and environmental activism, using cinematic techniques to draw attention to critical environmental issues.",
     image: "/images/river.webp?height=600&width=800&text=The+River+Trailer",
     position: "Production designer and set designer",
     videoUrl: "https://youtu.be/z_ijqn0ewM0?si=CwfuWOyAfWqHjDK6",
@@ -79,9 +79,9 @@ const commissionProjects: Project[] = [
     year: "2024",
     category: "Commissioned",
     medium: "Skateboarding",
-    description: "",
+    description: "Creative collaboration documenting the emerging skateboarding culture in Ethiopia.",
     detailedDescription:
-      "",
+      "A commissioned work for MSFTS that captures the intersection of global skateboarding culture with Ethiopian urban youth expression, featuring authentic documentation of skate culture development in Ethiopian cities. The project demonstrates how global youth movements adapt and transform within local cultural contexts.",
     image: "/images/a12-1.webp",
     position: "Creative Direction, stylist, and video contributions",
     videoUrl: "https://drive.google.com/file/d/1EguZ8WEBDYJItUhAVcpyyAoVgcxfwnMA/view?usp=sharing",
@@ -93,9 +93,9 @@ const commissionProjects: Project[] = [
     title: "Except this time nothing returns from the ashes",
     year: "2023",
     category: "Commissioned",
-    description: "",
+    description: "Creative collaboration documenting the emerging skateboarding culture in Ethiopia.",
     detailedDescription:
-      "",
+      "A commissioned work for MSFTS that captures the intersection of global skateboarding culture with Ethiopian urban youth expression, featuring authentic documentation of skate culture development in Ethiopian cities. The project demonstrates how global youth movements adapt and transform within local cultural contexts.",
     image: "/images/j.webp",
     position: "Modeling",
     images: Array.from({ length: 8 }, (_, i) => `/placeholder.svg?height=800&width=600&text=Ashes+Photo+${i + 1}`),
@@ -145,7 +145,7 @@ export default function CommissionsPage() {
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           {/* Header */}
           <div className="mb-12 sm:mb-16 text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-black mb-4 sm:mb-6">Commissions</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-stardom text-black mb-4 sm:mb-6">Commissions</h1>
           </div>
 
           {/* Projects Grid - Enhanced responsive layout */}
@@ -204,7 +204,7 @@ export default function CommissionsPage() {
                   {/* Content */}
                   <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-base sm:text-lg font-light leading-tight text-black">{project.title}</h3>
+                      <h3 className="text-base sm:text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">

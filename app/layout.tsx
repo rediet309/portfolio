@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
   metadataBase: new URL("https://rediethaddis.com"),
   icons: {
-    icon: "/favicon.ico",
+    icon: "/images/logo.ico",
     apple: "/apple-touch-icon.jpg",
   },
   openGraph: {
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     siteName: "Rediet Haddis",
     images: [
       {
-        url: "/images/thumbnail.jpg",
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero-96ive1lfPUu6pHpk0eP37IosDsNk6U.jpg",
         width: 1200,
-        height: 630,
-        alt: "Rediet Haddis - Visual Artist Portfolio",
+        height: 844,
+        alt: "Rediet Haddis - Visual Artist",
       },
     ],
     locale: "en_US",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rediet Haddis - Visual Artist",
     description: "Multidisciplinary artist working across Film, installation, textile and clothing.",
-    images: ["/images/thumbnail.jpg"],
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero-96ive1lfPUu6pHpk0eP37IosDsNk6U.jpg"],
   },
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -41,5 +41,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <ClientLayout>{children}</ClientLayout>
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-background text-foreground font-serif antialiased">
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  )
 }

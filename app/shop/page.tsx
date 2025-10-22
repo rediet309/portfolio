@@ -24,7 +24,7 @@ export default function ShopPage() {
     { id: "all", label: "All" },
     { id: "textile-art", label: "Textile Art" },
     { id: "clothing", label: "Clothing" },
-    { id: "posters", label: "Posters, Postcards, Stickers" },
+    { id: "posters", label: "Posters, Stickers" },
   ]
 
   const items = [
@@ -158,34 +158,37 @@ export default function ShopPage() {
   const cartItemCount = state.items.reduce((total, item) => total + item.quantity, 0)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
       <Navigation currentPath="/shop" />
 
       {/* Shop Hero Section */}
-      <section className="pt-32 px-12 lg:px-20 relative overflow-hidden pb-4">
+      <section className="pt-24 sm:pt-28 md:pt-32 px-4 sm:px-8 md:px-12 lg:px-20 relative overflow-hidden pb-4">
         <OrganicPattern className="absolute bottom-0 left-0 w-96 h-96 text-amber-200" opacity={0.08} />
         <div className="w-full">
           <div className="text-center mb-0">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-light leading-none text-black mb-0">Red Suk</h1>
-            <div className="w-20 h-px bg-neutral-300 mx-auto mb-8"></div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-stardom leading-none text-foreground mb-0">
+              Red Suk
+            </h1>
+            <div className="w-20 h-px bg-border mx-auto mb-8"></div>
           </div>
         </div>
       </section>
 
-      {/* Filter Section - Right Aligned */}
-      <section className="px-12 lg:px-20 pb-8">
+      {/* Filter Section - Responsive Layout */}
+      <section className="px-4 sm:px-8 md:px-12 lg:px-20 pb-6 sm:pb-8">
         <div className="w-full">
-          <div className="flex justify-end mb-0">
-            <div className="flex items-center space-x-2 bg-neutral-100 p-1 rounded-full">
+          {/* Mobile: Horizontal scrollable */}
+          <div className="flex justify-start sm:justify-end mb-0 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
+            <div className="flex items-center gap-2 sm:gap-2 bg-muted p-1 rounded-full min-w-max">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-4 sm:px-5 md:px-6 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                     selectedCategory === category.id
-                      ? "bg-black text-white shadow-sm"
-                      : "text-neutral-600 hover:text-black hover:bg-white"
+                      ? "bg-foreground text-background shadow-sm"
+                      : "text-muted-foreground hover:text-foreground hover:bg-background"
                   }`}
                 >
                   {category.label}
@@ -197,7 +200,7 @@ export default function ShopPage() {
       </section>
 
       {/* Shop Grid */}
-      <section className="pb-32 px-12 lg:px-20">
+      <section className="pb-20 sm:pb-24 md:pb-32 px-4 sm:px-8 md:px-12 lg:px-20">
         <div className="w-full">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-12">
             {filteredItems.map((item) => (

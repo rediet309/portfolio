@@ -298,7 +298,7 @@ export default function ArchivePage() {
         <div className="w-full px-6 lg:px-8">
           {/* Header */}
           <div className="mb-16 text-center">
-            <h1 className="text-4xl md:text-5xl font-light text-black mb-6">Archive</h1>
+            <h1 className="text-4xl md:text-5xl font-stardom text-black mb-6">Archive</h1>
           </div>
 
           {/* Projects Grid - Full width with proper alignment */}
@@ -348,7 +348,7 @@ export default function ArchivePage() {
                   {/* Content */}
                   <div className="p-4 space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-lg font-light leading-tight text-black">{project.title}</h3>
+                      <h3 className="text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-4 text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">
