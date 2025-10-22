@@ -130,14 +130,14 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
 
               {project.duration && (
                 <div className="flex justify-between">
-                  <span className="text-neutral-500">Duration</span>
-                  <span className="text-black font-medium">{project.duration}</span>
+                  
+                  
                 </div>
               )}
 
               <div className="flex justify-between col-span-2 sm:col-span-1">
-                <span className="text-neutral-500">Role</span>
-                <span className="text-black font-medium text-right sm:text-left">{project.position}</span>
+                <span className="text-neutral-500">Medium</span>
+                <span className="text-black font-medium text-right sm:text-left">{project.medium}</span>
               </div>
             </div>
 

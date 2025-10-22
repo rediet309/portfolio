@@ -113,7 +113,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 )}
               </div>
 
-              <div className="text-sm text-neutral-500 font-medium">{project.position}</div>
+              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
 
               {project.role && (
                 <div className="text-sm text-neutral-600 italic">
@@ -194,7 +194,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 )}
               </div>
 
-              <div className="text-sm text-neutral-500 font-medium">{project.position}</div>
+              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
 
               {project.role && (
                 <div className="text-sm text-neutral-600 italic">
@@ -299,7 +299,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 )}
               </div>
 
-              <div className="text-sm text-neutral-500 font-medium">{project.position}</div>
+              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
 
               {project.role && (
                 <div className="text-sm text-neutral-600 italic">
@@ -455,7 +455,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 )}
               </div>
 
-              <div className="text-sm text-neutral-500 font-medium">{project.position}</div>
+              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
 
               {project.role && (
                 <div className="text-sm text-neutral-600 italic">
@@ -465,6 +465,82 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
               )}
 
               <p className="text-neutral-700 leading-relaxed">{project.detailedDescription || project.description}</p>
+
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="text-xs text-neutral-400 pt-4 border-t border-neutral-200">
+                {project.photoCount} photographs
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (project.id === "except-thise-time-nothing-returns-from-the-ashes") {
+    return (
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-2xl w-[95vw] h-[96vh] flex flex-col md:flex-row overflow-hidden relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+          >
+            <X className="h-5 w-5 text-black" />
+          </button>
+
+          {/* Image section - responsive height on mobile */}
+          <div className="w-full md:w-[65%] lg:w-[70%] h-[60vh] md:h-full p-6 overflow-y-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-fr">
+              {project.images?.map((image, index) => (
+                <div key={index} className="aspect-square relative overflow-hidden rounded-lg bg-neutral-100">
+                  <img
+                    src={image || "/placeholder.svg"}
+                    alt={`${project.title} ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Description section - responsive height on mobile */}
+          <div className="w-full md:w-[35%] lg:w-[30%] h-[40vh] md:h-full p-6 flex flex-col border-t md:border-t-0 md:border-l border-neutral-200 overflow-y-auto">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-stardom text-black leading-tight">{project.title}</h2>
+
+              <div className="grid grid-cols-1 gap-4 text-sm">
+                <div className="flex items-center space-x-2 text-neutral-600">
+                  <Calendar className="h-4 w-4" />
+                  <span>{project.year}</span>
+                </div>
+
+                {project.location && (
+                  <div className="flex items-center space-x-2 text-neutral-600">
+                    <MapPin className="h-4 w-4" />
+                    <span>{project.location}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
+
+              {project.role && (
+                <div className="text-sm text-neutral-600 italic">
+                  <span className="font-medium">Role: </span>
+                  {project.role}
+                </div>
+              )}
 
               {project.tags && project.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
@@ -733,6 +809,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
               )
             }
 
+            // </CHANGE> Fixed variable name from photosPerSlide to photosInThisSlide
             slides.push({
               type: "photos",
               images: slideImages,
@@ -743,7 +820,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
         } else {
           for (let i = 0; i < project.slidesLayout.length; i++) {
             const photosPerSlide = project.slidesLayout[i]
-            const slideImages = []
+            const slideImages = project.images.slice(imageIndex, imageIndex + photosPerSlide)
 
             for (let j = 0; j < photosPerSlide; j++) {
               const unsplashImages = [
@@ -878,7 +955,9 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
   return (
     <>
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className={`bg-white rounded-lg shadow-2xl ${modalWidth} ${modalHeight} flex overflow-hidden relative`}>
+        <div
+          className={`bg-white rounded-lg shadow-2xl ${modalWidth} ${modalHeight} flex flex-col md:flex-row overflow-hidden relative`}
+        >
           <button
             onClick={onClose}
             className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
@@ -894,14 +973,14 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+                className="absolute left-4 top-1/2 md:top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
               >
                 <ChevronLeft className="h-6 w-6 text-black" />
               </button>
 
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+                className="absolute right-4 top-1/2 md:top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
               >
                 <ChevronRight className="h-6 w-6 text-black" />
               </button>
@@ -909,7 +988,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
           )}
 
           <div
-            className={`${isGridProject || isHorizontalProject || isVideoProject || isBentoProject ? "w-full" : "w-[70%]"} relative overflow-hidden bg-neutral-50 flex items-center justify-center`}
+            className={`${isGridProject || isHorizontalProject || isVideoProject || isBentoProject ? "w-full" : "w-full md:w-[70%]"} relative ${project.id === "bet-bota" ? "h-[60vh] md:h-full overflow-y-auto" : "overflow-hidden"} bg-neutral-50 flex items-center justify-center ${project.id === "skins-east-ethiopia" ? "h-[50vh] md:h-full" : project.id === "bet-bota" ? "" : ""}`}
           >
             {currentSlide?.type === "grid" ? (
               <div className="w-full h-full p-6 overflow-y-auto">
@@ -1158,7 +1237,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-3 auto-rows-max">
                     {project.id === "to-identify-photos-archive" ? (
                       <>
-                        {/* 17 portrait 9:16 images */}
+                        {/* 17 portrait images 9:16 */}
                         {currentSlide.images.slice(0, 17).map((image, index) => (
                           <div
                             key={`portrait-${index}`}
@@ -1621,7 +1700,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 )}
               </div>
             ) : (
-              <div className="w-full h-full p-6">
+              <div className="w-full h-full p-4 md:p-6">
                 {currentSlide?.images.length === 1 ? (
                   <div className="w-full h-full flex items-center justify-center">
                     <img
@@ -1632,24 +1711,39 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                     />
                   </div>
                 ) : currentSlide?.images.length === 2 ? (
-                  <div className="flex gap-6 h-full items-center justify-center">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 h-full items-center justify-center">
                     {currentSlide.images.map((image, index) => (
                       <div
                         key={index}
-                        className={`flex-1 h-full flex items-center justify-center ${index === 1 ? "aspect-square" : ""}`}
+                        className={`${
+                          project.id === "bet-bota"
+                            ? index === 0
+                              ? "w-1/3 h-full flex items-center justify-center"
+                              : "w-2/3 h-full flex items-center justify-center"
+                            : "flex-1 h-auto md:h-full flex items-center justify-center"
+                        } ${
+                          project.id === "bet-bota"
+                            ? index === 0
+                              ? "aspect-[3/4]"
+                              : "aspect-[4/3]"
+                            : index === 1
+                              ? "aspect-square md:aspect-square"
+                              : "aspect-square"
+                        }`}
                       >
                         <img
                           src={image || "/placeholder.svg"}
                           alt={`${currentSlide.title} ${index + 1}`}
-                          className="max-w-full max-h-full object-contain rounded-lg"
+                          className="w-full h-full object-cover rounded-lg"
                           loading="lazy"
                         />
                       </div>
                     ))}
                   </div>
                 ) : project.id === "bet-bota" ? (
-                  <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-1 md:grid-rows-2 gap-4 h-full">
-                    <div className="md:col-span-2 row-span-2 relative overflow-hidden rounded-lg bg-neutral-100">
+                  <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-1 md:grid-rows-1 gap-4 h-full">
+                    {/* Left image - 1/3 width */}
+                    <div className="relative overflow-hidden rounded-lg bg-neutral-100 w-full h-full">
                       <img
                         src={currentSlide.images[0] || "/placeholder.svg"}
                         alt={`${currentSlide.title} 1`}
@@ -1657,7 +1751,8 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                         loading="lazy"
                       />
                     </div>
-                    <div className="relative overflow-hidden rounded-lg bg-neutral-100">
+                    {/* Right image - 2/3 width */}
+                    <div className="md:col-span-2 relative overflow-hidden rounded-lg bg-neutral-100 w-full h-full">
                       <img
                         src={currentSlide.images[1] || "/placeholder.svg"}
                         alt={`${currentSlide.title} 2`}
@@ -1704,7 +1799,9 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
           </div>
 
           {!isGridProject && !isHorizontalProject && !isVideoProject && !isBentoProject && (
-            <div className="w-[30%] p-6 flex flex-col">
+            <div
+              className={`w-full md:w-[30%] p-6 flex flex-col ${project.id === "skins-east-ethiopia" ? "h-[50vh] md:h-full overflow-y-auto" : project.id === "bet-bota" ? "h-[40vh] md:h-full overflow-y-auto" : ""}`}
+            >
               <div className="flex-1 overflow-y-auto">
                 <div className="space-y-6">
                   <div className="text-sm text-neutral-500 font-medium">{currentSlide?.title}</div>
@@ -1746,7 +1843,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                     )}
                   </div>
 
-                  <div className="text-sm text-neutral-500 font-medium">{project.position}</div>
+                  <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
 
                   {project.role && (
                     <div className="text-sm text-neutral-600 italic">
