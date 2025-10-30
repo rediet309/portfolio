@@ -241,7 +241,7 @@ const allProjectsData = [
       "/images/c8-1.webp",
     ],
   },
-  {
+  /* {
     id: "msfts-ethiopia-skate-photos",
     title: "MSFTS x Ethiopia Skate",
     year: 2024,
@@ -283,7 +283,7 @@ const allProjectsData = [
       "/images/a5-1.webp",
       "/images/a2-1.webp",
     ],
-  },
+  }, */
 
   // 2023 Projects
   {
@@ -311,7 +311,7 @@ const allProjectsData = [
       "/images/a8-0.webp",
     ],
   },
-  {
+  /*{
     id: "tilla-photoshoot",
     title: "Tilla Photoshoot",
     year: 2023,
@@ -327,7 +327,7 @@ const allProjectsData = [
     photoCount: 4,
     position: "Stylist",
     images: ["/images/a3-3.webp", "/images/a2-3.webp", "/images/a4-3.webp", "/images/a1-3.webp"],
-  },
+  }, */
 
   // 2022 Projects
   {
@@ -440,7 +440,7 @@ const allProjectsData = [
     ],
     position: "Director, Producer, Curator, and Textile Artist",
   },
-  {
+  /* {
     id: "to-identify-photos-archive",
     title: "To Identify",
     year: 2022,
@@ -477,8 +477,8 @@ const allProjectsData = [
       // 1 landscape image
       "/images/c1-8.webp",
     ],
-  },
-  {
+  }, */
+ /* {
     id: "tibeb-be-adebabay-archive",
     title: "Tibeb Be Adebabay",
     year: 2022,
@@ -493,8 +493,8 @@ const allProjectsData = [
     status: "Cultural Archive",
     photoCount: 4,
     images: ["/images/a1-2.webp", "/images/a2-2.webp", "/images/a3-2.webp", "/images/a4-2.webp"],
-  },
-  {
+  }, */
+ /* {
     id: "in-red-photos-archive",
     title: "In Red",
     year: 2022,
@@ -519,7 +519,7 @@ const allProjectsData = [
       "/images/a1-4.webp",
       "/images/a6-4.webp",
     ],
-  },
+  }, */
   {
     id: "portal-to-u-thiopia-archive",
     title: "Portal to U-thiopia",
@@ -535,7 +535,7 @@ const allProjectsData = [
     photoCount: 4,
     images: ["/images/d.webp", "/images/a.webp", "/images/b.webp", "/images/c.webp"],
   },
-  {
+  /* {
     id: "vibrant-hues-archive",
     title: "Vibrant Hues",
     year: 2022,
@@ -570,7 +570,7 @@ const allProjectsData = [
       "/images/a2-7.webp",
       "/images/a1-7.webp",
     ],
-  },
+  }, */
 
   // 2021 Projects
   {
@@ -619,7 +619,7 @@ const allProjectsData = [
     position: "Creative director, costume design",
   },
   // 2020 Projects
-  {
+   /* {
     id: "graphic-posters-illustrations-archive",
     title: "Graphic Posters",
     year: 2020,
@@ -640,7 +640,7 @@ const allProjectsData = [
       "/images/02_YAL.webp",
       "/images/04_Hulet neteb.webp",
     ],
-  },
+  }, */
 ]
 
 export default function AllProjectsPage() {

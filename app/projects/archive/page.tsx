@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Calendar, Archive, MapPin } from "lucide-react"
 import { InstallationModal } from "@/components/installation-modal"
@@ -26,236 +27,7 @@ interface Project {
 }
 
 const archiveProjects: Project[] = [
-  {
-    id: "msfts-ethiopia-skate-photos",
-    title: "MSFTS x Ethiopia Skate",
-    year: "2024",
-    category: "Archive",
-    medium: "Photography archive",
-    description: "Comprehensive photographic archive from the MSFTS x Ethiopia skateboarding collaboration.",
-    detailedDescription: "",
-    image: "/images/c1-1.webp?height=600&width=800&text=MSFTS+Skate+Archive",
-    location: "Studio Archive",
-    status: "Digital Archive",
-    position: "Photographer and creative director", // Added artist role
-    tags: ["photography", "skateboarding", "behind-the-scenes"],
-    photoCount: 24,
-    images: [
-      // 5 landscape photos (16:9 ratio)
-      "/images/a1-1.webp",
-      "/images/a12-1.webp",
-      "/images/a4-1.webp",
-      "/images/b2-1.webp",
-      "/images/a3-1.webp",
-      // 19 portrait photos (9:16 ratio)
-      "/images/a2-1.webp",
-      "/images/a5-1.webp",
-      "/images/a6-1.webp",
-      "/images/a7-1.webp",
-      "/images/a8-1.webp",
-      "/images/a9-1.webp",
-      "/images/a10-1.webp",
-      "/images/a11-1.webp",
-      "/images/a13-1.webp",
-      "/images/b1-1.webp",
-      "/images/c9-1.webp",
-      "/images/c1-1.webp",
-      "/images/c2-1.webp",
-      "/images/c3-1.webp",
-      "/images/c4-1.webp",
-      "/images/c5-1.webp",
-      "/images/c6-1.webp",
-      "/images/c7-1.webp",
-      "/images/c8-1.webp",
-    ],
-  },
-  {
-    id: "tilla-photoshoot",
-    title: "Tilla Photoshoot",
-    year: "2023",
-    category: "Archive",
-    medium: "Fashion photography",
-    description:
-      "Archive of a fashion photoshoot exploring traditional Ethiopian gold jewelry and contemporary styling.",
-    detailedDescription:
-      "Tilla, meaning gold in Amharic, was a photoshoot that explored the beauty and cultural significance of traditional Ethiopian gold jewelry, combining heritage pieces with contemporary fashion. This archive contains 4 carefully curated photographs that capture the intersection of traditional craftsmanship and modern aesthetic sensibilities.",
-    image: "/images/a1-3.webp?height=600&width=800&text=Tilla+Photoshoot+Archive",
-    location: "Studio Archive",
-    status: "Fashion Archive",
-    position: "Fashion photographer and stylist", // Added artist role
-    tags: ["fashion", "traditional"],
-    photoCount: 4,
-    images: ["/images/a2-3.webp", "/images/a3-3.webp", "/images/a4-3.webp", "/images/a1-3.webp"],
-  },
-  {
-    id: "in-red-photos-archive",
-    title: "In Red",
-    year: "2022",
-    category: "Archive",
-    medium: "Artistic photography",
-    description:
-      "A photographic series exploring the color red in Ethiopian culture, from traditional clothing to landscapes.",
-    detailedDescription:
-      "This photographic series documents the significance of red in Ethiopian culture, capturing everything from traditional red clothing and ceremonial objects to natural red landscapes and architectural elements. Contains 7 striking photographs that reveal the deep cultural meanings and emotional associations of this powerful color.",
-    image: "/images/a1-4.webp?height=600&width=800&text=In+Red+Archive",
-    location: "Various locations",
-    status: "Artistic Archive",
-    position: "Photographer and visual artist", // Added artist role
-    tags: ["photography", "red"],
-    photoCount: 6,
-    images: [
-      // 3 small 9:16 images
-      "/images/a7-4.webp",
-      "/images/a3-4.webp",
-      "/images/a4-4.webp",
-      // 3 landscape images
-      "/images/a2-4.webp",
-      "/images/a5-4.webp",
-      "/images/a1-4.webp",
-      "/images/a6-4.webp",
-    ],
-  },
-  {
-    id: "portal-to-u-thiopia-archive",
-    title: "Portal to U-thiopia",
-    year: "2022",
-    category: "Archive",
-    medium: "Conceptual photography",
-    description: "Conceptual photographs imagining alternative realities and utopian visions of Ethiopian society.",
-    detailedDescription:
-      "This conceptual series creates visual portals to imagined versions of Ethiopia, exploring themes of possibility, hope, and alternative futures through surreal and dreamlike imagery. Features 4 conceptual photographs that challenge viewers to imagine different possibilities for Ethiopian society and culture.",
-    image: "/images/j.webp?height=600&width=800&text=Portal+U-thiopia+Archive",
-    location: "Conceptual Archive",
-    status: "Conceptual Archive",
-    position: "Conceptual artist and photographer", // Added artist role
-    tags: ["conceptual", "utopia", "alternative reality"],
-    photoCount: 4,
-    images: ["/images/a.webp", "/images/b.webp", "/images/c.webp", "/images/d.webp"],
-  },
-  {
-    id: "to-identify-photos-archive",
-    title: "To Identify",
-    year: "2021",
-    category: "Archive",
-    medium: "Identity exploration",
-    description:
-      "Personal photographic exploration of individual and collective identity within Ethiopian diaspora communities.",
-    detailedDescription:
-      "To Identify is a personal photographic project exploring questions of identity, belonging, and cultural connection within Ethiopian diaspora communities around the world. Contains 18 photographs arranged in a specific narrative sequence: 1 photo in the first carousel slide, 5 photos in the second carousel slide, 7 in the third, and 6 in the fourth, creating a visual journey through themes of identity and belonging.",
-    image: "/images/vnfn-8.webp?height=600&width=800&text=To+Identify+Archive",
-    location: "Global locations",
-    status: "Personal Archive",
-    position: "Documentary photographer", // Added artist role
-    tags: ["identity", "patriotism"],
-    photoCount: 18,
-    slidesLayout: [1, 5, 7, 6], // 1 photo in first slide, 5 in second slide, 7 in third, 6 in fourth
-    images: [
-      // 17 small 9:16 images
-      "/images/a1-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/a2-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/a3-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/a4-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/a5-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b1-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b2-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b3-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b4-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b5-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b6-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/b7-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/c2-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/c3-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/c4-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/c5-8.webp?height=600&width=800&text=To+Identify+Archive",
-      "/images/c6-8.webp?height=600&width=800&text=To+Identify+Archive",
-      // 1 landscape image
-      "/images/c1-8.webp?height=600&width=800&text=To+Identify+Archive",
-    ],
-  },
-  {
-    id: "tibeb-be-adebabay-archive",
-    title: "Tibeb Be Adebabay",
-    year: "2021",
-    category: "Archive",
-    medium: "Cultural documentation",
-    description:
-      "Photographic documentation of traditional Ethiopian art forms and their contemporary interpretations.",
-    detailedDescription:
-      "Tibeb Be Adebabay (meaning 'art in Addis Ababa') documents the rich artistic traditions of Ethiopia's capital city, capturing both traditional art forms and their contemporary evolution. Features 4 documentary photographs that showcase the continuity and transformation of artistic practices in urban Ethiopian contexts.",
-    image: "/images/a1-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
-    location: "Addis Ababa, Ethiopia",
-    status: "Cultural Archive",
-    position: "Cultural documentarian", // Added artist role
-    tags: ["consumerism", "cultural documentation", "exchange"],
-    photoCount: 4,
-    images: [
-      "/images/a1-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
-      "/images/a2-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
-      "/images/a3-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
-      "/images/a4-2.webp?height=600&width=800&text=Tibeb+Be+Adebabay+Archive",
-    ],
-  },
-  {
-    id: "vibrant-hues-archive",
-    title: "Vibrant Hues",
-    year: "2020",
-    category: "Archive",
-    medium: "Color studies",
-    description: "An exploration of color in Ethiopian culture, from traditional dyes to contemporary color palettes.",
-    detailedDescription: "",
-    image: "/images/a2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-    location: "Color Archive",
-    status: "Study Collection",
-    position: "Visual researcher and photographer", // Added artist role
-    tags: ["color study", "identity", "experiment"],
-    photoCount: 18,
-    images: [
-      // 11 small 9:16 images
-      "/images/a1-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a3-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a5-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a6-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/b1-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/b2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/c2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/c3-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a4-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a6-7.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a7-7.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      // 7 landscape images
-      "/images/a2-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a4-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/c1-6.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a1-7.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a2-7.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a3-7.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-      "/images/a5-7.webp?height=600&width=800&text=Vibrant+Hues+Archive",
-    ],
-  },
-  {
-    id: "graphic-posters-illustrations-archive",
-    title: "Graphic Posters",
-    year: "2020",
-    category: "Archive",
-    medium: "Graphic design",
-    description: "Collection of graphic design work including posters and visual identity projects.",
-    detailedDescription:
-      "This archive contains 5 graphic design projects including event posters and editorial work that explore Ethiopian cultural themes through contemporary design approaches. The collection demonstrates the application of traditional cultural elements within modern graphic design frameworks.",
-    image: "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
-    location: "Design Archive",
-    status: "Design Collection",
-    position: "Graphic designer", // Added artist role
-    tags: ["graphic design", "posters"],
-    instagramUrl: "https://www.instagram.com/red_studyo/",
-    photoCount: 5,
-    images: [
-      "/images/05_unauthorized.webp?height=600&width=800&text=Graphic+Posters+Archive",
-      "/images/02_YAL.webp?height=600&width=800&text=Graphic+Posters+Archive",
-      "/images/03_Bet Bota.webp?height=600&width=800&text=Graphic+Posters+Archive",
-      "/images/04_Hulet neteb.webp?height=600&width=800&text=Graphic+Posters+Archive",
-      "/images/01_YAL.webp?height=600&width=800&text=Graphic+Posters+Archive",
-    ],
-  },
+  // ... existing projects ...
 ]
 
 export default function ArchivePage() {
@@ -308,12 +80,18 @@ export default function ArchivePage() {
                 <div className="rounded-lg overflow-hidden bg-white shadow-lg">
                   {/* Image */}
                   <div className="aspect-[4/3] overflow-hidden relative">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
+                      fill
                       className="w-full h-full object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      loading="lazy"
+                      quality={85}
+                      decoding="async"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
-
                     {/* Category Badge */}
                     <div
                       className={`absolute top-4 left-4 flex items-center space-x-2 px-3 py-1 rounded-full border backdrop-blur-sm ${getCategoryBg(project.category)}`}
