@@ -275,6 +275,11 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
                         width={320}
                         height={240}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading={projectIndex < 4 ? "eager" : "lazy"}
+                        quality={85}
+                        decoding="async"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       />
                       <div className="absolute top-3 left-3">
                         <Badge className={`${getCategoryColor(project.category)} font-times text-xs`}>
@@ -431,7 +436,6 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
                           {project.position}
                         </p>
                       )}
-                      
 
                       <div className="flex flex-wrap gap-1">
                         {project.tags.slice(0, 3).map((tag) => (
