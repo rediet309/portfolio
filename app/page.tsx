@@ -45,8 +45,8 @@ export default function HomePage() {
       description:
         "An immersive textile installation and film screening exploring the r/s between skin, fabric, and cultural identity in Eastern Ethiopia.",
       detailedDescription:
-        "This large-scale installation features traditional textiles from Eastern Ethiopia arranged in a contemporary gallery context, creating dialogue between historical textile practices and modern artistic expression. The work transforms gallery space into a meditation on cultural memory and material heritage.",
-      materials: ["Traditional textiles", "Contemporary display systems", "Lighting", "Sound"],
+      "sKINs, Film screening inside a Textile art tent Installation: Suspended tappering tent structure incapsulating the film screening within. Bottom 3m x 3m, top 2.3m x 2.3 m, height 2m",
+     materials: ["Traditional textiles", "Contemporary display systems", "Lighting", "Sound"],
       tags: ["textile", "handmade", "visual culture"],
       imageDescriptions: [
         "Front side view/suspended tent structure incapsulating the sKins film screening within/, hand dyed and embroidered textile mixed with traditional garment fabrics of Dire Dawa, 2025",
@@ -65,9 +65,9 @@ export default function HomePage() {
       role: "Director, producer, cinematographer, writer and narrator",
       description:
         '"Bet/Bota" reimagines the Ethiopian home, exploring memory and history through immersive sets and everyday objects.',
-      detailedDescription:
-        '"Bet/Bota" reimagines the Ethiopian home as a space where memory and history intersect with imagination. Set against 1970s Addis Ababa, the project unfolds through eight immersive sets ranging from elemental abstractions to reconstructed living spaces. At its heart, a dining room unites these worlds, revealing the quiet power of everyday objects. Both house and archive, "Bet/Bota" invites reflection on how space shapes us, and how we, in turn, shape space.',
-      materials: ["Traditional textiles", "Architectural elements", "Lighting systems", "Interactive spaces"],
+     detailedDescription:
+      "Bet/Bota reimagines the domestic interior as a site where memory, history, and imagination converge. Against the backdrop of 1970s Addis Ababa, the exhibition explores how architecture and the everyday objects we live with shape our emotions, identities, and collective memory. Through eight immersive sets, the work moves between elemental abstractions:- fire, air, water, earth and reconstructions of lived Ethiopian spaces, from the monochrome photo studios to the compact bachelor rooms of the 1970s. A dining room at the center binds these worlds together, its suspended sack of household items exposing what is often hidden: the quiet significance of what we keep and carry. Bet/Bota is both house and history, exhibition and archive- an invitation to reflect on how space holds us, and how we in turn hold space.",
+    materials: ["Traditional textiles", "Architectural elements", "Lighting systems", "Interactive spaces"],
       tags: ["architecture", "domestic", "cultural memory"],
       slidesLayout: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
       images: [
@@ -101,9 +101,9 @@ export default function HomePage() {
       medium: "Textile",
       description:
         "This sub-collection honors ancestral skin markings as symbols of protection, beauty, and spirituality. Inspired by the artist's late great-grandmother, transforms these sacred symbols into garments that carry memory, meaning, and resilience.",
-      detailedDescription:
-        "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
-      tags: ["kinship", "aesthetics", "architecture"],
+     detailedDescription:
+      "This sub-collection/middle/ honors ancestral skin markings, where traditional tattoos serve as protection against illness, symbols of strength, expressions of beauty, and are interwoven with spiritual and social symbolism. The project draws personal inspiration from a photograph of the artist’s late great-grandmother /top/, whose neck bears these sacred markings. Her image serves as a quiet yet powerful thread connecting past and present. sKINs N.E. celebrates ancestral body adornment as a form of wearable art, transforming symbols once etched into skin into garments that carry memory, meaning, and resilience. (This sub-project is currently on hold due to ongoing instability in the northern regions of Ethiopia.)",
+    tags: ["kinship", "aesthetics", "architecture"],
       images: [
         "/images/skins-all_01.webp",
         "/images/skins-all_02.webp",

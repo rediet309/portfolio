@@ -46,9 +46,6 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
     if (isOpen) {
       document.body.style.overflow = "hidden"
       setCurrentSlideIndex(0)
-      if (slides.length > 1) {
-        preloadImage(slides[1]?.images?.[0] || "")
-      }
     } else {
       document.body.style.overflow = "unset"
     }
@@ -171,7 +168,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
               {project.images?.map((image, index) => (
                 <div
                   key={index}
-                  className="h-full aspect-[3/4] relative overflow-hidden rounded-lg bg-neutral-100 flex items-center justify-center"
+                  className="h-full aspect-[4/5] relative overflow-hidden rounded-lg bg-neutral-100 flex items-center justify-center"
                 >
                   <img
                     src={image || "/placeholder.svg"}
