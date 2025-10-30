@@ -11,6 +11,7 @@ interface StudioProject {
   title: string
   year: string
   category: string
+  medium?: string
   description: string
   detailedDescription?: string
   image: string
@@ -22,7 +23,7 @@ interface StudioProject {
   images?: string[]
   client?: string
   videoUrl?: string
-  medium?: string
+  position?: string
 }
 
 const studioProjects: StudioProject[] = [
@@ -31,10 +32,11 @@ const studioProjects: StudioProject[] = [
     title: "sKINs: North Ethiopia",
     year: "2025",
     category: "In Studio",
+    medium: "Photography",
     description:
-      "This sub-collection honors ancestral skin markings as symbols of protection, beauty, and spirituality. Inspired by the artist's late great-grandmother, transforms these sacred symbols into garments that carry memory, meaning, and resilience.",
-     detailedDescription:
-      "This sub-collection/middle/ honors ancestral skin markings, where traditional tattoos serve as protection against illness, symbols of strength, expressions of beauty, and are interwoven with spiritual and social symbolism. The project draws personal inspiration from a photograph of the artist’s late great-grandmother /top/, whose neck bears these sacred markings. Her image serves as a quiet yet powerful thread connecting past and present. sKINs N.E. celebrates ancestral body adornment as a form of wearable art, transforming symbols once etched into skin into garments that carry memory, meaning, and resilience. (This sub-project is currently on hold due to ongoing instability in the northern regions of Ethiopia.)",
+      "",
+    detailedDescription:
+      "This sub-collection/middle/ honors ancestral skin markings, where traditional tattoos serve as protection against illness, symbols of strength, expressions of beauty, and are interwoven with spiritual and social symbolism. The project draws personal inspiration from a photograph of the artist's late great-grandmother /top/, whose neck bears these sacred markings. Her image serves as a quiet yet powerful thread connecting past and present. sKINs N.E. celebrates ancestral body adornment as a form of wearable art, transforming symbols once etched into skin into garments that carry memory, meaning, and resilience. (This sub-project is currently on hold due to ongoing instability in the northern regions of Ethiopia.)",
     image: "/images/skins-all_04.webp?height=600&width=800&text=sKINs+North+Ethiopia",
     position: "Filmmaker and textile artist",
     tags: ["kinship", "aesthetics", "architecture"],
@@ -50,10 +52,11 @@ const studioProjects: StudioProject[] = [
     title: "Hulet neteb project",
     year: "2022",
     category: "In Studio",
+    medium: "Studio documentation",
     description:
-      '"Hulet Neteb / Two Dots" uses the Ethiopian ":" to explore identity and heritage through hand-painted and pre-owned garments.',
+      "",
     detailedDescription:
-      "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
+      'Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark ":", a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia\'s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.',
     image: "/images/northern lines.webp?height=600&width=800&text=Hulet+Neteb",
     position: "Director, Producer, Curator, and Textile Artist",
     tags: ["symbology", "textile art", "ethiopian history"],
@@ -92,11 +95,12 @@ const studioProjects: StudioProject[] = [
     title: "Sheret Project",
     year: "2025",
     category: "In Studio",
+    medium: "Textile",
     description:
-      "The Sheret/Sarong is a tubular textile from Indonesia, used in East Africa for hot climates, rituals, and protection, and to wrap fallen soldiers.",
-   detailedDescription:
-      "The Sheret/Sarong/ is a tubular textile usually worn as a long skirt, or scarf by men. Through its dynamic patterns and colorways, it conveys a story from far away /originally from Indonesia/ and has made its way into East African traditions. It is vital in hot climates and preferred during khat chewing rituals/as shown in sKINs: Dire Dawa opening scene/ where it provides a breathable silhouette. For warriors in Ethiopia, it serves as protection from harsh sun and wind; a practical solution when carrying minimal items. During battle its role deepens even more; fallen soldiers are wrapped in their own Sheret when burials aren’t possible.",
-     image: "/images/b-11.webp?height=600&width=800&text=Sheret+Project",
+      "",
+    detailedDescription:
+      "The Sheret/Sarong/ is a tubular textile usually worn as a long skirt, or scarf by men. Through its dynamic patterns and colorways, it conveys a story from far away /originally from Indonesia/ and has made its way into East African traditions. It is vital in hot climates and preferred during khat chewing rituals/as shown in sKINs: Dire Dawa opening scene/ where it provides a breathable silhouette. For warriors in Ethiopia, it serves as protection from harsh sun and wind; a practical solution when carrying minimal items. During battle its role deepens even more; fallen soldiers are wrapped in their own Sheret when burials aren't possible.",
+    image: "/images/b-11.webp?height=600&width=800&text=Sheret+Project",
     position: "Textile Artist and researcher",
     tags: ["documentation", "preservation"],
     images: [
@@ -113,8 +117,9 @@ const studioProjects: StudioProject[] = [
     title: "YAL",
     year: "2025",
     category: "In Studio",
+    medium: "Studio documentation",
     description:
-      '"YAL / Ye Abayn Lij" explores ritual and design, named for the paradox of lacking one\'s own abundance.',
+      "",
     detailedDescription:
       "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
     image: "/images/kins.webp?height=600&width=800&text=YAL+Studio",
@@ -122,19 +127,18 @@ const studioProjects: StudioProject[] = [
     tags: ["ritual", "beautification", "functional design"],
     videoUrl: "/vid/Yal launch 8 bit video.mp4",
   },
-    {
+  {
     id: "portal-to-u-thiopia-archive",
     title: "Portal to U-thiopia",
     year: "2022",
     category: "Archive",
     medium: "Conceptual photography",
     description: "",
-    detailedDescription:
-      "",
+    detailedDescription: "",
     image: "/images/j.webp?height=600&width=800&text=Portal+U-thiopia+Archive",
     location: "Conceptual Archive",
     status: "Conceptual Archive",
-    position: "Conceptual artist and photographer", // Added artist role
+    position: "Conceptual artist and photographer",
     tags: ["conceptual", "utopia", "alternative reality"],
     photoCount: 4,
     images: ["/images/a.webp", "/images/b.webp", "/images/c.webp", "/images/d.webp"],
@@ -228,10 +232,7 @@ export default function InStudioPage() {
                       <h3 className="text-base sm:text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
-                        <div className="flex items-center space-x-1 text-neutral-500">
-                          <Calendar className="h-3 w-3" />
-                          <span>{project.year}</span>
-                        </div>
+                        
                         {project.position && (
                           <div className="flex items-center space-x-1 text-neutral-500">
                             <User className="h-3 w-3" />
@@ -246,7 +247,7 @@ export default function InStudioPage() {
                         )}
                       </div>
 
-                      <p className="text-xs text-neutral-400">{project.medium}</p>
+                      {project.medium && <p className="text-xs text-neutral-400">{project.medium}</p>}
                     </div>
 
                     <p className="text-xs sm:text-sm leading-relaxed text-neutral-600 line-clamp-3">

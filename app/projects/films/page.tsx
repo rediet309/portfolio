@@ -33,7 +33,7 @@ const filmProjects: FilmProject[] = [
     medium: "Film",
     description: "",
     detailedDescription:
-      "sKINs is a film and textile-based documentary project that traces the movement of visual elements such as motifs, symbols, rituals, and garments across mediums, cultures, and generations. It explores how visual language is exchanged, transformed, and reinterpreted through time. Rooted in the idea that our lives are extensions of our skin: surfaces where culture, memory, and place imprint themselves. The title plays on ‘KIN’, pointing to kinship and shared humanity, while the “s” speaks to skin as both protection and adornment",
+      "sKINs is a film and textile-based documentary project that traces the movement of visual elements such as motifs, symbols, rituals, and garments across mediums, cultures, and generations. It explores how visual language is exchanged, transformed, and reinterpreted through time. Rooted in the idea that our lives are extensions of our skin: surfaces where culture, memory, and place imprint themselves. The title plays on 'KIN', pointing to kinship and shared humanity, while the \"s\" speaks to skin as both protection and adornment",
     image: "/images/skins-diredawa.webp?height=600&width=800&text=sKINs+Dire+Dawa",
     location: "Dire Dawa, Ethiopia",
     position: "Director, producer, cinematographer, writer and narrator",
@@ -49,10 +49,10 @@ const filmProjects: FilmProject[] = [
     medium: "Experimental film",
     description: "",
     detailedDescription:
-      "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
+      'Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark ":", a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia\'s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.',
     image: "/images/05_Maya Sight_d.webp?height=600&width=800&text=Hulet+Neteb",
     location: "Ethiopia",
-    position: "",
+    position: "Director, producer, cinematographer, writer and narrator",
     tags: ["symbology", "textile art", "ethiopian history"],
     videoUrl: "https://drive.google.com/file/d/1mF4sGEPb7YrYdEeUFYA2vZERRdR9F7G5/view?usp=sharing",
   },
@@ -63,11 +63,11 @@ const filmProjects: FilmProject[] = [
     category: "Films",
     medium: "Documentary series",
     description: "",
-   detailedDescription:
-      "“Ete’ya,” a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete’ya’s angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete’ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete’ya’s legacy.",
+    detailedDescription:
+      "\"Ete'ya,\" a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete'ya's angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete'ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete'ya's legacy.",
     image: "/images/DecodingLegends.webp?height=600&width=800&text=Decoding+Legends",
     location: "Ethiopia",
-    position: "",
+    position: "Creative director, costume design",
     tags: ["history", "story telling", "costume"],
     videoUrl: "https://youtu.be/0v1vwgnqHRU?si=uJkjUumPFlwMwHJy",
   },
@@ -161,24 +161,7 @@ export default function FilmsPage() {
                     <div className="space-y-2">
                       <h3 className="text-base sm:text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
-                      <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
-                        <div className="flex items-center space-x-1 text-neutral-500">
-                          <Calendar className="h-3 w-3" />
-                          <span>{project.year}</span>
-                        </div>
-                        {project.location && (
-                          <div className="flex items-center space-x-1 text-neutral-500">
-                            <MapPin className="h-3 w-3" />
-                            <span className="truncate">{project.location}</span>
-                          </div>
-                        )}
-                        {project.visitors && (
-                          <div className="flex items-center space-x-1 text-neutral-500">
-                            <Users className="h-3 w-3" />
-                            <span>{project.visitors}</span>
-                          </div>
-                        )}
-                      </div>
+                      
 
                       <p className="text-xs text-neutral-400">{project.medium}</p>
 

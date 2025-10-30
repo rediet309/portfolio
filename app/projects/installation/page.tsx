@@ -34,7 +34,7 @@ const installationProjects: InstallationProject[] = [
     year: "2025",
     category: "Installation",
     description:
-      "An immersive textile installation and film screening exploring the r/s between skin, fabric, and cultural identity in Eastern Ethiopia.",
+      "",
     detailedDescription:
       "sKINs, Film screening inside a Textile art tent Installation: Suspended tappering tent structure incapsulating the film screening within. Bottom 3m x 3m, top 2.3m x 2.3 m, height 2m",
     image: "/images/01_front.webp?height=600&width=800&text=sKINs+East+Ethiopia+Installation",
@@ -61,7 +61,7 @@ const installationProjects: InstallationProject[] = [
     year: "2025",
     category: "Installation",
     description:
-      "“YAL / Ye Abayn Lij” explores ritual and design, named for the paradox of lacking one's own abundance.",
+      "",
     detailedDescription:
       "YAL/Ye Abayn Lij/ is an evolving body of work that houses a growing number of sub-collections each narrating a story focused on ritual, beautification, and functional design. The Amharic phrase “Ye Abayn Lij Weha Temaw” translates to “Thirsty is the child of the Nile” symbolizing the paradox of not benefiting from one’s own abundant resources.",
     image: "/images/IMG_2859.webp?height=600&width=800&text=YAL+Exhibition",
@@ -96,7 +96,7 @@ const installationProjects: InstallationProject[] = [
     year: "2022",
     category: "Installation",
     description:
-      "“Bet/Bota” reimagines the Ethiopian home, exploring memory and history through immersive sets and everyday objects.",
+      "",
     detailedDescription:
       "Bet/Bota reimagines the domestic interior as a site where memory, history, and imagination converge. Against the backdrop of 1970s Addis Ababa, the exhibition explores how architecture and the everyday objects we live with shape our emotions, identities, and collective memory. Through eight immersive sets, the work moves between elemental abstractions:- fire, air, water, earth and reconstructions of lived Ethiopian spaces, from the monochrome photo studios to the compact bachelor rooms of the 1970s. A dining room at the center binds these worlds together, its suspended sack of household items exposing what is often hidden: the quiet significance of what we keep and carry. Bet/Bota is both house and history, exhibition and archive- an invitation to reflect on how space holds us, and how we in turn hold space.",
     image: "/images/a4a.webp?height=600&width=800&text=Bet+Bota+Installation",
@@ -134,7 +134,7 @@ const installationProjects: InstallationProject[] = [
     year: "2022",
     category: "Installation",
     description:
-      "“Hulet Neteb / Two Dots” uses the Ethiopian “:” to explore identity and heritage through hand-painted and pre-owned garments.",
+      "",
     detailedDescription:
       "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
     image: "/images/IMG_4342.webp?height=600&width=800&text=Hulet+Neteb+Installation",
@@ -158,7 +158,7 @@ const installationProjects: InstallationProject[] = [
     year: "2021",
     category: "Installation",
     description:
-      "“Ete'ya” reimagines traditional Ethiopian attire with a blue cloak, red pants, and headscarf, honoring the legendary queen.",
+      "",
     detailedDescription:
       "“Ete’ya,” a tribute to the revered Queen of Ethiopia, draws inspiration from her iconic blue cloak. This project modernizes traditional Ethiopian garments, featuring a hand-dyed cotton cloak with extended sleeves in homage to the queen. Complementing the cloak, the red wrap pant prioritizes comfort and flexibility for the dancer, tied at the wrists and embroidered with wing imagery symbolizing Ete’ya’s angelic disappearance. Inspired by the tradition in Gojam, where women shave their heads and wear black headscarves in tribute to Ete’ya, this project incorporates a red headscarf, symbolizing love and devotion to the queen. Set in the lively Merkato market in Addis Ababa, the dancer moves through the bustling crowd, embodying the struggle to preserve identity amid change. The choreography captures the beauty of fearlessness, creating a powerful tribute to Queen Ete’ya’s legacy.",
     image: "/images/IMG_5082.webp?height=600&width=800&text=Decoding+Legends+Installation",
@@ -271,8 +271,8 @@ export default function InstallationPage() {
 
                       <div className="flex items-center space-x-4 text-sm">
                         <div className="flex items-center space-x-1 text-neutral-500">
-                          <Calendar className="h-3 w-3" />
-                          <span>{project.year}</span>
+                          
+                          
                         </div>
                         {project.position && (
                           <div className="flex items-center space-x-1 text-neutral-500">

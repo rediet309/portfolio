@@ -208,10 +208,7 @@ export default function CommissionsPage() {
                       <h3 className="text-base sm:text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
                       <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
-                        <div className="flex items-center space-x-1 text-neutral-500">
-                          <Calendar className="h-3 w-3" />
-                          <span>{project.year}</span>
-                        </div>
+                        
                         {project.duration && (
                           <div className="flex items-center space-x-1 text-neutral-500">
                             <Clock className="h-3 w-3" />

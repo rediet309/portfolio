@@ -130,8 +130,8 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
 
               {project.duration && (
                 <div className="flex justify-between">
-                  
-                  
+                  <span className="text-neutral-500">Duration</span>
+                  <span className="text-black font-medium">{project.duration}</span>
                 </div>
               )}
 
@@ -143,11 +143,16 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
 
             {/* Description */}
             <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-medium text-black">About</h3>
-              <p className="text-neutral-700 leading-relaxed text-sm">
-                {project.detailedDescription || project.description}
-              </p>
+              <h3 className="text-base sm:text-lg font-medium text-black">Position</h3>
+              <p className="text-neutral-700 leading-relaxed text-sm">{project.position}</p>
             </div>
+
+            {project.detailedDescription && (
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-medium text-black">Description</h3>
+                <p className="text-neutral-700 leading-relaxed text-sm">{project.detailedDescription}</p>
+              </div>
+            )}
 
             {project.tags && project.tags.length > 0 && (
               <div className="space-y-2 sm:space-y-3">

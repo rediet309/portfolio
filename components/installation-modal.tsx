@@ -363,13 +363,14 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
           <X className="h-5 w-5 text-black" />
         </button>
 
-        <div className="w-full max-w-sm max-h-full aspect-[9/16] bg-neutral-900 rounded-lg flex items-center justify-center">
+        <div className="w-[360px] h-[640px] bg-neutral-900 rounded-lg flex items-center justify-center">
           {project.videoUrl ? (
             <iframe
               src={project.videoUrl}
               className="w-full h-full rounded-lg"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              loading="lazy"
             />
           ) : (
             <div className="text-center space-y-4">
