@@ -34,7 +34,7 @@ const commissionProjects: Project[] = [
     category: "Commissioned",
     medium: "Music Video",
     description:
-      "A heartfelt commercial exploring childhood experiences and emotional development through Ethiopian cultural lens.",
+      "",
     detailedDescription:
       "",
     image: "/images/HOC.webp?height=600&width=800&text=Heart+of+a+Child",
@@ -49,7 +49,7 @@ const commissionProjects: Project[] = [
     year: "2024",
     category: "Commissioned",
     medium: "Commercial Film",
-    description: "Easter celebration commercial for Arada showcasing community and tradition.",
+    description: "",
     detailedDescription:
       "",
     image: "/images/arada.webp?height=600&width=800&text=Arada+Easter+Commercial",
@@ -64,7 +64,7 @@ const commissionProjects: Project[] = [
     year: "2024",
     category: "Commissioned",
     medium: "Film",
-    description: "Commissioned documentary trailer exploring water rights and environmental conservation.",
+    description: "",
     detailedDescription:
       "",
     image: "/images/river.webp?height=600&width=800&text=The+River+Trailer",
@@ -79,7 +79,7 @@ const commissionProjects: Project[] = [
     year: "2024",
     category: "Commissioned",
     medium: "Skateboarding",
-    description: "Creative collaboration documenting the emerging skateboarding culture in Ethiopia.",
+    description: "",
     detailedDescription:
       "",
     image: "/images/a12-1.webp",
@@ -93,10 +93,10 @@ const commissionProjects: Project[] = [
     title: "Except this time nothing returns from the ashes",
     year: "2023",
     category: "Commissioned",
-    description: "Creative collaboration documenting the emerging skateboarding culture in Ethiopia.",
+    description: "",
     detailedDescription:
       "",
-    image: "/images/j.webp",
+    image: "/images/a7-0.webp",
     position: "Modeling",
     images: Array.from({ length: 8 }, (_, i) => `/placeholder.svg?height=800&width=600&text=Ashes+Photo+${i + 1}`),
     photoCount: 8,

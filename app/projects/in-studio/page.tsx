@@ -122,6 +122,23 @@ const studioProjects: StudioProject[] = [
     tags: ["ritual", "beautification", "functional design"],
     videoUrl: "/vid/Yal launch 8 bit video.mp4",
   },
+    {
+    id: "portal-to-u-thiopia-archive",
+    title: "Portal to U-thiopia",
+    year: "2022",
+    category: "Archive",
+    medium: "Conceptual photography",
+    description: "",
+    detailedDescription:
+      "",
+    image: "/images/j.webp?height=600&width=800&text=Portal+U-thiopia+Archive",
+    location: "Conceptual Archive",
+    status: "Conceptual Archive",
+    position: "Conceptual artist and photographer", // Added artist role
+    tags: ["conceptual", "utopia", "alternative reality"],
+    photoCount: 4,
+    images: ["/images/a.webp", "/images/b.webp", "/images/c.webp", "/images/d.webp"],
+  },
 ]
 
 export default function InStudioPage() {
