@@ -156,7 +156,7 @@ const allProjectsData = [
     id: "the-river",
     title: "The River",
     year: 2024,
-    category: "Films",
+    category: "Commissioned",
     medium: "Film",
     description:
       "A contemplative short documentary about the relationship between communities and water sources in Ethiopia.",
@@ -170,7 +170,7 @@ const allProjectsData = [
     id: "msfts-ethiopia-skate-film",
     title: "MSFTS x Ethiopia Skate",
     year: 2024,
-    category: "Films",
+    category: "Commissioned",
     medium: "Brand Collaboration Documentary",
     description:
       "A dynamic documentary capturing the emerging skateboarding culture in Ethiopia through the lens of fashion and youth expression.",
