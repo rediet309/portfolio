@@ -166,6 +166,7 @@ const allProjectsData = [
     videoUrl: "https://youtu.be/z_ijqn0ewM0?si=mbFQK0oZc8tatslH",
     location: "Ethiopia",
   },
+  /*
   {
     id: "msfts-ethiopia-skate-film",
     title: "MSFTS x Ethiopia Skate",
@@ -182,6 +183,7 @@ const allProjectsData = [
     location: "Addis Ababa, Ethiopia",
     position: "Creative Direction, stylist, and video contributions",
   },
+  */
   {
     id: "arada-easter-commercial",
     title: "Arada Easter Commercial",
