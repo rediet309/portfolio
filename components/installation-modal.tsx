@@ -364,25 +364,27 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
         </button>
 
         <div className="flex items-center justify-center w-full h-[96vh]">
-          <div className="w-[90vw] sm:w-[85vw] md:w-full md:max-w-xs lg:max-w-sm xl:max-w-md aspect-[9/16] bg-neutral-900 rounded-lg flex items-center justify-center">
+          <div className="w-[90vw] sm:w-[85vw] md:w-full md:max-w-xs lg:max-w-sm xl:max-w-md aspect-[9/16] bg-neutral-900 rounded-lg overflow-hidden">
             {project.videoUrl ? (
               <iframe
                 src={project.videoUrl}
-                className="w-full h-full rounded-lg"
+                className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"
               />
             ) : (
-              <div className="text-center space-y-4 p-4">
-                <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <div className="text-white">
-                  <div className="text-lg font-medium">{project.title}</div>
-                  <div className="text-sm text-white/70">1080 × 1920</div>
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="text-center space-y-4 p-4">
+                  <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <div className="text-white">
+                    <div className="text-lg font-medium">{project.title}</div>
+                    <div className="text-sm text-white/70">1080 × 1920</div>
+                  </div>
                 </div>
               </div>
             )}
