@@ -164,6 +164,56 @@
   display: none;
 }
 
+/* Safari & Cross-browser responsive video container optimizations */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* Safari GPU acceleration and rendering fixes */
+.video-container,
+.video-container iframe {
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Ensure iframe fills container without distortion */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive modal padding for different screens */
+@media (max-width: 640px) {
+  .modal-video-wrapper {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .modal-video-wrapper {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .modal-video-wrapper {
+    padding: 1rem;
+  }
+}
+
 /* Smooth transitions */
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
