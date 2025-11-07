@@ -363,8 +363,19 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
           <X className="h-5 w-5 text-black" />
         </button>
 
-        <div className="flex items-center justify-center w-full h-[96vh]">
-          <div className="w-[90vw] sm:w-[85vw] md:w-full md:max-w-xs lg:max-w-sm xl:max-w-md aspect-[9/16] bg-neutral-900 rounded-lg overflow-hidden">
+        {/* The following div replaces the original content for project.id === "yal-studio" */}
+        <div className="flex items-center justify-center w-full h-[96vh] p-2 md:p-4">
+          <div
+            className="relative w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl"
+            style={{
+              aspectRatio: "9 / 16",
+              maxHeight: "96vh",
+              maxWidth: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {project.videoUrl ? (
               <iframe
                 src={project.videoUrl}
@@ -372,6 +383,10 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"
+                style={{
+                  border: "none",
+                  display: "block",
+                }}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
