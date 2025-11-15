@@ -89,7 +89,7 @@ export default function ShopPage() {
       available: true,
       description:
         "Versatile collection including tops, durags, neck gaiters, and sleeve/leg extensions. Each piece designed for layering and personal expression.",
-      subcategory: "tops, durags, neck gaiter, sleeve/leg extensions",
+      subcategory: "",
     },
     {
       id: 6,
@@ -101,7 +101,7 @@ export default function ShopPage() {
       available: true,
       description:
         "Innovative reversible clothing line featuring short sleeve shirts, full suits, and coats. Each piece offers two distinct looks in one garment.",
-      subcategory: "short sleeve shirts, reversible full suit, reversible coats",
+      subcategory: "",
     },
     /*{
       id: 7,
@@ -125,7 +125,7 @@ export default function ShopPage() {
       available: false,
       description:
         "Limited capsule collection of structured jackets combining traditional Ethiopian motifs with contemporary tailoring techniques.",
-      subcategory: "capsule collection",
+      subcategory: "",
     },
 
     // Posters, Postcards, Stickers
