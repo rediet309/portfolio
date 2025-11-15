@@ -152,7 +152,7 @@ This is an automated order request from Red Suk online store.`,
 
   const handleShippingSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (formData.name && formData.email && formData.address && formData.city && formData.country) {
+    if (formData.name && formData.email && formData.address && formData.city && formData.country && formData.paymentMethod) { // Added paymentMethod to the condition
       setCurrentStep("payment")
     }
   }
@@ -543,9 +543,65 @@ This is an automated order request from Red Suk online store.`,
                       </p>
                     </div>
 
+                    <div className="p-8 rounded-lg border border-neutral-200 bg-neutral-50">
+                      <div className="flex items-center gap-3 mb-6">
+                        <Globe className="h-6 w-6 text-blue-600" />
+                        <h2 className="text-xl font-medium text-black">Payment Method</h2>
+                      </div>
+
+                      <div className="space-y-3">
+                        <div className="flex items-center">
+                          <input
+                            type="radio"
+                            id="wise"
+                            name="paymentMethod"
+                            value="Wise"
+                            checked={formData.paymentMethod === "Wise"}
+                            onChange={handleInputChange}
+                            required
+                            className="w-4 h-4 text-blue-600 border-neutral-300 focus:ring-blue-500"
+                          />
+                          <label htmlFor="wise" className="ml-3 text-sm text-neutral-700 cursor-pointer">
+                            Wise (+251-911-234567)
+                          </label>
+                        </div>
+                        <div className="flex items-center">
+                          <input
+                            type="radio"
+                            id="telebirr"
+                            name="paymentMethod"
+                            value="Telebirr"
+                            checked={formData.paymentMethod === "Telebirr"}
+                            onChange={handleInputChange}
+                            required
+                            className="w-4 h-4 text-blue-600 border-neutral-300 focus:ring-blue-500"
+                          />
+                          <label htmlFor="telebirr" className="ml-3 text-sm text-neutral-700 cursor-pointer">
+                            Telebirr
+                          </label>
+                        </div>
+                        <div className="flex items-center">
+                          <input
+                            type="radio"
+                            id="bank"
+                            name="paymentMethod"
+                            value="International Bank Transfer (Commercial Bank of Ethiopia)"
+                            checked={formData.paymentMethod === "International Bank Transfer (Commercial Bank of Ethiopia)"}
+                            onChange={handleInputChange}
+                            required
+                            className="w-4 h-4 text-blue-600 border-neutral-300 focus:ring-blue-500"
+                          />
+                          <label htmlFor="bank" className="ml-3 text-sm text-neutral-700 cursor-pointer">
+                            International Bank Transfer (CBE)
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
                     <Button
                       type="submit"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-lg font-medium transition-colors duration-200"
+                      disabled={!formData.paymentMethod}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-lg font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Continue to Order Confirmation
                     </Button>
