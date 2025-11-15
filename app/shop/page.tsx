@@ -29,7 +29,7 @@ export default function ShopPage() {
 
   const items = [
     // Textile Art
-    {
+    /*{
       id: 1,
       title: "sKINs: Dire Dawa Textile Installation",
       category: "textile-art",
@@ -40,7 +40,7 @@ export default function ShopPage() {
       isEmailPrice: true,
       description:
         "A large-scale textile installation exploring cultural narratives through traditional and contemporary techniques. This immersive piece transforms space through layered textile elements.",
-    },
+    }, */
 
     // Clothing Items
     {
@@ -103,7 +103,7 @@ export default function ShopPage() {
         "Innovative reversible clothing line featuring short sleeve shirts, full suits, and coats. Each piece offers two distinct looks in one garment.",
       subcategory: "short sleeve shirts, reversible full suit, reversible coats",
     },
-    {
+    /*{
       id: 7,
       title: "Angel Eyes",
       category: "clothing",
@@ -114,7 +114,7 @@ export default function ShopPage() {
       description:
         "Artisanal jackets and vests featuring hand-painted designs and intricate embroidery. Each piece is unique and tells its own visual story.",
       subcategory: "Hand painted/embroidered jackets and vests",
-    },
+    },*/
     {
       id: 8,
       title: "Hulet Neteb Jackets",
