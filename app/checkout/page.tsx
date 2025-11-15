@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, Phone, Mail, MapPin, Copy, CheckCircle, Send, User, Globe } from "lucide-react"
+import { ArrowLeft, Phone, Mail, MapPin, Copy, CheckCircle, Send, User, Globe } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/lib/cart-context"
 
@@ -20,6 +20,7 @@ export default function CheckoutPage() {
     city: "",
     country: "",
     message: "",
+    paymentMethod: "", // added payment method field
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
@@ -75,6 +76,8 @@ export default function CheckoutPage() {
         )
         .join("\n")
 
+      const paymentMethodInfo = formData.paymentMethod ? `\nPAYMENT METHOD:\n${formData.paymentMethod}` : ""
+
       const formDataToSend = new FormData()
       formDataToSend.append("access_key", "aabb04ff-ba9b-4ba6-b363-195862d42ed2")
       formDataToSend.append("name", formData.name)
@@ -107,12 +110,12 @@ ${orderSummary}
 
 Subtotal: $${getSubtotal().toLocaleString()}
 Shipping: TO BE CALCULATED BASED ON COUNTRY
-Total (before shipping): $${total.toFixed(2)}
+Total (before shipping): $${total.toFixed(2)}${paymentMethodInfo}
 
 NEXT STEPS:
 1. Calculate shipping cost for ${formData.country}
 2. Send total cost to customer
-3. Customer will then proceed with payment
+3. Customer will then proceed with payment via ${formData.paymentMethod || "their preferred method"}
 
 This is an automated order request from Red Suk online store.`,
       )
@@ -129,7 +132,7 @@ This is an automated order request from Red Suk online store.`,
 
       if (response.ok && result.success) {
         setSubmitStatus("success")
-        setFormData({ name: "", email: "", phone: "", address: "", city: "", country: "", message: "" })
+        setFormData({ name: "", email: "", phone: "", address: "", city: "", country: "", message: "", paymentMethod: "" })
       } else {
         setSubmitStatus("error")
       }
@@ -585,6 +588,9 @@ This is an automated order request from Red Suk online store.`,
                       <p>
                         <strong>Country:</strong> {formData.country}
                       </p>
+                      <p>
+                        <strong>Payment Method:</strong> {formData.paymentMethod}
+                      </p>
                     </div>
                     <Button
                       onClick={() => setCurrentStep("shipping")}
@@ -607,6 +613,56 @@ This is an automated order request from Red Suk online store.`,
 
                       <form onSubmit={handleFormSubmit} className="space-y-4">
                         <div>
+                          <label className="block text-sm font-medium text-blue-800 mb-3">
+                            Preferred Payment Method *
+                          </label>
+                          <div className="space-y-2">
+                            <div className="flex items-center">
+                              <input
+                                type="radio"
+                                id="wise"
+                                name="paymentMethod"
+                                value="Wise"
+                                checked={formData.paymentMethod === "Wise"}
+                                onChange={handleInputChange}
+                                className="w-4 h-4 text-blue-600 border-neutral-300 focus:ring-blue-500"
+                              />
+                              <label htmlFor="wise" className="ml-3 text-sm text-blue-800 cursor-pointer">
+                                Wise (+251-911-234567)
+                              </label>
+                            </div>
+                            <div className="flex items-center">
+                              <input
+                                type="radio"
+                                id="telebirr"
+                                name="paymentMethod"
+                                value="Telebirr"
+                                checked={formData.paymentMethod === "Telebirr"}
+                                onChange={handleInputChange}
+                                className="w-4 h-4 text-blue-600 border-neutral-300 focus:ring-blue-500"
+                              />
+                              <label htmlFor="telebirr" className="ml-3 text-sm text-blue-800 cursor-pointer">
+                                Telebirr
+                              </label>
+                            </div>
+                            <div className="flex items-center">
+                              <input
+                                type="radio"
+                                id="bank"
+                                name="paymentMethod"
+                                value="International Bank Transfer (Commercial Bank of Ethiopia)"
+                                checked={formData.paymentMethod === "International Bank Transfer (Commercial Bank of Ethiopia)"}
+                                onChange={handleInputChange}
+                                className="w-4 h-4 text-blue-600 border-neutral-300 focus:ring-blue-500"
+                              />
+                              <label htmlFor="bank" className="ml-3 text-sm text-blue-800 cursor-pointer">
+                                International Bank Transfer (CBE)
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
                           <label htmlFor="message" className="block text-sm font-medium text-blue-800 mb-1">
                             Additional Notes (Optional)
                           </label>
@@ -623,8 +679,8 @@ This is an automated order request from Red Suk online store.`,
 
                         <Button
                           type="submit"
-                          disabled={isSubmitting}
-                          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
+                          disabled={isSubmitting || !formData.paymentMethod} // disabled until payment method is selected
+                          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {isSubmitting ? (
                             <>
