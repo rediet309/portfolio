@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ShoppingCart, ArrowLeft, ChevronRight, ChevronLeft, Minus, Plus, Play, X } from "lucide-react"
+import { ShoppingCart, ArrowLeft, ChevronRight, ChevronLeft, Minus, Plus, Play, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -252,6 +252,19 @@ export default function ItemPage({ params }: { params: { id: string } }) {
     const panelDescription = "hand embroidered one of a kind back panel."
     const detailedDescription = ""
 
+    const unavailablePanelsHaori = [1, 2, 3, 4, 8, 9, 10, 11, 12, 14, 15]
+    const unavailablePanelsCargo = [1, 2, 3, 4, 8, 9, 10, 11, 12, 14, 15]
+    const unavailablePanelsPants = [1, 2, 3, 4, 8, 9, 10]
+    
+    let isUnavailable = false
+    if (item.id === 3) {
+      isUnavailable = unavailablePanelsHaori.includes(panelNumber)
+    } else if (item.id === 2) {
+      isUnavailable = unavailablePanelsCargo.includes(panelNumber)
+    } else if (item.id === 4) {
+      isUnavailable = unavailablePanelsPants.includes(panelNumber)
+    }
+
     if (item.id === 2) {
       const cargoJacketImages = [
         "/images/01.webp",
@@ -324,7 +337,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
       image: imageUrl,
       description: panelDescription,
       detailedDescription,
-      available: true,
+      available: !isUnavailable,
       price: `$${(Math.random() * 30 + 15).toFixed(0)}`,
       material: ["Canvas", "Cotton Twill", "Ripstop", "Denim"][Math.floor(Math.random() * 4)],
       dimensions: '8" x 12"',
@@ -711,8 +724,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                                   key={panel.id}
                                   value={panel.id.toString()}
                                   className="text-black hover:bg-neutral-100"
+                                  disabled={!panel.available}
                                 >
-                                  {panel.name} (10 available)
+                                  {panel.name}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -747,10 +761,10 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                       {/* Add to Cart */}
                       <Button
                         onClick={addToCart}
-                        disabled={!item.available || quantity > maxQuantity}
+                        disabled={!item.available || quantity > maxQuantity || !currentPanel?.available}
                         className="w-full h-12 text-sm rounded-full bg-black text-white hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        Add to Cart
+                        {currentPanel && !currentPanel.available ? "Sold Out" : "Add to Cart"}
                       </Button>
                     </div>
                   )}
@@ -1135,8 +1149,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
 
             <div className="grid grid-cols-5 gap-3">
               {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
-                <div key={panel.id} onClick={() => openPanelModal(panel)} className="group cursor-pointer">
-                  <div className="bg-neutral-100 rounded overflow-hidden mb-2 relative" style={{ aspectRatio: "9/16" }}>
+                <div key={panel.id} onClick={() => panel.available && openPanelModal(panel)} className="group cursor-pointer">
+                  <div className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${!panel.available ? 'opacity-50' : ''}`} style={{ aspectRatio: "9/16" }}>
                     <Image
                       src={
                         panel.image ||
@@ -1147,17 +1161,23 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         "/placeholder.svg" ||
                         "/placeholder.svg" ||
                         "/placeholder.svg"
-                      }
+                       || "/placeholder.svg"}
                       alt={panel.name}
                       width={90}
                       height={160}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-1 py-0.5 rounded">
-                      10
-                    </div>
+                    {panel.available ? (
+                      <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                        Available
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <span className="text-white text-xs font-medium">Sold Out</span>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-xs font-medium text-black truncate text-center">{panel.name}</p>
+                  <p className={`text-xs font-medium text-black truncate text-center ${!panel.available ? 'text-gray-500' : ''}`}>{panel.name}</p>
                 </div>
               ))}
             </div>
