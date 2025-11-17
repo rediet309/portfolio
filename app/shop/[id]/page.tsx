@@ -603,7 +603,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
           <div className="grid grid-cols-12 gap-8">
             {/* Left Side - Image (Narrower) */}
             <div className="col-span-12 lg:col-span-4 space-y-6">
-              <div className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto aspect-[9/16] h-[80vh]">
+              <div className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto aspect-[9/16] h-[80vh] px-4 flex items-center justify-center">
                 <Image
                   src={
                     item.hasColorOptions && currentColorOption
@@ -613,7 +613,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                   alt={item.title}
                   width={500}
                   height={630}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>
