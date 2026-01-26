@@ -395,12 +395,11 @@ const allProjectsData = [
       "",
     detailedDescription:
       "Hulet Neteb / Two Dots takes its name from the Ethiopian punctuation mark “:”, a symbol that both separates and connects words in Amharic writing. This project is an exploration of identity, history, and culture drawing from moments near and far in time, all rooted in Ethiopia’s rich heritage. Through a thoughtful interplay of accessories, makeup, and a diverse range of garments including hand-painted pieces and thoughtfully chosen pre-owned clothing, the artist embraces the transformative power of revival in fashion. By reimagining these elements, Hulet Neteb creates a living bond between herself and her environment, weaving personal presence and cultural narrative into a vibrant visual language. This process of embodiment, bringing to life a blend of remembered and imagined stories, unfolds across a series of concepts. Here, clothing becomes more than adornment; it is a medium through which history, identity, and creativity converse and coexist.",
-    image: "/images/IMG_4342.webp",
+    image: "/images/FUA19675.webp",
     tags: ["symbology", "textile art", "ethiopian history"],
     materials: ["Interactive sensors", "Digital displays", "Physical objects", "Sound design"],
     photoCount: 7,
     images: [
-      "/images/IMG_4342.webp",
       "/images/FUA19675.webp",
       "/images/FUA19684.webp",
       "/images/FUA19689.webp",
