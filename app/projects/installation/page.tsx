@@ -111,7 +111,7 @@ const installationProjects: InstallationProject[] = [
       "/images/a2_of water.webp", // Living room reconstruction
       "/images/a2a.webp",
       "/images/a3_of earth.webp",
-      "/images/a3a.webp",
+      "/images/Bet bota project photo.webp",
       "/images/a4_of air.webp",
       "/images/a4a.webp",
       "/images/a5_merger.webp",
