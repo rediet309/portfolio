@@ -61,7 +61,7 @@ export default function HomePage() {
       title: "Bet Bota",
       year: "2022",
       category: "Installation",
-      medium: "Film",
+      medium: "Installation",
       role: "Director, producer, cinematographer, writer and narrator",
       description:
         '"Bet/Bota" reimagines the Ethiopian home, exploring memory and history through immersive sets and everyday objects.',
