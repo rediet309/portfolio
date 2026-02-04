@@ -152,20 +152,20 @@ const allProjectsData = [
   },
 
   // 2024 Projects
-  {
-    id: "the-river",
-    title: "The River",
-    year: 2024,
-    category: "Commissioned",
-    medium: "Film",
-    description:
-      "A contemplative short documentary about the relationship between communities and water sources in Ethiopia.",
-    detailedDescription: "",
-    image: "/images/river.webp?height=600&width=800&text=The+River",
-    tags: ["community", "women", "water"],
-    videoUrl: "https://youtu.be/z_ijqn0ewM0?si=mbFQK0oZc8tatslH",
-    location: "Ethiopia",
-  },
+  // {
+  //   id: "the-river",
+  //   title: "The River",
+  //   year: 2024,
+  //   category: "Commissioned",
+  //   medium: "Film",
+  //   description:
+  //     "A contemplative short documentary about the relationship between communities and water sources in Ethiopia.",
+  //   detailedDescription: "",
+  //   image: "/images/river.webp?height=600&width=800&text=The+River",
+  //   tags: ["community", "women", "water"],
+  //   videoUrl: "https://youtu.be/z_ijqn0ewM0?si=mbFQK0oZc8tatslH",
+  //   location: "Ethiopia",
+  // },
   /*
   {
     id: "msfts-ethiopia-skate-film",
