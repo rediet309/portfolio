@@ -35,7 +35,7 @@ interface InstallationModalProps {
 
 const preloadImage = (src: string) => {
   if (typeof window !== "undefined") {
-    const img = new Image()
+    const img = new window.Image()
     img.src = src
   }
 }
@@ -845,7 +845,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
         } else {
           for (let i = 0; i < project.slidesLayout.length; i++) {
             const photosPerSlide = project.slidesLayout[i]
-            const slideImages = project.images.slice(imageIndex, imageIndex + photosPerSlide)
+            const slideImages: string[] = (project.images ?? []).slice(imageIndex, imageIndex + photosPerSlide)
 
             for (let j = 0; j < photosPerSlide; j++) {
               const unsplashImages = [
@@ -1036,7 +1036,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                           : "grid-cols-3 auto-rows-fr"
                   }`}
                 >
-                  {currentSlide.images.map((image, index) => {
+                  {(currentSlide.images ?? []).map((image: string, index: number) => {
                     let aspectRatio = "aspect-square"
 
                     if (project.id === "skins-north-ethiopia") {
@@ -1088,7 +1088,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                   }`}
                   style={{ maxHeight: "100%", minHeight: "100%" }}
                 >
-                  {currentSlide.images.map((image, index) => {
+                  {(currentSlide.images ?? []).map((image: string, index: number) => {
                     let aspectRatio = "aspect-square"
 
                     if (currentSlide.gridType === "1x4-portrait") {
@@ -1124,7 +1124,7 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
             ) : currentSlide?.type === "horizontal-grid" ? (
               <div className="w-full h-full p-6 overflow-x-auto">
                 <div className="flex h-full gap-0 min-w-max">
-                  {currentSlide.images.map((image, index) => (
+                  {(currentSlide.images ?? []).map((image: string, index: number) => (
                     <div
                       key={index}
                       className="h-full aspect-[4/5] relative overflow-hidden rounded-lg bg-neutral-100 flex items-center justify-center"

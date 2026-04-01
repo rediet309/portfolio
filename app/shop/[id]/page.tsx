@@ -26,21 +26,43 @@ interface Panel {
   stock: number
 }
 
-export default function ItemPage({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}) {
-  // unwrap the params promise
-  const { id } = use(params)
+interface ImageDescription {
+  title: string
+  content: string[]
+}
 
+interface ItemData {
+  id: number
+  title: string
+  category: string
+  price: string
+  image: string
+  description: string
+  detailedDescription?: string
+  available: boolean
+  isEmailPrice: boolean
+  videoUrl: string | null
+  panelCount: number
+  hasGallery?: boolean
+  galleryImages?: string[]
+  imageDescriptions?: ImageDescription[]
+  hasColorOptions?: boolean
+  hasVariants?: boolean
+  isUnique?: boolean
+  isLimited?: boolean
+}
+
+export default function ItemPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const [quantity, setQuantity] = useState(1)
   const [selectedPanel, setSelectedPanel] = useState<number>(1)
   const [currentPanelIndex, setCurrentPanelIndex] = useState(0)
+  const [currentExtensionIndex, setCurrentExtensionIndex] = useState(0)
   const [selectedModalPanel, setSelectedModalPanel] = useState<Panel | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState<string>("charcoal")
+  const [selectedExtension, setSelectedExtension] = useState<number>(1)
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<string>("")
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const { state, dispatch } = useCart()
@@ -51,8 +73,8 @@ export default function ItemPage({
     window.scrollTo(0, 0)
   }, [])
 
-  const getItemData = (id: number) => {
-    const items = {
+  const getItemData = (id: number): ItemData => {
+    const items: Record<number, ItemData> = {
       1: {
         id: 1,
         title: "sKINs: Dire Dawa Textile Installation",
@@ -224,7 +246,7 @@ export default function ItemPage({
         panelCount: 0,
       },
     }
-    return items[id as keyof typeof items] || items[4] // Default to cargo pants
+    return items[id] || items[4] // Default to cargo pants
   }
 
   const item = getItemData(Number.parseInt(id))
@@ -232,6 +254,11 @@ export default function ItemPage({
   useEffect(() => {
     setSelectedGalleryImage(item.image)
   }, [item.image])
+
+  useEffect(() => {
+    setCurrentPanelIndex(0)
+    setCurrentExtensionIndex(0)
+  }, [item.id])
 
   const colorOptions = [
     {
@@ -363,6 +390,16 @@ export default function ItemPage({
     }
   }).filter((panel) => panel.available) // Only include available panels
 
+  const extensions = [
+    { id: 1, name: "Extension 1", image: "/images/E1.jpg" },
+    { id: 2, name: "Extension 2", image: "/images/E2.jpg" },
+    { id: 3, name: "Extension 3", image: "/images/E3.jpg" },
+    { id: 4, name: "Extension 4", image: "/images/E4.jpg" },
+    { id: 5, name: "Extension 5", image: "/images/E5.jpg" },
+    { id: 6, name: "Extension 6", image: "/images/E6.jpg" },
+    { id: 7, name: "Extension 7", image: "/images/E7.jpg" },
+  ]
+
   // Get current selected panel data
   const currentPanel = panels.find((panel) => panel.id === selectedPanel)
   const maxQuantity = 10 // Maximum quantity is always 10
@@ -437,6 +474,15 @@ export default function ItemPage({
     setCurrentPanelIndex((prev) => Math.max(prev - 5, 0))
   }
 
+  const nextExtensions = () => {
+    const maxStartIndex = Math.max(0, extensions.length - 5)
+    setCurrentExtensionIndex((prev) => Math.min(prev + 5, maxStartIndex))
+  }
+
+  const prevExtensions = () => {
+    setCurrentExtensionIndex((prev) => Math.max(prev - 5, 0))
+  }
+
   const openPanelModal = (panel: Panel) => {
     setSelectedModalPanel(panel)
     setIsModalOpen(true)
@@ -487,7 +533,7 @@ export default function ItemPage({
             {/* Left Side - Gallery Images */}
             <div className="col-span-12 lg:col-span-1 space-y-3">
               <div className="flex flex-row lg:flex-col gap-3">
-                {item.galleryImages?.map((image, index) => (
+                {item.galleryImages?.map((image: string, index: number) => (
                   <button
                     key={index}
                     onClick={() => {
@@ -584,7 +630,7 @@ export default function ItemPage({
                           <h5 className="text-base font-medium text-black">
                             {item.imageDescriptions[selectedImageIndex].title}
                           </h5>
-                          {item.imageDescriptions[selectedImageIndex].content.map((paragraph, idx) => (
+                          {item.imageDescriptions[selectedImageIndex].content.map((paragraph: string, idx: number) => (
                             <p key={idx} className="leading-relaxed">
                               {paragraph}
                             </p>
@@ -784,6 +830,8 @@ export default function ItemPage({
                     <div className="space-y-4">
                       {/* Panel Selection and Quantity */}
                       <div className="space-y-4">
+                        {/* Panel dropdown - show for Cargo Jacket and Haori, but NOT Cargo Pants */}
+                        {item.id !== 4 && (
                         <div>
                           <label className="block text-sm font-medium text-black mb-2">
                             Panel (1-{item.panelCount})
@@ -809,6 +857,35 @@ export default function ItemPage({
                             </SelectContent>
                           </Select>
                         </div>
+                        )}
+
+                        {/* Extension dropdown - show for Haori Jacket (below panels) and Cargo Pants (instead of panels) */}
+                        {(item.id === 3 || item.id === 4) && (
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">
+                            Extension (1-{extensions.length})
+                          </label>
+                          <Select
+                            value={selectedExtension.toString()}
+                            onValueChange={(value) => setSelectedExtension(Number.parseInt(value))}
+                          >
+                            <SelectTrigger className="w-full h-10 bg-white border-neutral-300 text-black">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent className="bg-white border-neutral-300">
+                              {extensions.map((ext) => (
+                                <SelectItem
+                                  key={ext.id}
+                                  value={ext.id.toString()}
+                                  className="text-black hover:bg-neutral-100"
+                                >
+                                  {ext.name}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        )}
 
                         <div>
                           <label className="block text-sm font-medium text-black mb-2">Quantity (10 available)</label>
@@ -893,6 +970,124 @@ export default function ItemPage({
                     >
                       Email for Price
                     </Button>
+                  )}
+
+                  {/* Available Panels Section (hide for Cargo Pants) */}
+                  {item.panelCount > 0 && item.id !== 4 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-lg font-medium text-black">Available Panels</h3>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={prevPanels}
+                            disabled={currentPanelIndex === 0}
+                            className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            <ChevronLeft className="h-4 w-4" />
+                          </button>
+                          <span className="text-sm text-neutral-600 px-3">
+                            {Math.floor(currentPanelIndex / 5) + 1} / {Math.ceil(panels.length / 5)}
+                          </span>
+                          <button
+                            onClick={nextPanels}
+                            disabled={currentPanelIndex >= panels.length - 5}
+                            className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            <ChevronRight className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-5 gap-3">
+                        {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
+                          <div
+                            key={panel.id}
+                            onClick={() => panel.available && openPanelModal(panel)}
+                            className="group cursor-pointer"
+                          >
+                            <div
+                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${
+                                !panel.available ? "opacity-50" : ""
+                              }`}
+                              style={{ aspectRatio: "9/16" }}
+                            >
+                              <Image
+                                src={
+                                  panel.image ||
+                                  "https://images.unsplash.com/photo-1755532016921-f4c99febe732?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by-1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ||
+                                  "/placeholder.svg"
+                                }
+                                alt={panel.name}
+                                width={90}
+                                height={160}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                Available
+                              </div>
+                            </div>
+                            <p
+                              className={`text-xs font-medium text-black truncate text-center ${
+                                !panel.available ? "text-gray-500" : ""
+                              }`}
+                            >
+                              {panel.name}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Available Extensions Section (Cargo Pants + Haori Jacket) */}
+                  {(item.id === 3 || item.id === 4) && (
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-lg font-medium text-black">Available Extensions</h3>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={prevExtensions}
+                            disabled={currentExtensionIndex === 0}
+                            className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            <ChevronLeft className="h-4 w-4" />
+                          </button>
+                          <span className="text-sm text-neutral-600 px-3">
+                            {Math.floor(currentExtensionIndex / 5) + 1} / {Math.ceil(extensions.length / 5)}
+                          </span>
+                          <button
+                            onClick={nextExtensions}
+                            disabled={currentExtensionIndex >= extensions.length - 5}
+                            className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            <ChevronRight className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-5 gap-3">
+                        {extensions.slice(currentExtensionIndex, currentExtensionIndex + 5).map((ext) => (
+                          <div key={ext.id} className="group cursor-pointer">
+                            <div
+                              className="bg-neutral-100 rounded overflow-hidden mb-2 relative"
+                              style={{ aspectRatio: "9/16" }}
+                            >
+                              <Image
+                                src={ext.image}
+                                alt={ext.name}
+                                width={90}
+                                height={160}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                Available
+                              </div>
+                            </div>
+                            <p className="text-xs font-medium text-black truncate text-center">{ext.name}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
                 </div>
 
@@ -1194,73 +1389,9 @@ export default function ItemPage({
                   </div>
                 </div>
               </div>
-
-              {/* Panels Grid - 5 columns spanning full width */}
-              {item.panelCount > 0 && (
-                <div className="mt-8 -mx-8 px-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-medium text-black">Available Panels</h3>
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={prevPanels}
-                        disabled={currentPanelIndex === 0}
-                        className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                      >
-                        <ChevronLeft className="h-4 w-4" />
-                      </button>
-                      <span className="text-sm text-neutral-600 px-3 min-w-fit">
-                        {panels.length > 0 ? `${Math.floor(currentPanelIndex / 5) + 1} / ${Math.ceil(panels.length / 5)}` : "0 / 0"}
-                      </span>
-                      <button
-                        onClick={nextPanels}
-                        disabled={currentPanelIndex >= panels.length - 5}
-                        className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                      >
-                        <ChevronRight className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-5 gap-3">
-                    {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
-                      <div
-                        key={panel.id}
-                        onClick={() => panel.available && openPanelModal(panel)}
-                        className="group cursor-pointer"
-                      >
-                        <div
-                          className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${!panel.available ? "opacity-50" : "hover:opacity-80 transition-opacity"}`}
-                          style={{ aspectRatio: "9/16" }}
-                        >
-                          <Image
-                            src={panel.image || "/placeholder.svg"}
-                            alt={panel.name}
-                            width={100}
-                            height={160}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                            quality={75}
-                            sizes="120px"
-                          />
-                          {!panel.available && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded">
-                              <span className="text-white text-xs font-medium">Sold Out</span>
-                            </div>
-                          )}
-                        </div>
-                        <p className={`text-xs font-medium text-center truncate ${!panel.available ? "text-neutral-400" : "text-black"}`}>
-                          {panel.name}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         )}
-
-
 
         {item.hasGallery && (
           <div className="mt-16">
@@ -1506,7 +1637,7 @@ export default function ItemPage({
           <iframe
             width="100%"
             height="500"
-            src={item.videoUrl}
+            src={item.videoUrl ?? undefined}
             title="Product Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

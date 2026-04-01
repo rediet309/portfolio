@@ -142,15 +142,24 @@ export function ProjectModal({ project, isOpen, onClose, relatedProjects = [] }:
         </button>
 
         {/* Image Section - 60% width */}
+<<<<<<< HEAD
         <div className="w-[60%] relative overflow-hidden" style={{ aspectRatio: "2718/2682" }}>
+=======
+        <div className="w-[60%] relative overflow-hidden">
+>>>>>>> f09bd24 (feat(extensions):added extentions for haori and cargo pants)
           <Image
             src={currentCard.image || "/placeholder.svg"}
             alt={currentCard.title}
             fill
             className="object-cover"
+<<<<<<< HEAD
             sizes="60vw"
             loading="lazy"
             quality={80}
+=======
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            priority
+>>>>>>> f09bd24 (feat(extensions):added extentions for haori and cargo pants)
           />
         </div>
 

@@ -11,6 +11,8 @@ interface CartItem {
   category: string
   quantity: number
   selectedPanel?: number
+  selectedColor?: string
+  selectedExtension?: number
 }
 
 interface CartState {
@@ -34,13 +36,20 @@ function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case "ADD_ITEM":
       const existingItem = state.items.find(
-        (item) => item.id === action.payload.id && item.selectedPanel === action.payload.selectedPanel,
+        (item) =>
+          item.id === action.payload.id &&
+          item.selectedPanel === action.payload.selectedPanel &&
+          item.selectedColor === action.payload.selectedColor &&
+          item.selectedExtension === action.payload.selectedExtension,
       )
       if (existingItem) {
         return {
           ...state,
           items: state.items.map((item) =>
-            item.id === action.payload.id && item.selectedPanel === action.payload.selectedPanel
+            item.id === action.payload.id &&
+            item.selectedPanel === action.payload.selectedPanel &&
+            item.selectedColor === action.payload.selectedColor &&
+            item.selectedExtension === action.payload.selectedExtension
               ? { ...item, quantity: item.quantity + (action.payload.quantity || 1) }
               : item,
           ),
