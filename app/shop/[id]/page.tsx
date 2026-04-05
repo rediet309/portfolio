@@ -391,13 +391,13 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
   }).filter((panel) => panel.available) // Only include available panels
 
   const extensions = [
-    { id: 1, name: "Extension 1", image: "/images/E1.jpg" },
-    { id: 2, name: "Extension 2", image: "/images/E2.jpg" },
-    { id: 3, name: "Extension 3", image: "/images/E3.jpg" },
-    { id: 4, name: "Extension 4", image: "/images/E4.jpg" },
-    { id: 5, name: "Extension 5", image: "/images/E5.jpg" },
-    { id: 6, name: "Extension 6", image: "/images/E6.jpg" },
-    { id: 7, name: "Extension 7", image: "/images/E7.jpg" },
+    { id: 1, name: "Extension 1", image: "/images/E1.webp" },
+    { id: 2, name: "Extension 2", image: "/images/E2.webp" },
+    { id: 3, name: "Extension 3", image: "/images/E3.webp" },
+    { id: 4, name: "Extension 4", image: "/images/E4.webp" },
+    { id: 5, name: "Extension 5", image: "/images/E5.webp" },
+    { id: 6, name: "Extension 6", image: "/images/E6.webp" },
+    { id: 7, name: "Extension 7", image: "/images/E7.webp" },
   ]
 
   // Get current selected panel data
