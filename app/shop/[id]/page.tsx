@@ -62,7 +62,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState<string>("charcoal")
-  const [selectedExtension, setSelectedExtension] = useState<number>(1)
+  const [selectedExtension, setSelectedExtension] = useState<number | null>(null)
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<string>("")
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const { state, dispatch } = useCart()
@@ -425,7 +425,37 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
           quantity,
         },
       })
+    } else if (item.id === 4 && selectedExtension !== null) {
+      // Cargo Pants: extension only, no panel needed
+      dispatch({
+        type: "ADD_ITEM",
+        payload: {
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          image: item.image,
+          category: item.category,
+          selectedExtension,
+          quantity,
+        },
+      })
+    } else if (item.id === 3 && currentPanel && selectedExtension !== null && quantity <= maxQuantity) {
+      // Haori Jacket: panel + extension
+      dispatch({
+        type: "ADD_ITEM",
+        payload: {
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          image: item.image,
+          category: item.category,
+          selectedPanel,
+          selectedExtension,
+          quantity,
+        },
+      })
     } else if (currentPanel && quantity <= maxQuantity) {
+      // Cargo Jacket: panel only
       dispatch({
         type: "ADD_ITEM",
         payload: {
@@ -655,6 +685,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                   </div>
                 </div>
               </div>
+              </div>
 
               {/* Panels Grid - 5 columns spanning full width */}
               {item.panelCount > 0 && (
@@ -686,11 +717,16 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                     {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
                       <div
                         key={panel.id}
-                        onClick={() => panel.available && openPanelModal(panel)}
+                        onClick={() => {
+                          if (panel.available) {
+                            setSelectedPanel(panel.id)
+                            openPanelModal(panel)
+                          }
+                        }}
                         className="group cursor-pointer"
                       >
                         <div
-                          className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${!panel.available ? "opacity-50" : "hover:opacity-80 transition-opacity"}`}
+                          className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${!panel.available ? "opacity-50" : "hover:opacity-80 transition-opacity"} ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
                           style={{ aspectRatio: "9/16" }}
                         >
                           <Image
@@ -717,7 +753,6 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                   </div>
                 </div>
               )}
-            </div>
             </div>
           </div>
         ) : (
@@ -866,7 +901,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                             Extension (1-{extensions.length})
                           </label>
                           <Select
-                            value={selectedExtension.toString()}
+                            value={selectedExtension?.toString() ?? ""}
                             onValueChange={(value) => setSelectedExtension(Number.parseInt(value))}
                           >
                             <SelectTrigger className="w-full h-10 bg-white border-neutral-300 text-black">
@@ -915,10 +950,26 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                       {/* Add to Cart */}
                       <Button
                         onClick={addToCart}
-                        disabled={!item.available || quantity > maxQuantity || !currentPanel?.available}
+                        disabled={
+                          !item.available ||
+                          quantity > maxQuantity ||
+                          (item.id === 4 && selectedExtension === null) ||
+                          (item.id === 3 && (selectedExtension === null || !currentPanel?.available)) ||
+                          (item.id !== 4 && item.id !== 3 && !currentPanel?.available)
+                        }
                         className="w-full h-12 text-sm rounded-full bg-black text-white hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        {currentPanel && !currentPanel.available ? "Sold Out" : "Add to Cart"}
+                        {item.id === 4 && selectedExtension === null
+                          ? "Select an Extension"
+                          : item.id === 3 && (selectedExtension === null || !currentPanel?.available)
+                            ? selectedExtension === null && !currentPanel?.available
+                              ? "Select Panel & Extension"
+                              : selectedExtension === null
+                                ? "Select an Extension"
+                                : "Select a Panel"
+                            : item.id !== 4 && currentPanel && !currentPanel.available
+                              ? "Sold Out"
+                              : "Add to Cart"}
                       </Button>
                     </div>
                   )}
@@ -1002,13 +1053,18 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                         {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
                           <div
                             key={panel.id}
-                            onClick={() => panel.available && openPanelModal(panel)}
+                            onClick={() => {
+                              if (panel.available) {
+                                setSelectedPanel(panel.id)
+                                openPanelModal(panel)
+                              }
+                            }}
                             className="group cursor-pointer"
                           >
                             <div
                               className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${
                                 !panel.available ? "opacity-50" : ""
-                              }`}
+                              } ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
                               style={{ aspectRatio: "9/16" }}
                             >
                               <Image
@@ -1023,7 +1079,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                                 className="w-full h-full object-cover"
                               />
                               <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                                Available
+                                {selectedPanel === panel.id ? "Selected" : "Available"}
                               </div>
                             </div>
                             <p
@@ -1067,9 +1123,13 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
 
                       <div className="grid grid-cols-5 gap-3">
                         {extensions.slice(currentExtensionIndex, currentExtensionIndex + 5).map((ext) => (
-                          <div key={ext.id} className="group cursor-pointer">
+                          <div
+                            key={ext.id}
+                            onClick={() => setSelectedExtension(ext.id)}
+                            className="group cursor-pointer"
+                          >
                             <div
-                              className="bg-neutral-100 rounded overflow-hidden mb-2 relative"
+                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${selectedExtension === ext.id ? "ring-2 ring-black" : ""}`}
                               style={{ aspectRatio: "9/16" }}
                             >
                               <Image
@@ -1080,7 +1140,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                                 className="w-full h-full object-cover"
                               />
                               <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                                Available
+                                {selectedExtension === ext.id ? "Selected" : "Available"}
                               </div>
                             </div>
                             <p className="text-xs font-medium text-black truncate text-center">{ext.name}</p>
