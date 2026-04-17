@@ -15,9 +15,9 @@ interface Project {
   medium: string
   description: string
   image: string
-  featured: boolean
-  awards: string[]
-  visitors: string
+  featured?: boolean
+  awards?: string[]
+  visitors?: string
   tags: string[]
   detailedDescription?: string
   videoUrl?: string
@@ -34,6 +34,7 @@ interface Project {
   position?: string
   status?: string
   type?: "film" | "photo"
+  passwordNote?: string
 }
 
 interface ProjectTimelineProps {
@@ -43,11 +44,11 @@ interface ProjectTimelineProps {
 
 function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [selectedFilmProject, setSelectedFilmProject] = useState<Project | null>(null)
-  const [selectedInstallationProject, setSelectedInstallationProject] = useState<Project | null>(null)
-  const [selectedStudioProject, setSelectedStudioProject] = useState<Project | null>(null)
-  const [selectedCommissionedProject, setSelectedCommissionedProject] = useState<Project | null>(null)
-  const [selectedArchiveProject, setSelectedArchiveProject] = useState<Project | null>(null)
+  const [selectedFilmProject, setSelectedFilmProject] = useState<any>(null)
+  const [selectedInstallationProject, setSelectedInstallationProject] = useState<any>(null)
+  const [selectedStudioProject, setSelectedStudioProject] = useState<any>(null)
+  const [selectedCommissionedProject, setSelectedCommissionedProject] = useState<any>(null)
+  const [selectedArchiveProject, setSelectedArchiveProject] = useState<any>(null)
   const [isFilmModalOpen, setIsFilmModalOpen] = useState(false)
   const [isInstallationModalOpen, setIsInstallationModalOpen] = useState(false)
   const [isStudioModalOpen, setIsStudioModalOpen] = useState(false)
@@ -102,6 +103,8 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
         videoUrl: project.videoUrl,
         duration: project.duration,
         tags: project.tags,
+        position: project.position,
+        passwordNote: project.passwordNote,
       }
       setSelectedFilmProject(filmProject)
       setIsFilmModalOpen(true)

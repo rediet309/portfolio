@@ -5,6 +5,25 @@ import { Navigation } from "@/components/navigation"
 import ProjectTimeline from "@/components/project-timeline"
 
 const allProjectsData = [
+  // 2026 Projects
+  {
+    id: "skins-addis-abeba",
+    title: "sKINs: Addis Abeba",
+    year: 2026,
+    category: "Films",
+    medium: "First-person creative documentary",
+    duration: "16 min",
+    description: "",
+    detailedDescription:
+      "sKINs: Addis Abeba is a 16-minute first-person creative documentary. The film is divided into four chapters, each representing a political regime that has ruled Addis Ababa /the capital city of Ethiopia/ since its formation in 1887.\n\nTold as a conversation between the artist and the city itself, the film imagines space as an archive — the one witness that has survived, held, and remembered the stories of young people across generations.",
+    image: "/images/skins_addis_ababa.webp",
+    tags: ["documentary", "archive", "political history"],
+    videoUrl: "https://vimeo.com/1166310181?fl=ip&fe=ec",
+    location: "Addis Ababa, Ethiopia",
+    position: "Director, producer, cinematographer, writer and narrator",
+    passwordNote: "Password available upon request",
+  },
+
   // 2025 Projects
   {
     id: "skins-dire-dawa",
@@ -90,7 +109,7 @@ const allProjectsData = [
     detailedDescription: "",
     image: "/images/HOC.webp?height=600&width=800&text=Heart+of+a+Child",
     tags: [],
-    type: "film",
+    type: "film" as const,
     videoUrl: "https://youtu.be/bLUtlsYxqpU?si=eU5MdCaaTsTjOGsJ",
     position: "",
   },
@@ -195,7 +214,7 @@ const allProjectsData = [
     detailedDescription: "",
     image: "/images/arada.webp?height=600&width=800&text=Arada+Easter+Commercial",
     tags: ["easter", "market", "beverage"],
-    type: "film",
+    type: "film" as const,
     videoUrl: "https://youtu.be/gHnCjF4GLHk?si=X7Zleobndl873NaO",
     position: "Director, Producer, stylist",
     duration: "2:30",
@@ -211,7 +230,7 @@ const allProjectsData = [
     detailedDescription: "",
     image: "/images/river.webp?height=600&width=800&text=The+River+Commission",
     tags: ["community", "women", "water"],
-    type: "film",
+    type: "film" as const,
     videoUrl: "https://youtu.be/z_ijqn0ewM0?si=CwfuWOyAfWqHjDK6",
     position: "Production designer and set designer",
     duration: "4:20",
@@ -228,7 +247,7 @@ const allProjectsData = [
       "",
     image: "/images/c4-1.webp?height=600&width=800&text=MSFTS+Ethiopia+Skate+Commission",
     tags: ["youth", "community", "skateboarding"],
-    type: "photo",
+    type: "photo" as const,
     videoUrl: "https://drive.google.com/file/d/1EguZ8WEBDYJItUhAVcpyyAoVgcxfwnMA/view?usp=sharing",
     position: "Creative Direction, stylist, and video contributions",
     photoCount: 0,
@@ -299,7 +318,7 @@ const allProjectsData = [
     detailedDescription: "",
     image: "/images/a6-0.webp",
     tags: [],
-    type: "photo",
+    type: "photo" as const,
     position: "Model",
     photoCount: 8,
     images: [

@@ -15,6 +15,8 @@ interface FilmProject {
   videoUrl?: string
   duration?: string
   tags: string[]
+  position?: string
+  passwordNote?: string
 }
 
 interface FilmModalProps {
@@ -65,6 +67,14 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
 
       if (videoId) {
         return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`
+      }
+    }
+
+    // Vimeo URL conversion
+    if (url.includes("vimeo.com")) {
+      const videoId = url.match(/vimeo\.com\/([0-9]+)/)?.[1]
+      if (videoId) {
+        return `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`
       }
     }
 
@@ -141,16 +151,27 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
               </div>
             </div>
 
-            {/* Description */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-medium text-black">Position</h3>
-              <p className="text-neutral-700 leading-relaxed text-sm">{project.position}</p>
-            </div>
+            {/* Position */}
+            {project.position && (
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-medium text-black">Position</h3>
+                <p className="text-neutral-700 leading-relaxed text-sm">{project.position}</p>
+              </div>
+            )}
 
+            {/* Description */}
             {project.detailedDescription && (
               <div className="space-y-3 sm:space-y-4">
                 <h3 className="text-base sm:text-lg font-medium text-black">Description</h3>
                 <p className="text-neutral-700 leading-relaxed text-sm">{project.detailedDescription}</p>
+              </div>
+            )}
+
+            {/* Password Note */}
+            {project.passwordNote && (
+              <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg">
+                <span className="text-amber-600 text-sm">🔑</span>
+                <span className="text-amber-800 text-xs sm:text-sm font-medium">{project.passwordNote}</span>
               </div>
             )}
 
