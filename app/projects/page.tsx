@@ -17,7 +17,7 @@ const allProjectsData = [
     detailedDescription:
       "sKINs: Addis Abeba is a 16-minute first-person creative documentary. The film is divided into four chapters, each representing a political regime that has ruled Addis Ababa /the capital city of Ethiopia/ since its formation in 1887.\n\nTold as a conversation between the artist and the city itself, the film imagines space as an archive — the one witness that has survived, held, and remembered the stories of young people across generations.",
     image: "/images/skins_addis_ababa.webp",
-    tags: ["documentary", "archive", "political history"],
+    tags: ["documentary", "archive", "youth movement"],
     videoUrl: "https://vimeo.com/1166310181?fl=ip&fe=ec",
     location: "Addis Ababa, Ethiopia",
     position: "Director, producer, cinematographer, writer and narrator",

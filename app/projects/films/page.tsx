@@ -39,7 +39,7 @@ const filmProjects: FilmProject[] = [
     image: "/images/skins_addis_ababa.webp?height=600&width=800&text=sKINs+Addis+Abeba",
     location: "Addis Ababa, Ethiopia",
     position: "Director, producer, cinematographer, writer and narrator",
-    tags: ["documentary", "archive", "political history"],
+    tags: ["documentary", "archive", "youth movement"],
     videoUrl: "https://vimeo.com/1166310181?fl=ip&fe=ec",
     passwordNote: "Password available upon request",
   },
@@ -179,7 +179,7 @@ export default function FilmsPage() {
                     <div className="space-y-2">
                       <h3 className="text-base sm:text-lg font-stardom leading-tight text-black">{project.title}</h3>
 
-                      
+
 
                       <p className="text-xs text-neutral-400">{project.medium}</p>
 
