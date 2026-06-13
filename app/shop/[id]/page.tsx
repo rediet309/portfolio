@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect, use } from "react"
+import { useState, useEffect, use, type SyntheticEvent } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ShoppingCart, ArrowLeft, ChevronRight, ChevronLeft, Minus, Plus, Play, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { useCart } from "@/lib/cart-context"
 import { PanelModal } from "@/components/panel-modal"
 
@@ -56,15 +56,18 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
   const { id } = use(params)
   const [quantity, setQuantity] = useState(1)
   const [selectedPanel, setSelectedPanel] = useState<number>(1)
-  const [currentPanelIndex, setCurrentPanelIndex] = useState(0)
-  const [currentExtensionIndex, setCurrentExtensionIndex] = useState(0)
-  const [selectedModalPanel, setSelectedModalPanel] = useState<Panel | null>(null)
+  const [currentPanelPage, setCurrentPanelPage] = useState(0)
+  const [currentExtensionPage, setCurrentExtensionPage] = useState(0)
+  const [galleryModalItems, setGalleryModalItems] = useState<Panel[]>([])
+  const [galleryModalIndex, setGalleryModalIndex] = useState(0)
+  const [galleryModalShowDetails, setGalleryModalShowDetails] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState<string>("charcoal")
   const [selectedExtension, setSelectedExtension] = useState<number | null>(null)
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<string>("")
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
+  const [mainImageAspect, setMainImageAspect] = useState<number | null>(null)
   const { state, dispatch } = useCart()
 
 
@@ -256,8 +259,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
   }, [item.image])
 
   useEffect(() => {
-    setCurrentPanelIndex(0)
-    setCurrentExtensionIndex(0)
+    setCurrentPanelPage(0)
+    setCurrentExtensionPage(0)
   }, [item.id])
 
   const colorOptions = [
@@ -390,6 +393,11 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
     }
   }).filter((panel) => panel.available) // Only include available panels
 
+  const PANELS_PER_PAGE = 4
+  const totalPanelPages = Math.ceil(panels.length / PANELS_PER_PAGE)
+  const panelPageStart = currentPanelPage * PANELS_PER_PAGE
+  const visiblePanels = panels.slice(panelPageStart, panelPageStart + PANELS_PER_PAGE)
+
   const extensions = [
     { id: 1, name: "Extension 1", image: "/images/E1.webp" },
     { id: 2, name: "Extension 2", image: "/images/E2.webp" },
@@ -399,6 +407,13 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
     { id: 6, name: "Extension 6", image: "/images/E6.webp" },
     { id: 7, name: "Extension 7", image: "/images/E7.webp" },
   ]
+  const EXTENSIONS_PER_PAGE = 3
+  const totalExtensionPages = Math.ceil(extensions.length / EXTENSIONS_PER_PAGE)
+  const extensionPageStart = currentExtensionPage * EXTENSIONS_PER_PAGE
+  const visibleExtensions = extensions.slice(
+    extensionPageStart,
+    extensionPageStart + EXTENSIONS_PER_PAGE,
+  )
 
   // Get current selected panel data
   const currentPanel = panels.find((panel) => panel.id === selectedPanel)
@@ -496,31 +511,73 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
   }
 
   const nextPanels = () => {
-    const maxStartIndex = Math.max(0, panels.length - 5)
-    setCurrentPanelIndex((prev) => Math.min(prev + 5, maxStartIndex))
+    setCurrentPanelPage((prev) => Math.min(prev + 1, totalPanelPages - 1))
   }
 
   const prevPanels = () => {
-    setCurrentPanelIndex((prev) => Math.max(prev - 5, 0))
+    setCurrentPanelPage((prev) => Math.max(prev - 1, 0))
   }
 
   const nextExtensions = () => {
-    const maxStartIndex = Math.max(0, extensions.length - 5)
-    setCurrentExtensionIndex((prev) => Math.min(prev + 5, maxStartIndex))
+    setCurrentExtensionPage((prev) => Math.min(prev + 1, totalExtensionPages - 1))
   }
 
   const prevExtensions = () => {
-    setCurrentExtensionIndex((prev) => Math.max(prev - 5, 0))
+    setCurrentExtensionPage((prev) => Math.max(prev - 1, 0))
   }
 
-  const openPanelModal = (panel: Panel) => {
-    setSelectedModalPanel(panel)
+  const openPanelModal = (panel: Panel, panelList: Panel[] = panels) => {
+    const index = panelList.findIndex((p) => p.id === panel.id)
+    setGalleryModalItems(panelList)
+    setGalleryModalIndex(index >= 0 ? index : 0)
+    setGalleryModalShowDetails(true)
+    setIsModalOpen(true)
+  }
+
+  const openExtensionModal = (extensionId: number) => {
+    const index = extensions.findIndex((ext) => ext.id === extensionId)
+    setGalleryModalItems(
+      extensions.map((ext) => ({
+        id: ext.id,
+        name: ext.name,
+        image: ext.image,
+        description: "",
+        detailedDescription: "",
+        available: true,
+        price: "",
+        material: "",
+        dimensions: "",
+        origin: "",
+        culturalSignificance: "",
+        artisan: "",
+        stock: 10,
+      })),
+    )
+    setGalleryModalIndex(index >= 0 ? index : 0)
+    setGalleryModalShowDetails(false)
     setIsModalOpen(true)
   }
 
   const cartItemCount = state.items.reduce((total, item) => total + item.quantity, 0)
 
   const currentColorOption = colorOptions.find((color) => color.id === selectedColor)
+
+  const activeMainImageSrc = item.hasGallery
+    ? selectedGalleryImage || item.image || "/placeholder.svg"
+    : item.hasColorOptions && currentColorOption
+      ? currentColorOption.image
+      : item.image || "/placeholder.svg"
+
+  useEffect(() => {
+    setMainImageAspect(null)
+  }, [activeMainImageSrc])
+
+  const handleMainImageLoad = (event: SyntheticEvent<HTMLImageElement>) => {
+    const { naturalWidth, naturalHeight } = event.currentTarget
+    if (naturalWidth && naturalHeight) {
+      setMainImageAspect(naturalWidth / naturalHeight)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -592,15 +649,19 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
 
             {/* Center - Main Image */}
             <div className="col-span-12 lg:col-span-4 space-y-6 w-full max-w-[31.25rem]">
-              <div className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto aspect-[9/16] h-[60vh] relative">
+              <div
+                className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto relative"
+                style={{ aspectRatio: mainImageAspect ?? 4 / 5 }}
+              >
                 <Image
-                  src={selectedGalleryImage || item.image}
+                  src={activeMainImageSrc}
                   alt={item.title}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 500px"
                   quality={85}
                   priority
+                  onLoad={handleMainImageLoad}
                 />
               </div>
             </div>
@@ -687,7 +748,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
               </div>
               </div>
 
-              {/* Panels Grid - 5 columns spanning full width */}
+              {/* Panels Grid - 4 columns spanning full width */}
               {item.panelCount > 0 && (
                 <div className="mt-8 -mx-8 px-8">
                   <div className="flex items-center justify-between mb-6">
@@ -695,17 +756,17 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                     <div className="flex items-center gap-3">
                       <button
                         onClick={prevPanels}
-                        disabled={currentPanelIndex === 0}
+                        disabled={currentPanelPage === 0}
                         className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                       >
                         <ChevronLeft className="h-4 w-4" />
                       </button>
                       <span className="text-sm text-neutral-600 px-3 min-w-fit">
-                        {Math.floor(currentPanelIndex / 5) + 1} / {Math.ceil(panels.length / 5)}
+                        {currentPanelPage + 1} / {totalPanelPages}
                       </span>
                       <button
                         onClick={nextPanels}
-                        disabled={currentPanelIndex >= panels.length - 5}
+                        disabled={currentPanelPage >= totalPanelPages - 1}
                         className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                       >
                         <ChevronRight className="h-4 w-4" />
@@ -713,8 +774,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-3">
-                    {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    {visiblePanels.map((panel) => (
                       <div
                         key={panel.id}
                         onClick={() => {
@@ -726,15 +787,14 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                         className="group cursor-pointer"
                       >
                         <div
-                          className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${!panel.available ? "opacity-50" : "hover:opacity-80 transition-opacity"} ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
-                          style={{ aspectRatio: "9/16" }}
+                          className={`bg-neutral-100 rounded overflow-hidden mb-2 relative aspect-[9/16] w-full flex items-center justify-center ${!panel.available ? "opacity-50" : "hover:opacity-80 transition-opacity"} ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
                         >
                           <Image
                             src={panel.image || "/placeholder.svg"}
                             alt={panel.name}
-                            width={100}
-                            height={160}
-                            className="w-full h-full object-cover"
+                            width={120}
+                            height={213}
+                            className="max-w-full max-h-full w-auto h-auto object-contain p-1"
                             loading="lazy"
                             quality={75}
                             sizes="120px"
@@ -759,26 +819,26 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
           <div className="grid grid-cols-12 gap-8">
             {/* Left Side - Image and Panels */}
             <div className="col-span-12 lg:col-span-4 space-y-6">
-              <div className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto aspect-[3/4] h-[80vh] flex items-center justify-center px-0 relative">
+              <div
+                className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto relative"
+                style={{ aspectRatio: mainImageAspect ?? 4 / 5 }}
+              >
                 <Image
-                  src={
-                    item.hasColorOptions && currentColorOption
-                      ? currentColorOption.image
-                      : item.image || "/placeholder.svg"
-                  }
+                  src={activeMainImageSrc}
                   alt={item.title}
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 500px"
                   quality={85}
                   priority
+                  onLoad={handleMainImageLoad}
                 />
               </div>
             </div>
 
             {/* Right Side - Product Details (Split into two columns) */}
             <div className="col-span-12 lg:col-span-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 {/* Left Column - Product Info and Controls */}
                 <div className="space-y-6">
                   {/* Product Info */}
@@ -1031,17 +1091,17 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                         <div className="flex items-center gap-2">
                           <button
                             onClick={prevPanels}
-                            disabled={currentPanelIndex === 0}
+                            disabled={currentPanelPage === 0}
                             className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronLeft className="h-4 w-4" />
                           </button>
                           <span className="text-sm text-neutral-600 px-3">
-                            {Math.floor(currentPanelIndex / 5) + 1} / {Math.ceil(panels.length / 5)}
+                            {currentPanelPage + 1} / {totalPanelPages}
                           </span>
                           <button
                             onClick={nextPanels}
-                            disabled={currentPanelIndex >= panels.length - 5}
+                            disabled={currentPanelPage >= totalPanelPages - 1}
                             className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronRight className="h-4 w-4" />
@@ -1049,8 +1109,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-5 gap-3">
-                        {panels.slice(currentPanelIndex, currentPanelIndex + 5).map((panel) => (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        {visiblePanels.map((panel) => (
                           <div
                             key={panel.id}
                             onClick={() => {
@@ -1062,10 +1122,9 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                             className="group cursor-pointer"
                           >
                             <div
-                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${
+                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative aspect-[9/16] w-full flex items-center justify-center ${
                                 !panel.available ? "opacity-50" : ""
                               } ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
-                              style={{ aspectRatio: "9/16" }}
                             >
                               <Image
                                 src={
@@ -1074,9 +1133,9 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                                   "/placeholder.svg"
                                 }
                                 alt={panel.name}
-                                width={90}
-                                height={160}
-                                className="w-full h-full object-cover"
+                                width={120}
+                                height={213}
+                                className="max-w-full max-h-full w-auto h-auto object-contain p-1"
                               />
                               <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
                                 {selectedPanel === panel.id ? "Selected" : "Available"}
@@ -1103,17 +1162,17 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                         <div className="flex items-center gap-2">
                           <button
                             onClick={prevExtensions}
-                            disabled={currentExtensionIndex === 0}
+                            disabled={currentExtensionPage === 0}
                             className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronLeft className="h-4 w-4" />
                           </button>
                           <span className="text-sm text-neutral-600 px-3">
-                            {Math.floor(currentExtensionIndex / 5) + 1} / {Math.ceil(extensions.length / 5)}
+                            {currentExtensionPage + 1} / {totalExtensionPages}
                           </span>
                           <button
                             onClick={nextExtensions}
-                            disabled={currentExtensionIndex >= extensions.length - 5}
+                            disabled={currentExtensionPage >= totalExtensionPages - 1}
                             className="p-2 rounded border border-neutral-300 text-black hover:bg-neutral-100 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronRight className="h-4 w-4" />
@@ -1121,23 +1180,25 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-5 gap-3">
-                        {extensions.slice(currentExtensionIndex, currentExtensionIndex + 5).map((ext) => (
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {visibleExtensions.map((ext) => (
                           <div
                             key={ext.id}
-                            onClick={() => setSelectedExtension(ext.id)}
+                            onClick={() => {
+                              setSelectedExtension(ext.id)
+                              openExtensionModal(ext.id)
+                            }}
                             className="group cursor-pointer"
                           >
                             <div
-                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative ${selectedExtension === ext.id ? "ring-2 ring-black" : ""}`}
-                              style={{ aspectRatio: "9/16" }}
+                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative aspect-[3/2] w-full flex items-center justify-center ${selectedExtension === ext.id ? "ring-2 ring-black" : ""}`}
                             >
                               <Image
                                 src={ext.image}
                                 alt={ext.name}
-                                width={90}
-                                height={160}
-                                className="w-full h-full object-cover"
+                                width={180}
+                                height={120}
+                                className="max-w-full max-h-full w-auto h-auto object-contain p-1"
                               />
                               <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
                                 {selectedExtension === ext.id ? "Selected" : "Available"}
@@ -1152,7 +1213,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                 </div>
 
                 {/* Right Column - About Interchangeable Panels */}
-                <div className="p-6 rounded-lg bg-neutral-50">
+                <div className="p-6 rounded-lg bg-neutral-50 h-fit">
                   <h4 className="text-lg font-medium text-black mb-4">
                     {item.id === 2
                       ? "About Interchangeable Back Panels"
@@ -1163,7 +1224,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                           : item.id === 5
                             ? "About sKINs Collection"
                             : item.id === 6
-                              ? "About Reversible Design"
+                              ? "About Sheret Shirts"
                               : item.id === 7
                                 ? "About Angel Eyes Collection"
                                 : item.id === 8
@@ -1296,14 +1357,12 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                     ) : item.id === 6 ? (
                       <>
                         <p className="text-sm leading-relaxed text-neutral-600">
-                          The Sheret Project represents innovation in reversible fashion design. Each garment offers two
-                          completely different aesthetics in one piece, allowing for versatile styling and extended
-                          wardrobe possibilities. Available in three carefully curated colorways.
+                        Breathable short sleeve button down shirt 
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-3 text-sm">
-                            <div className="w-2 h-2 bg-black rounded-full"></div>
-                            <span className="text-neutral-600">Fully reversible construction</span>
+                            
+                            
                           </div>
                           <div className="flex items-center gap-3 text-sm">
                             <div className="w-2 h-2 bg-black rounded-full"></div>
@@ -1683,13 +1742,26 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
       </div>
 
       {/* Panel Modal */}
-      <PanelModal panel={selectedModalPanel} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <PanelModal
+        items={galleryModalItems}
+        initialIndex={galleryModalIndex}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSelect={(id) => {
+          if (galleryModalShowDetails) {
+            setSelectedPanel(id)
+          } else {
+            setSelectedExtension(id)
+          }
+        }}
+        showDetails={galleryModalShowDetails}
+      />
 
       {/* Video Modal */}
       <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
         <DialogContent className="bg-white border-neutral-200 rounded-md p-6 w-full max-w-4xl">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium text-black">Product Video</h3>
+            <DialogTitle className="text-lg font-medium text-black">Product Video</DialogTitle>
             <Button variant="ghost" size="icon" onClick={() => setIsVideoModalOpen(false)}>
               <X className="h-5 w-5" />
             </Button>
