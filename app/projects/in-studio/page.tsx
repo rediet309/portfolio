@@ -24,6 +24,7 @@ interface StudioProject {
   client?: string
   videoUrl?: string
   position?: string
+  status?: string
 }
 
 const studioProjects: StudioProject[] = [

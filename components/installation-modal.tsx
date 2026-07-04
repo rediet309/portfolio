@@ -9,7 +9,7 @@ interface InstallationProject {
   title: string
   year: string
   category: string
-  medium: string
+  medium?: string
   description: string
   detailedDescription?: string
   images?: string[]

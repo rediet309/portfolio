@@ -51,6 +51,7 @@ export default function ShopPage() {
       image: "/images/1.webp",
       hoverImage: "/images/1.webp",
       available: true,
+      isEmailPrice: false,
       linkedPhotos: "Kins of Abay.1/back panels",
       description:
         "Military-inspired cargo jacket featuring interchangeable back panels. Each panel tells a different cultural story, allowing for personal expression and narrative customization.",
@@ -63,6 +64,7 @@ export default function ShopPage() {
       image: "/images/Swapable.webp",
       hoverImage: "/images/Swapable.webp",
       available: true,
+      isEmailPrice: false,
       linkedPhotos: "Kins of Abay.1/back panels + changeable swapping panels",
       description:
         "Traditional Japanese-inspired kimono with Ethiopian textile influences. Features removable and swappable panels for endless styling possibilities.",
@@ -75,6 +77,7 @@ export default function ShopPage() {
       image: "/images/a3-9.webp",
       hoverImage: "/images/a3-9.webp",
       available: true,
+      isEmailPrice: false,
       linkedPhotos: "changeable swapping panels",
       description:
         "Utility-focused cargo pants with modular panel system. Mix and match panels to create unique looks while maintaining functionality.",
@@ -87,6 +90,7 @@ export default function ShopPage() {
       image: "/images/red-skins-all_01.webp",
       hoverImage: "/images/red-skins-all_01.webp",
       available: true,
+      isEmailPrice: false,
       description:
         "Versatile collection including tops, durags, neck gaiters, and sleeve/leg extensions. Each piece designed for layering and personal expression.",
       subcategory: "",
@@ -99,6 +103,7 @@ export default function ShopPage() {
       image: "/images/Sheret 09.webp",
       hoverImage: "/images/Sheret 09.webp",
       available: true,
+      isEmailPrice: false,
       description:
         "Innovative reversible clothing line featuring short sleeve shirts. Each piece offers two distinct looks in one garment.",
       subcategory: "",
@@ -123,6 +128,7 @@ export default function ShopPage() {
       image: "/images/01_ The four elements-a.jpg",
       hoverImage: "/images/01_ The four elements-a.jpg",
       available: false,
+      isEmailPrice: false,
       description:
         "Limited capsule collection of structured jackets combining traditional Ethiopian motifs with contemporary tailoring techniques.",
       subcategory: "",
@@ -137,6 +143,7 @@ export default function ShopPage() {
       image: "/images/posters.webp",
       hoverImage: "/images/coming-soon.jpg",
       available: false,
+      isEmailPrice: false,
       description:
         "Beautiful collection of posters and postcards celebrating Ethiopian culture, landscapes, and traditions. Perfect for home decoration or sharing with friends.",
     },
@@ -147,6 +154,7 @@ export default function ShopPage() {
       price: "Coming Soon",
       image: "/images/stickers.webp",
       hoverImage: "/images/coming-soon.jpg",
+      isEmailPrice: false,
       available: false,
       description:
         "Curated set of red-themed stickers featuring cultural symbols, patterns, and artistic elements. High-quality vinyl stickers perfect for personalizing your belongings.",
