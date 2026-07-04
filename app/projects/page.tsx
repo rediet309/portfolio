@@ -157,8 +157,8 @@ const allProjectsData = [
       "The Sheret/Sarong is a tubular textile from Indonesia, used in East Africa for hot climates, rituals, and protection, and to wrap fallen soldiers.",
     detailedDescription:
       "The Sheret/Sarong/ is a tubular textile usually worn as a long skirt, or scarf by men. Through its dynamic patterns and colorways, it conveys a story from far away /originally from Indonesia/ and has made its way into East African traditions. It is vital in hot climates and preferred during khat chewing rituals/as shown in sKINs: Dire Dawa opening scene/ where it provides a breathable silhouette. For warriors in Ethiopia, it serves as protection from harsh sun and wind; a practical solution when carrying minimal items. During battle its role deepens even more; fallen soldiers are wrapped in their own Sheret when burials aren’t possible.",
-    image: "/images/b-11.webp",
-    tags: ["documentation", "photography", "cultural practices"],
+    image: "/images/IMG_0612 (2).webp",
+    tags: ["archive", "textile", "clothing"],
     images: [
       "/images/b-11.webp",
       "/images/a-11.webp",

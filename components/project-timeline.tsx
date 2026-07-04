@@ -277,7 +277,7 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
                         alt={project.title}
                         width={320}
                         height={240}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover object-[0%_0%] group-hover:scale-110 transition-transform duration-700"
                         loading={projectIndex < 4 ? "eager" : "lazy"}
                         quality={85}
                         decoding="async"

@@ -100,7 +100,7 @@ export default function ShopPage() {
       hoverImage: "/images/Sheret 09.webp",
       available: true,
       description:
-        "Innovative reversible clothing line featuring short sleeve shirts, full suits, and coats. Each piece offers two distinct looks in one garment.",
+        "Innovative reversible clothing line featuring short sleeve shirts. Each piece offers two distinct looks in one garment.",
       subcategory: "",
     },
     /*{

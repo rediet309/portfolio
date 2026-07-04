@@ -100,9 +100,9 @@ const studioProjects: StudioProject[] = [
       "",
     detailedDescription:
       "The Sheret/Sarong/ is a tubular textile usually worn as a long skirt, or scarf by men. Through its dynamic patterns and colorways, it conveys a story from far away /originally from Indonesia/ and has made its way into East African traditions. It is vital in hot climates and preferred during khat chewing rituals/as shown in sKINs: Dire Dawa opening scene/ where it provides a breathable silhouette. For warriors in Ethiopia, it serves as protection from harsh sun and wind; a practical solution when carrying minimal items. During battle its role deepens even more; fallen soldiers are wrapped in their own Sheret when burials aren't possible.",
-    image: "/images/b-11.webp?height=600&width=800&text=Sheret+Project",
+    image: "/images/IMG_0612 (2).webp?height=600&width=800&text=Sheret+Project",
     position: "Textile Artist and researcher",
-    tags: ["documentation", "preservation"],
+    tags: ["archive", "textile", "clothing"],
     images: [
       "/images/00_Coat.webp",
       "/images/a-11.webp",
@@ -189,7 +189,7 @@ export default function InStudioPage() {
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-[0%_0%]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       loading={index < 4 ? "eager" : "lazy"}
                       quality={80}
