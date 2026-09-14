@@ -290,17 +290,11 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
     const panelDescription = "hand embroidered one of a kind back panel."
     const detailedDescription = ""
 
-    const unavailablePanelsHaori = [1, 2, 3, 4, 8, 9, 10, 11, 12, 14, 15]
-    const unavailablePanelsCargo = [1, 2, 3, 4, 8, 9, 10, 11, 12, 14, 15]
-    const unavailablePanelsPants = [1, 2, 3, 4, 8, 9, 10]
+    const availablePanels = [5, 16, 19]
 
     let isUnavailable = false
-    if (item.id === 3) {
-      isUnavailable = unavailablePanelsHaori.includes(panelNumber)
-    } else if (item.id === 2) {
-      isUnavailable = unavailablePanelsCargo.includes(panelNumber)
-    } else if (item.id === 4) {
-      isUnavailable = unavailablePanelsPants.includes(panelNumber)
+    if ([2, 3, 4].includes(item.id)) {
+      isUnavailable = !availablePanels.includes(panelNumber)
     }
 
     if (item.id === 2) {
@@ -627,9 +621,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                       setSelectedGalleryImage(image)
                       setSelectedImageIndex(index)
                     }}
-                    className={`cursor-pointer transition-all duration-200 rounded-sm overflow-hidden ${
-                      selectedGalleryImage === image ? "ring-2 ring-black" : ""
-                    }`}
+                    className={`cursor-pointer transition-all duration-200 rounded-sm overflow-hidden ${selectedGalleryImage === image ? "ring-2 ring-black" : ""
+                      }`}
                     style={{ width: "5rem", height: "6.25rem" }}
                   >
                     <Image
@@ -743,9 +736,9 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                           </p>
                         </>
                       )}
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
 
               {/* Panels Grid - 4 columns spanning full width */}
@@ -857,9 +850,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                             <button
                               key={color.id}
                               onClick={() => setSelectedColor(color.id)}
-                              className={`group relative w-16 h-16 rounded-xl border-3 transition-all duration-300 shadow-lg ${
-                                selectedColor === color.id ? "border-black scale-105 shadow-2xl" : "border-neutral-200"
-                              }`}
+                              className={`group relative w-16 h-16 rounded-xl border-3 transition-all duration-300 shadow-lg ${selectedColor === color.id ? "border-black scale-105 shadow-2xl" : "border-neutral-200"
+                                }`}
                               style={{ backgroundColor: color.hex }}
                               title={color.name}
                             >
@@ -927,59 +919,59 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                       <div className="space-y-4">
                         {/* Panel dropdown - show for Cargo Jacket and Haori, but NOT Cargo Pants */}
                         {item.id !== 4 && (
-                        <div>
-                          <label className="block text-sm font-medium text-black mb-2">
-                            Panel (1-{item.panelCount})
-                          </label>
-                          <Select
-                            value={selectedPanel.toString()}
-                            onValueChange={(value) => setSelectedPanel(Number.parseInt(value))}
-                          >
-                            <SelectTrigger className="w-full h-10 bg-white border-neutral-300 text-black">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className="bg-white border-neutral-300">
-                              {panels.map((panel) => (
-                                <SelectItem
-                                  key={panel.id}
-                                  value={panel.id.toString()}
-                                  className="text-black hover:bg-neutral-100"
-                                  disabled={!panel.available}
-                                >
-                                  {panel.name}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
+                          <div>
+                            <label className="block text-sm font-medium text-black mb-2">
+                              Panel (1-{item.panelCount})
+                            </label>
+                            <Select
+                              value={selectedPanel.toString()}
+                              onValueChange={(value) => setSelectedPanel(Number.parseInt(value))}
+                            >
+                              <SelectTrigger className="w-full h-10 bg-white border-neutral-300 text-black">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent className="bg-white border-neutral-300">
+                                {panels.map((panel) => (
+                                  <SelectItem
+                                    key={panel.id}
+                                    value={panel.id.toString()}
+                                    className="text-black hover:bg-neutral-100"
+                                    disabled={!panel.available}
+                                  >
+                                    {panel.name}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
                         )}
 
                         {/* Extension dropdown - show for Haori Jacket (below panels) and Cargo Pants (instead of panels) */}
                         {(item.id === 3 || item.id === 4) && (
-                        <div>
-                          <label className="block text-sm font-medium text-black mb-2">
-                            Extension (1-{extensions.length})
-                          </label>
-                          <Select
-                            value={selectedExtension?.toString() ?? ""}
-                            onValueChange={(value) => setSelectedExtension(Number.parseInt(value))}
-                          >
-                            <SelectTrigger className="w-full h-10 bg-white border-neutral-300 text-black">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className="bg-white border-neutral-300">
-                              {extensions.map((ext) => (
-                                <SelectItem
-                                  key={ext.id}
-                                  value={ext.id.toString()}
-                                  className="text-black hover:bg-neutral-100"
-                                >
-                                  {ext.name}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
+                          <div>
+                            <label className="block text-sm font-medium text-black mb-2">
+                              Extension (1-{extensions.length})
+                            </label>
+                            <Select
+                              value={selectedExtension?.toString() ?? ""}
+                              onValueChange={(value) => setSelectedExtension(Number.parseInt(value))}
+                            >
+                              <SelectTrigger className="w-full h-10 bg-white border-neutral-300 text-black">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent className="bg-white border-neutral-300">
+                                {extensions.map((ext) => (
+                                  <SelectItem
+                                    key={ext.id}
+                                    value={ext.id.toString()}
+                                    className="text-black hover:bg-neutral-100"
+                                  >
+                                    {ext.name}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
                         )}
 
                         <div>
@@ -1122,9 +1114,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                             className="group cursor-pointer"
                           >
                             <div
-                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative aspect-[9/16] w-full flex items-center justify-center ${
-                                !panel.available ? "opacity-50" : ""
-                              } ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
+                              className={`bg-neutral-100 rounded overflow-hidden mb-2 relative aspect-[9/16] w-full flex items-center justify-center ${!panel.available ? "opacity-50" : ""
+                                } ${selectedPanel === panel.id ? "ring-2 ring-black" : ""}`}
                             >
                               <Image
                                 src={
@@ -1142,9 +1133,8 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                               </div>
                             </div>
                             <p
-                              className={`text-xs font-medium text-black truncate text-center ${
-                                !panel.available ? "text-gray-500" : ""
-                              }`}
+                              className={`text-xs font-medium text-black truncate text-center ${!panel.available ? "text-gray-500" : ""
+                                }`}
                             >
                               {panel.name}
                             </p>
@@ -1357,12 +1347,12 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                     ) : item.id === 6 ? (
                       <>
                         <p className="text-sm leading-relaxed text-neutral-600">
-                        Breathable short sleeve button down shirt 
+                          Breathable short sleeve button down shirt
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-3 text-sm">
-                            
-                            
+
+
                           </div>
                           <div className="flex items-center gap-3 text-sm">
                             <div className="w-2 h-2 bg-black rounded-full"></div>

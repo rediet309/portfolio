@@ -772,12 +772,12 @@ This is an automated order request from Red Suk online store.`,
                   </div>
 
 
-                  
 
-                  
 
-                  
-                </div> 
+
+
+
+                </div>
                 <div className="space-y-6">
                   <div className="p-8 rounded-lg border border-neutral-200 bg-neutral-50">
                     <h2 className="text-xl font-medium mb-6 text-black">Order Summary</h2>
