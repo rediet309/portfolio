@@ -30,7 +30,7 @@ interface InstallationProject {
 const installationProjects: InstallationProject[] = [
   {
     id: "skins-east-ethiopia",
-    title: "sKINs: East Ethiopia Textile Installation",
+    title: "sKINs_East Ethiopia Textile Installation",
     year: "2025",
     category: "Installation",
     description:

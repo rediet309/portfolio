@@ -30,7 +30,7 @@ interface StudioProject {
 const studioProjects: StudioProject[] = [
   {
     id: "skins-north-ethiopia",
-    title: "sKINs: North Ethiopia",
+    title: "sKINs_North Ethiopia",
     year: "2025",
     category: "In Studio",
     medium: "Photography",
@@ -122,7 +122,7 @@ const studioProjects: StudioProject[] = [
     description:
       "",
     detailedDescription:
-      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      "YAL / Thirsty is the Child of the Nile is a long-form cinematic and installation project that brings together the research trajectories of sKINs and Traditionalized into a broader inquiry on African youth, migration, inheritance, and desire. The project asks what it means to come from a continent rich in history, resources, and cultural intelligence, yet remain shaped by conditions that compel movement outward.\n\n\"Thirst\" becomes a metaphor for longing: for dignity, opportunity, and freedom.\n\nCombining documentary cinema, sound, textiles, found materials, and immersive installation, YAL is both a political and poetic work tracing how young Africans move toward imagined futures while carrying ancestral memory and contemporary contradiction. The Amharic phrase \"Ye Abayn Lij Weha Temaw\" translates to \"Thirsty is the child of the Nile\" symbolizing the paradox of not benefiting from one's own abundant resources.",
     image: "/images/kins.webp?height=600&width=800&text=YAL+Studio",
     position: "Artist and curator",
     tags: ["ritual", "beautification", "functional design"],

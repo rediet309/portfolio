@@ -80,7 +80,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
     const items: Record<number, ItemData> = {
       1: {
         id: 1,
-        title: "sKINs: Dire Dawa Textile Installation",
+        title: "sKINs_Dire Dawa Textile Installation",
         category: "textile-art",
         price: "Email for Price",
         image: "/images/01_front.webp",

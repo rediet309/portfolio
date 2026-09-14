@@ -28,14 +28,14 @@ interface FilmProject {
 const filmProjects: FilmProject[] = [
   {
     id: "skins-addis-abeba",
-    title: "sKINs: Addis Abeba",
+    title: "sKINs_Addis Abeba",
     year: "2026",
     category: "Films",
-    medium: "First-person creative documentary",
-    duration: "16 min",
+    medium: "Film/Visual Essay",
+    duration: "17 minutes",
     description: "",
     detailedDescription:
-      "sKINs: Addis Abeba is a 16-minute first-person creative documentary. The film is divided into four chapters, each representing a political regime that has ruled Addis Ababa /the capital city of Ethiopia/ since its formation in 1887.\n\nTold as a conversation between the artist and the city itself, the film imagines space as an archive — the one witness that has survived, held, and remembered the stories of young people across generations.",
+      "sKINs: Addis Abeba is a 17-minute creative documentary/visual essay structured as a cyclical journey through four political eras that have shaped Ethiopia's capital. This essay documents an intimate family conversation that evokes imaginative curiosity within the filmmaker, taking the audience into scenes that reflect the conversations being held between the grandmother, a mother and a daughter.\nThe protagonists are the filmmaker and the city itself. Through first-person narration and enquiry the city becomes an archive revealing traces of past youth movements, forgotten struggles as figures evoke memories of the past and present without centering specific individuals.",
     image: "/images/skins_addis_ababa.webp?height=600&width=800&text=sKINs+Addis+Abeba",
     location: "Addis Ababa, Ethiopia",
     position: "Director, producer, cinematographer, writer and narrator",
@@ -45,7 +45,7 @@ const filmProjects: FilmProject[] = [
   },
   {
     id: "skins-dire-dawa",
-    title: "sKINs: Dire Dawa",
+    title: "sKINs_Dire Dawa",
     year: "2025",
     category: "Films",
     medium: "Film",

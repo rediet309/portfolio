@@ -36,7 +36,7 @@ export default function AboutPage() {
 
   const screenings = [
     {
-      title: "sKINs: Dire Dawa",
+      title: "sKINs_Dire Dawa",
       year: "2025",
       venue: "Alliance Ethio-Francaise",
       location: "Dire Dawa",

@@ -1,7 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { FilmModal } from "./film-modal"
@@ -54,6 +55,19 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
   const [isStudioModalOpen, setIsStudioModalOpen] = useState(false)
   const [isCommissionedModalOpen, setIsCommissionedModalOpen] = useState(false)
   const [isArchiveModalOpen, setIsArchiveModalOpen] = useState(false)
+
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const openId = searchParams.get("open")
+    if (!openId) return
+    const project = projects.find((p) => p.id === openId)
+    if (project) {
+      // Simulate a click event to reuse the existing handler
+      handleProjectClick(project, { preventDefault: () => {} } as React.MouseEvent)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
 
   const projectsByYear = projects.reduce(
     (acc, project) => {

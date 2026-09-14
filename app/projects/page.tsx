@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { Navigation } from "@/components/navigation"
 import ProjectTimeline from "@/components/project-timeline"
 
@@ -8,14 +8,14 @@ const allProjectsData = [
   // 2026 Projects
   {
     id: "skins-addis-abeba",
-    title: "sKINs: Addis Abeba",
+    title: "sKINs_Addis Abeba",
     year: 2026,
     category: "Films",
-    medium: "First-person creative documentary",
-    duration: "16 min",
+    medium: "Film/Visual Essay",
+    duration: "17 minutes",
     description: "",
     detailedDescription:
-      "sKINs: Addis Abeba is a 16-minute first-person creative documentary. The film is divided into four chapters, each representing a political regime that has ruled Addis Ababa /the capital city of Ethiopia/ since its formation in 1887.\n\nTold as a conversation between the artist and the city itself, the film imagines space as an archive — the one witness that has survived, held, and remembered the stories of young people across generations.",
+      "sKINs: Addis Abeba is a 17-minute creative documentary/visual essay structured as a cyclical journey through four political eras that have shaped Ethiopia's capital. This essay documents an intimate family conversation that evokes imaginative curiosity within the filmmaker, taking the audience into scenes that reflect the conversations being held between the grandmother, a mother and a daughter.\nThe protagonists are the filmmaker and the city itself. Through first-person narration and enquiry the city becomes an archive revealing traces of past youth movements, forgotten struggles as figures evoke memories of the past and present without centering specific individuals.",
     image: "/images/skins_addis_ababa.webp",
     tags: ["documentary", "archive", "youth movement"],
     videoUrl: "https://vimeo.com/1166310181?fl=ip&fe=ec",
@@ -27,7 +27,7 @@ const allProjectsData = [
   // 2025 Projects
   {
     id: "skins-dire-dawa",
-    title: "sKINs: Dire Dawa",
+    title: "sKINs_Dire Dawa",
     year: 2025,
     category: "Films",
     medium: "Documentary Film",
@@ -42,7 +42,7 @@ const allProjectsData = [
   },
   {
     id: "skins-east-ethiopia",
-    title: "sKINs: East Ethiopia Textile Installation",
+    title: "sKINs_East Ethiopia Textile Installation",
     year: 2025,
     category: "Installation",
     medium: "Large-scale textile installation",
@@ -115,7 +115,7 @@ const allProjectsData = [
   },
   {
     id: "skins-north-ethiopia",
-    title: "sKINs: North Ethiopia",
+    title: "sKINs_North Ethiopia",
     year: 2025,
     category: "In Studio",
     medium: "Photography",
@@ -141,7 +141,7 @@ const allProjectsData = [
     medium: "",
     description: "YAL / Ye Abayn Lij explores ritual and design, named for the paradox of lacking one's own abundance.",
     detailedDescription:
-      "This studio-based work involves extensive field research and documentation of cultural practices related to body modification, traditional scarification, and ceremonial body art in Northern Ethiopian communities. The project serves as both artistic exploration and cultural preservation, creating a visual archive of practices that connect contemporary Ethiopian identity to ancestral traditions.",
+      "YAL / Thirsty is the Child of the Nile is a long-form cinematic and installation project that brings together the research trajectories of sKINs and Traditionalized into a broader inquiry on African youth, migration, inheritance, and desire. The project asks what it means to come from a continent rich in history, resources, and cultural intelligence, yet remain shaped by conditions that compel movement outward.\n\n\"Thirst\" becomes a metaphor for longing: for dignity, opportunity, and freedom.\n\nCombining documentary cinema, sound, textiles, found materials, and immersive installation, YAL is both a political and poetic work tracing how young Africans move toward imagined futures while carrying ancestral memory and contemporary contradiction. The Amharic phrase \"Ye Abayn Lij Weha Temaw\" translates to \"Thirsty is the child of the Nile\" symbolizing the paradox of not benefiting from one's own abundant resources.",
     image: "/images/kins.webp",
     tags: ["ritual", "beautification", "functional design"],
     videoUrl: "/vid/Yal launch 8 bit video.mp4?height=1080&width=1920&text=YAL+Video",
@@ -682,7 +682,9 @@ export default function AllProjectsPage() {
 
         {/* Projects Timeline */}
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
-          <ProjectTimeline projects={allProjectsData} isDark={isDark} />
+          <Suspense fallback={null}>
+            <ProjectTimeline projects={allProjectsData} isDark={isDark} />
+          </Suspense>
         </div>
       </div>
     </div>

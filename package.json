@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev -p 3003",
     "lint": "eslint .",
     "start": "next start"
   },
@@ -44,6 +44,7 @@
     "cmdk": "latest",
     "date-fns": "4.1.0",
     "embla-carousel-react": "latest",
+    "framer-motion": "^13.0.0",
     "input-otp": "latest",
     "lucide-react": "^0.454.0",
     "next": "16.1.4",
