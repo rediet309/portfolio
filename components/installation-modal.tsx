@@ -27,10 +27,27 @@ interface InstallationProject {
   role?: string
 }
 
+interface LeadingFilm {
+  id: string
+  title: string
+  year: string
+  category: string
+  medium: string
+  description: string
+  detailedDescription?: string
+  image: string
+  videoUrl?: string
+  duration?: string
+  tags: string[]
+  position?: string
+}
+
 interface InstallationModalProps {
   project: InstallationProject | null
   isOpen: boolean
   onClose: () => void
+  /** Prepends a film slide before installation slides (single carousel). */
+  leadingFilm?: LeadingFilm | null
 }
 
 const preloadImage = (src: string) => {
@@ -40,7 +57,7 @@ const preloadImage = (src: string) => {
   }
 }
 
-export function InstallationModal({ project, isOpen, onClose }: InstallationModalProps) {
+export function InstallationModal({ project, isOpen, onClose, leadingFilm = null }: InstallationModalProps) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   useEffect(() => {
@@ -588,8 +605,16 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
   }
 
   const createSlides = () => {
-    const slides = []
+    const slides: Array<Record<string, unknown>> = []
     let imageIndex = 0
+
+    if (leadingFilm) {
+      slides.push({
+        type: "film",
+        film: leadingFilm,
+        title: leadingFilm.title,
+      })
+    }
 
     if (project.id === "skins-east-ethiopia") {
       project.images?.forEach((image, index) => {
@@ -931,7 +956,44 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
     return null // Already handled above
   }
 
+  const getEmbedUrl = (url: string) => {
+    if (url === "private") return null
+
+    if (url.includes("youtu.be") || url.includes("youtube.com")) {
+      const videoId = url.includes("youtu.be")
+        ? url.split("youtu.be/")[1]?.split("?")[0]
+        : url.split("v=")[1]?.split("&")[0]
+      if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`
+      }
+    }
+
+    if (url.includes("vimeo.com")) {
+      const playerMatch = url.match(/player\.vimeo\.com\/video\/(\d+)/)
+      const pageMatch = url.match(/vimeo\.com\/(\d+)(?:\/([a-f0-9]+))?/)
+      const videoId = playerMatch?.[1] ?? pageMatch?.[1]
+      const privacyHash = pageMatch?.[2]
+      if (videoId) {
+        const params = new URLSearchParams({ autoplay: "1", muted: "1" })
+        if (privacyHash) params.set("h", privacyHash)
+        return `https://player.vimeo.com/video/${videoId}?${params.toString()}`
+      }
+    }
+
+    if (url.includes("drive.google.com")) {
+      const fileId = url.match(/\/d\/([a-zA-Z0-9-_]+)/)?.[1]
+      if (fileId) {
+        return `https://drive.google.com/file/d/${fileId}/preview`
+      }
+    }
+    return url
+  }
+
   const currentSlide = slides[currentSlideIndex]
+  const isFilmSlide = currentSlide?.type === "film"
+  const filmSlide = isFilmSlide ? (currentSlide.film as LeadingFilm) : null
+  const filmEmbedUrl =
+    filmSlide?.videoUrl && filmSlide.videoUrl !== "private" ? getEmbedUrl(filmSlide.videoUrl) : null
 
   const nextSlide = () => {
     const newIndex = (currentSlideIndex + 1) % slides.length
@@ -951,16 +1013,6 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
 
   const goToSlide = (index: number) => {
     setCurrentSlideIndex(index)
-  }
-
-  const getEmbedUrl = (url: string) => {
-    if (url.includes("drive.google.com")) {
-      const fileId = url.match(/\/d\/([a-zA-Z0-9-_]+)/)?.[1]
-      if (fileId) {
-        return `https://drive.google.com/file/d/${fileId}/preview`
-      }
-    }
-    return url
   }
 
   const isGridProject = [
@@ -1142,6 +1194,22 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                   ))}
                 </div>
               </div>
+            ) : currentSlide?.type === "film" ? (
+              <div className="w-full h-full bg-black flex items-center justify-center">
+                {filmEmbedUrl ? (
+                  <iframe
+                    src={filmEmbedUrl}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <div className="text-center text-white space-y-2 px-4">
+                    <div className="text-4xl opacity-50">📹</div>
+                    <div className="text-lg font-medium">Video Unavailable</div>
+                  </div>
+                )}
+              </div>
             ) : currentSlide?.type === "video" ? (
               <div className="w-full h-full flex items-center justify-center p-8">
                 <div
@@ -1322,29 +1390,31 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
           {!(isGridProject || isHorizontalProject || isVideoProject || isBentoProject) && (
             <div className="hidden md:flex md:w-[30%] lg:w-[30%] p-6 flex-col border-l border-neutral-200 overflow-y-auto">
               <div className="space-y-6">
-                <h2 className="text-3xl font-stardom text-black leading-tight">{project.title}</h2>
+                <h2 className="text-3xl font-stardom text-black leading-tight">
+                  {isFilmSlide && filmSlide ? filmSlide.title : project.title}
+                </h2>
 
                 <div className="grid grid-cols-1 gap-4 text-sm">
                   <div className="flex items-center space-x-2 text-neutral-600">
                     <Calendar className="h-4 w-4" />
-                    <span>{project.year}</span>
+                    <span>{isFilmSlide && filmSlide ? filmSlide.year : project.year}</span>
                   </div>
 
-                  {project.location && (
+                  {!isFilmSlide && project.location && (
                     <div className="flex items-center space-x-2 text-neutral-600">
                       <MapPin className="h-4 w-4" />
                       <span>{project.location}</span>
                     </div>
                   )}
 
-                  {project.dimensions && (
+                  {!isFilmSlide && project.dimensions && (
                     <div className="flex items-center space-x-2 text-neutral-600">
                       <Ruler className="h-4 w-4" />
                       <span>{project.dimensions}</span>
                     </div>
                   )}
 
-                  {project.visitors && (
+                  {!isFilmSlide && project.visitors && (
                     <div className="flex items-center space-x-2 text-neutral-600">
                       <Users className="h-4 w-4" />
                       <span>{project.visitors.toLocaleString()} visitors</span>
@@ -1352,29 +1422,42 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                   )}
                 </div>
 
-                <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
+                <div className="text-sm text-neutral-500 font-medium">
+                  {isFilmSlide && filmSlide ? filmSlide.medium : project.medium}
+                </div>
 
-                {project.role && (
+                {isFilmSlide && filmSlide?.position ? (
                   <div className="text-sm text-neutral-600 italic">
-                    <span className="font-medium">Role: </span>
-                    {project.role}
+                    <span className="font-medium">Position: </span>
+                    {filmSlide.position}
                   </div>
+                ) : (
+                  project.role && (
+                    <div className="text-sm text-neutral-600 italic">
+                      <span className="font-medium">Role: </span>
+                      {project.role}
+                    </div>
+                  )
                 )}
 
-                <p className="text-neutral-700 leading-relaxed">{project.detailedDescription || project.description}</p>
+                <p className="text-neutral-700 leading-relaxed">
+                  {isFilmSlide && filmSlide
+                    ? filmSlide.detailedDescription || filmSlide.description
+                    : project.detailedDescription || project.description}
+                </p>
 
-                {currentSlide?.title && (
+                {!isFilmSlide && currentSlide?.title && (
                   <div className="space-y-3 pt-4 border-t border-neutral-200">
                     <h3 className="text-lg font-medium text-black">{currentSlide.title}</h3>
                     {currentSlide?.description && (
-                      <p className="text-neutral-700 leading-relaxed">{currentSlide.description}</p>
+                      <p className="text-neutral-700 leading-relaxed">{currentSlide.description as string}</p>
                     )}
                   </div>
                 )}
 
-                {project.tags && project.tags.length > 0 && (
+                {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags)?.length > 0 && (
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                    {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags).map((tag) => (
                       <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
                         {tag}
                       </span>
@@ -1387,29 +1470,31 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
 
           <div className="md:hidden w-full p-6 border-t border-neutral-200 overflow-y-auto">
             <div className="space-y-6">
-              <h2 className="text-3xl font-stardom text-black leading-tight">{project.title}</h2>
+              <h2 className="text-3xl font-stardom text-black leading-tight">
+                {isFilmSlide && filmSlide ? filmSlide.title : project.title}
+              </h2>
 
               <div className="grid grid-cols-1 gap-4 text-sm">
                 <div className="flex items-center space-x-2 text-neutral-600">
                   <Calendar className="h-4 w-4" />
-                  <span>{project.year}</span>
+                  <span>{isFilmSlide && filmSlide ? filmSlide.year : project.year}</span>
                 </div>
 
-                {project.location && (
+                {!isFilmSlide && project.location && (
                   <div className="flex items-center space-x-2 text-neutral-600">
                     <MapPin className="h-4 w-4" />
                     <span>{project.location}</span>
                   </div>
                 )}
 
-                {project.dimensions && (
+                {!isFilmSlide && project.dimensions && (
                   <div className="flex items-center space-x-2 text-neutral-600">
                     <Ruler className="h-4 w-4" />
                     <span>{project.dimensions}</span>
                   </div>
                 )}
 
-                {project.visitors && (
+                {!isFilmSlide && project.visitors && (
                   <div className="flex items-center space-x-2 text-neutral-600">
                     <Users className="h-4 w-4" />
                     <span>{project.visitors.toLocaleString()} visitors</span>
@@ -1417,29 +1502,42 @@ export function InstallationModal({ project, isOpen, onClose }: InstallationModa
                 )}
               </div>
 
-              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
+              <div className="text-sm text-neutral-500 font-medium">
+                {isFilmSlide && filmSlide ? filmSlide.medium : project.medium}
+              </div>
 
-              {project.role && (
+              {isFilmSlide && filmSlide?.position ? (
                 <div className="text-sm text-neutral-600 italic">
-                  <span className="font-medium">Role: </span>
-                  {project.role}
+                  <span className="font-medium">Position: </span>
+                  {filmSlide.position}
                 </div>
+              ) : (
+                project.role && (
+                  <div className="text-sm text-neutral-600 italic">
+                    <span className="font-medium">Role: </span>
+                    {project.role}
+                  </div>
+                )
               )}
 
-              <p className="text-neutral-700 leading-relaxed">{project.detailedDescription || project.description}</p>
+              <p className="text-neutral-700 leading-relaxed">
+                {isFilmSlide && filmSlide
+                  ? filmSlide.detailedDescription || filmSlide.description
+                  : project.detailedDescription || project.description}
+              </p>
 
-              {currentSlide?.title && (
+              {!isFilmSlide && currentSlide?.title && (
                 <div className="space-y-3 pt-4 border-t border-neutral-200">
                   <h3 className="text-lg font-medium text-black">{currentSlide.title}</h3>
                   {currentSlide?.description && (
-                    <p className="text-neutral-700 leading-relaxed">{currentSlide.description}</p>
+                    <p className="text-neutral-700 leading-relaxed">{currentSlide.description as string}</p>
                   )}
                 </div>
               )}
 
-              {project.tags && project.tags.length > 0 && (
+              {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags)?.length > 0 && (
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags).map((tag) => (
                     <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
                       {tag}
                     </span>

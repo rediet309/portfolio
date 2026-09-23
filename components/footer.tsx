@@ -14,7 +14,7 @@ export function Footer() {
           {/* Social media icons centered with unique hover colors */}
           <div className="flex items-center space-x-6">
             <a
-              href="https://www.instagram.com/p/DNpahTlsxNk/"
+              href="https://www.instagram.com/red_suk/"
               className="p-2 rounded-full transition-colors text-neutral-600 hover:text-red-500"
               aria-label="Instagram"
             >

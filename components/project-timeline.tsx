@@ -35,7 +35,6 @@ interface Project {
   position?: string
   status?: string
   type?: "film" | "photo"
-  passwordNote?: string
 }
 
 interface ProjectTimelineProps {
@@ -118,7 +117,6 @@ function ProjectTimeline({ projects, isDark }: ProjectTimelineProps) {
         duration: project.duration,
         tags: project.tags,
         position: project.position,
-        passwordNote: project.passwordNote,
       }
       setSelectedFilmProject(filmProject)
       setIsFilmModalOpen(true)

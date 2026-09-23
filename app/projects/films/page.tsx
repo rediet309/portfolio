@@ -22,7 +22,6 @@ interface FilmProject {
   videoUrl?: string
   client?: string
   position?: string
-  passwordNote?: string
 }
 
 const filmProjects: FilmProject[] = [
@@ -40,8 +39,7 @@ const filmProjects: FilmProject[] = [
     location: "Addis Ababa, Ethiopia",
     position: "Director, producer, cinematographer, writer and narrator",
     tags: ["documentary", "archive", "youth movement"],
-    videoUrl: "https://vimeo.com/1166310181?fl=ip&fe=ec",
-    passwordNote: "Password available upon request",
+    videoUrl: "https://vimeo.com/1166310181",
   },
   {
     id: "skins-dire-dawa",

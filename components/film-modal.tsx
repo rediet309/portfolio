@@ -16,7 +16,6 @@ interface FilmProject {
   duration?: string
   tags: string[]
   position?: string
-  passwordNote?: string
 }
 
 interface FilmModalProps {
@@ -70,11 +69,16 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
       }
     }
 
-    // Vimeo URL conversion
+    // Vimeo URL conversion (supports /video/id and /id/hash private links)
     if (url.includes("vimeo.com")) {
-      const videoId = url.match(/vimeo\.com\/([0-9]+)/)?.[1]
+      const playerMatch = url.match(/player\.vimeo\.com\/video\/(\d+)/)
+      const pageMatch = url.match(/vimeo\.com\/(\d+)(?:\/([a-f0-9]+))?/)
+      const videoId = playerMatch?.[1] ?? pageMatch?.[1]
+      const privacyHash = pageMatch?.[2]
       if (videoId) {
-        return `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`
+        const params = new URLSearchParams({ autoplay: "1", muted: "1" })
+        if (privacyHash) params.set("h", privacyHash)
+        return `https://player.vimeo.com/video/${videoId}?${params.toString()}`
       }
     }
 
@@ -164,14 +168,6 @@ export function FilmModal({ project, isOpen, onClose }: FilmModalProps) {
               <div className="space-y-3 sm:space-y-4">
                 <h3 className="text-base sm:text-lg font-medium text-black">Description</h3>
                 <p className="text-neutral-700 leading-relaxed text-sm">{project.detailedDescription}</p>
-              </div>
-            )}
-
-            {/* Password Note */}
-            {project.passwordNote && (
-              <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg">
-                <span className="text-amber-600 text-sm">🔑</span>
-                <span className="text-amber-800 text-xs sm:text-sm font-medium">{project.passwordNote}</span>
               </div>
             )}
 
