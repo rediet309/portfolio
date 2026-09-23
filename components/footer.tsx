@@ -28,7 +28,7 @@ export function Footer() {
               <Twitter className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com/@rediethaddis"
+              href="https://www.linkedin.com/in/rediet-haddis-yalew-0ba4b0133/"
               className="p-2 rounded-full transition-colors text-neutral-600 hover:text-blue-500"
               aria-label="Linkedin"
             >
