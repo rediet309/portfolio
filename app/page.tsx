@@ -87,13 +87,13 @@ function FamilyTreeSection({
   const skinsLinks: DropdownLink[] = [
     { label: "sKINS Dire Dawa", onClick: openSkinsDireDawa },
     { label: "sKINS Addis Abeba", onClick: () => openProjectById("skins-addis-abeba") },
-    { label: "sKINS North", onClick: () => openProjectById("skins-north-ethiopia") },
+    { label: "sKINS North", disabled: true },
     { label: "Upcoming", disabled: true },
   ]
 
   const tradLinks: DropdownLink[] = [
     { label: "Sheret", onClick: () => openProjectById("sheret-project") },
-    { label: "Cargo", disabled: true },
+    { label: "Cargo", href: "/shop/2" },
     { label: "Gela", onClick: () => openProjectById("skins-north-ethiopia") },
   ]
 
