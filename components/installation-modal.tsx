@@ -431,9 +431,56 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
     project.id === "hulet-neteb-installation" ||
     project.id === "hulet-neteb-project"
   ) {
+    const isHuletInstallation = project.id === "hulet-neteb-installation"
+
+    const descriptionPanel = (
+      <div className="space-y-6">
+        <h2 className="text-3xl font-stardom text-black leading-tight">{project.title}</h2>
+
+        <div className="grid grid-cols-1 gap-4 text-sm">
+          <div className="flex items-center space-x-2 text-neutral-600">
+            <Calendar className="h-4 w-4" />
+            <span>{project.year}</span>
+          </div>
+
+          {project.location && (
+            <div className="flex items-center space-x-2 text-neutral-600">
+              <MapPin className="h-4 w-4" />
+              <span>{project.location}</span>
+            </div>
+          )}
+        </div>
+
+        <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
+
+        {project.role && (
+          <div className="text-sm text-neutral-600 italic">
+            <span className="font-medium">Role: </span>
+            {project.role}
+          </div>
+        )}
+
+        <p className="text-neutral-700 leading-relaxed">{project.detailedDescription || project.description}</p>
+
+        {project.tags && project.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <div className="text-xs text-neutral-400 pt-4 border-t border-neutral-200">
+          {project.photoCount} photographs
+        </div>
+      </div>
+    )
+
     return (
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg shadow-2xl w-[95vw] h-[96vh] flex overflow-hidden relative">
+        <div className="bg-white rounded-lg shadow-2xl w-[95vw] h-[96vh] flex flex-col md:flex-row overflow-hidden relative">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
@@ -441,24 +488,45 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
             <X className="h-5 w-5 text-black" />
           </button>
 
-          {/* Left side: Grid of images */}
-          <div className="w-full md:w-[65%] lg:w-[70%] p-6 overflow-y-auto">
+          {/* Images — single column + scroll for Hulet Neteb installation on mobile */}
+          <div
+            className={`w-full md:w-[65%] lg:w-[70%] p-4 md:p-6 pt-14 md:pt-6 overflow-y-auto min-h-0 ${
+              isHuletInstallation ? "flex-1 md:flex-none md:h-full" : ""
+            }`}
+          >
             <div
               className={`grid gap-4 ${
-                project.id === "sheret-project"
-                  ? "grid-cols-2 md:grid-cols-3"
-                  : project.id === "hulet-neteb-project"
-                    ? "grid-cols-2 md:grid-cols-4"
-                    : "grid-cols-2 md:grid-cols-3"
+                isHuletInstallation
+                  ? "grid-cols-1 md:grid-cols-3"
+                  : project.id === "sheret-project"
+                    ? "grid-cols-2 md:grid-cols-3"
+                    : project.id === "hulet-neteb-project"
+                      ? "grid-cols-2 md:grid-cols-4"
+                      : "grid-cols-2 md:grid-cols-3"
               }`}
             >
               {project.images?.map((image, index) => {
+                if (isHuletInstallation) {
+                  return (
+                    <div key={index} className="w-full rounded-lg bg-neutral-100 overflow-hidden">
+                      <Image
+                        src={image || "/placeholder.svg"}
+                        alt={`${project.title} ${index + 1}`}
+                        width={1600}
+                        height={1200}
+                        className="w-full h-auto object-contain"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 95vw, 33vw"
+                        quality={85}
+                      />
+                    </div>
+                  )
+                }
+
                 let aspectRatio = "aspect-square"
 
                 if (project.id === "sheret-project") {
                   aspectRatio = "aspect-[9/16]"
-                } else if (project.id === "hulet-neteb-installation") {
-                  aspectRatio = "aspect-[4/3]"
                 } else if (project.id === "hulet-neteb-project") {
                   aspectRatio = "aspect-square"
                 }
@@ -478,53 +546,23 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
                 )
               })}
             </div>
+
+            {isHuletInstallation && (
+              <div className="md:hidden mt-6 pt-6 border-t border-neutral-200">{descriptionPanel}</div>
+            )}
           </div>
 
-          {/* Right side: Description panel */}
+          {/* Right side: Description panel (desktop) */}
           <div className="hidden md:flex md:w-[35%] lg:w-[30%] p-6 flex-col border-l border-neutral-200 overflow-y-auto">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-stardom text-black leading-tight">{project.title}</h2>
-
-              <div className="grid grid-cols-1 gap-4 text-sm">
-                <div className="flex items-center space-x-2 text-neutral-600">
-                  <Calendar className="h-4 w-4" />
-                  <span>{project.year}</span>
-                </div>
-
-                {project.location && (
-                  <div className="flex items-center space-x-2 text-neutral-600">
-                    <MapPin className="h-4 w-4" />
-                    <span>{project.location}</span>
-                  </div>
-                )}
-              </div>
-
-              <div className="text-sm text-neutral-500 font-medium">{project.medium}</div>
-
-              {project.role && (
-                <div className="text-sm text-neutral-600 italic">
-                  <span className="font-medium">Role: </span>
-                  {project.role}
-                </div>
-              )}
-
-              <p className="text-neutral-700 leading-relaxed">{project.detailedDescription || project.description}</p>
-
-              {project.tags && project.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <div className="text-xs text-neutral-400 pt-4 border-t border-neutral-200">
-                {project.photoCount} photographs
-              </div>
-            </div>
+            {descriptionPanel}
           </div>
+
+          {/* Description panel (mobile, non-Hulet) */}
+          {!isHuletInstallation && (
+            <div className="md:hidden w-full max-h-[38vh] shrink-0 p-4 pt-2 border-t border-neutral-200 overflow-y-auto">
+              {descriptionPanel}
+            </div>
+          )}
         </div>
       </div>
     )
@@ -1027,6 +1065,7 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
     "graphic-posters-illustrations-archive",
   ].includes(project.id)
   const isHorizontalProject = project.id === "skins-north-ethiopia"
+  const isBetBota = project.id === "bet-bota"
   const isVideoProject = project.id === "yal-studio" || project.id === "msfts-ethiopia-skate-commission"
   const isBentoProject =
     project.id === "msfts-ethiopia-skate-photos" ||
@@ -1036,6 +1075,89 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
 
   const modalWidth = isGridProject || isHorizontalProject || isVideoProject || isBentoProject ? "w-[95vw]" : "w-[90vw]"
   const modalHeight = isGridProject || isHorizontalProject || isVideoProject || isBentoProject ? "h-[96vh]" : "h-[95vh]"
+
+  const mobileDetailsPanel = (
+    <div className={`space-y-6 ${isBetBota ? "mx-auto max-w-lg text-center" : ""}`}>
+      <h2 className="text-3xl font-stardom text-black leading-tight">
+        {isFilmSlide && filmSlide ? filmSlide.title : project.title}
+      </h2>
+
+      <div className="grid grid-cols-1 gap-4 text-sm">
+        <div className={`flex items-center space-x-2 text-neutral-600 ${isBetBota ? "justify-center" : ""}`}>
+          <Calendar className="h-4 w-4" />
+          <span>{isFilmSlide && filmSlide ? filmSlide.year : project.year}</span>
+        </div>
+
+        {!isFilmSlide && project.location && (
+          <div className={`flex items-center space-x-2 text-neutral-600 ${isBetBota ? "justify-center" : ""}`}>
+            <MapPin className="h-4 w-4" />
+            <span>{project.location}</span>
+          </div>
+        )}
+
+        {!isFilmSlide && project.dimensions && (
+          <div className={`flex items-center space-x-2 text-neutral-600 ${isBetBota ? "justify-center" : ""}`}>
+            <Ruler className="h-4 w-4" />
+            <span>{project.dimensions}</span>
+          </div>
+        )}
+
+        {!isFilmSlide && project.visitors && (
+          <div className={`flex items-center space-x-2 text-neutral-600 ${isBetBota ? "justify-center" : ""}`}>
+            <Users className="h-4 w-4" />
+            <span>{project.visitors.toLocaleString()} visitors</span>
+          </div>
+        )}
+      </div>
+
+      <div className="text-sm text-neutral-500 font-medium">
+        {isFilmSlide && filmSlide ? filmSlide.medium : project.medium}
+      </div>
+
+      {isFilmSlide && filmSlide?.position ? (
+        <div className="text-sm text-neutral-600 italic">
+          <span className="font-medium">Position: </span>
+          {filmSlide.position}
+        </div>
+      ) : (
+        project.role && (
+          <div className={`text-sm text-neutral-600 italic ${isBetBota ? "text-center" : ""}`}>
+            <span className="font-medium">Role: </span>
+            {project.role}
+          </div>
+        )
+      )}
+
+      {!isBetBota && (
+        <p className="text-neutral-700 leading-relaxed">
+          {isFilmSlide && filmSlide
+            ? filmSlide.detailedDescription || filmSlide.description
+            : project.detailedDescription || project.description}
+        </p>
+      )}
+
+      {!isFilmSlide && currentSlide?.title && (
+        <div className={`space-y-3 pt-4 ${isBetBota ? "" : "border-t border-neutral-200"}`}>
+          <h3 className="text-lg font-medium text-black">{currentSlide.title}</h3>
+          {currentSlide?.description && (
+            <p className={`text-neutral-700 leading-relaxed ${isBetBota ? "text-center" : ""}`}>
+              {currentSlide.description as string}
+            </p>
+          )}
+        </div>
+      )}
+
+      {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags)?.length > 0 && (
+        <div className={`flex flex-wrap gap-2 ${isBetBota ? "justify-center" : ""}`}>
+          {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags).map((tag) => (
+            <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 
   return (
     <>
@@ -1058,22 +1180,47 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 md:top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+                className="absolute left-4 top-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg -translate-y-1/2"
               >
                 <ChevronLeft className="h-6 w-6 text-black" />
               </button>
 
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 md:top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg"
+                className="absolute right-4 top-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white transition-colors shadow-lg -translate-y-1/2"
               >
                 <ChevronRight className="h-6 w-6 text-black" />
               </button>
             </>
           )}
 
+          {isBetBota && (
+            <div className="md:hidden flex-1 min-h-0 overflow-y-auto overscroll-y-contain w-full">
+              <div className="pt-14 px-3 pb-6 bg-neutral-50">
+                {currentSlide?.type === "photos" && (
+                  <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto">
+                    {(currentSlide.images ?? []).map((image: string, index: number) => (
+                      <Image
+                        key={index}
+                        src={image || "/placeholder.svg"}
+                        alt={`${currentSlide.title} ${index + 1}`}
+                        width={1400}
+                        height={1050}
+                        className="w-full h-auto rounded-lg bg-neutral-100"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        sizes="95vw"
+                        quality={85}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="p-6 border-t border-neutral-200 pb-10">{mobileDetailsPanel}</div>
+            </div>
+          )}
+
           <div
-            className={`${isGridProject || isHorizontalProject || isVideoProject || isBentoProject ? "w-full" : "w-full md:w-[70%]"} relative ${project.id === "bet-bota" ? "h-[60vh] md:h-full overflow-y-auto" : "overflow-hidden"} bg-neutral-50 flex items-center justify-center ${project.id === "skins-east-ethiopia" ? "h-[100vh] md:h-full" : project.id === "bet-bota" ? "" : ""}`}
+            className={`${isGridProject || isHorizontalProject || isVideoProject || isBentoProject ? "w-full" : "w-full md:w-[70%]"} relative ${isBetBota ? "hidden md:flex md:h-full overflow-hidden" : "overflow-hidden"} bg-neutral-50 flex items-center justify-center ${project.id === "skins-east-ethiopia" ? "h-[100vh] md:h-full" : !isBetBota ? "h-[60vh] md:h-full" : ""}`}
           >
             {currentSlide?.type === "grid" ? (
               <div className="w-full h-full p-6 overflow-y-auto">
@@ -1272,33 +1419,32 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
               </div>
             ) : currentSlide?.type === "photos" ? (
               <div className="w-full h-full p-6 flex flex-col items-center justify-center">
-                {project.id === "bet-bota" && currentSlide.images && currentSlide.images.length === 2 ? (
-                  <div className="w-full h-full flex gap-4">
-                    {/* Left image: 3:4 aspect ratio (portrait) */}
-                    <div className="flex-1 flex flex-col">
-                      <div className="aspect-[3/4] relative overflow-hidden rounded-lg bg-neutral-100">
+                {isBetBota && currentSlide.images && currentSlide.images.length === 2 ? (
+                  <div className="w-full max-w-3xl mx-auto flex flex-col md:flex-row gap-4">
+                    <div className="w-full md:flex-1">
+                      <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-neutral-100">
                         <Image
                           src={currentSlide.images[0] || "/placeholder.svg"}
                           alt={`${currentSlide.title} - Left`}
                           fill
-                          className="object-cover"
+                          className="object-contain md:object-cover"
                           loading="eager"
                           quality={85}
-                          sizes="50vw"
+                          sizes="(max-width: 768px) 95vw, 50vw"
                         />
                       </div>
                     </div>
 
-                    <div className="flex-1 flex flex-col">
-                      <div className="aspect-[4/3] relative overflow-hidden rounded-lg bg-neutral-100">
+                    <div className="w-full md:flex-1">
+                      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-neutral-100">
                         <Image
                           src={currentSlide.images[1] || "/placeholder.svg"}
                           alt={`${currentSlide.title} - Right`}
                           fill
-                          className="object-cover"
+                          className="object-contain md:object-cover"
                           loading="eager"
                           quality={85}
-                          sizes="50vw"
+                          sizes="(max-width: 768px) 95vw, 50vw"
                         />
                       </div>
                     </div>
@@ -1468,84 +1614,11 @@ export function InstallationModal({ project, isOpen, onClose, leadingFilm = null
             </div>
           )}
 
-          <div className="md:hidden w-full p-6 border-t border-neutral-200 overflow-y-auto">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-stardom text-black leading-tight">
-                {isFilmSlide && filmSlide ? filmSlide.title : project.title}
-              </h2>
-
-              <div className="grid grid-cols-1 gap-4 text-sm">
-                <div className="flex items-center space-x-2 text-neutral-600">
-                  <Calendar className="h-4 w-4" />
-                  <span>{isFilmSlide && filmSlide ? filmSlide.year : project.year}</span>
-                </div>
-
-                {!isFilmSlide && project.location && (
-                  <div className="flex items-center space-x-2 text-neutral-600">
-                    <MapPin className="h-4 w-4" />
-                    <span>{project.location}</span>
-                  </div>
-                )}
-
-                {!isFilmSlide && project.dimensions && (
-                  <div className="flex items-center space-x-2 text-neutral-600">
-                    <Ruler className="h-4 w-4" />
-                    <span>{project.dimensions}</span>
-                  </div>
-                )}
-
-                {!isFilmSlide && project.visitors && (
-                  <div className="flex items-center space-x-2 text-neutral-600">
-                    <Users className="h-4 w-4" />
-                    <span>{project.visitors.toLocaleString()} visitors</span>
-                  </div>
-                )}
-              </div>
-
-              <div className="text-sm text-neutral-500 font-medium">
-                {isFilmSlide && filmSlide ? filmSlide.medium : project.medium}
-              </div>
-
-              {isFilmSlide && filmSlide?.position ? (
-                <div className="text-sm text-neutral-600 italic">
-                  <span className="font-medium">Position: </span>
-                  {filmSlide.position}
-                </div>
-              ) : (
-                project.role && (
-                  <div className="text-sm text-neutral-600 italic">
-                    <span className="font-medium">Role: </span>
-                    {project.role}
-                  </div>
-                )
-              )}
-
-              <p className="text-neutral-700 leading-relaxed">
-                {isFilmSlide && filmSlide
-                  ? filmSlide.detailedDescription || filmSlide.description
-                  : project.detailedDescription || project.description}
-              </p>
-
-              {!isFilmSlide && currentSlide?.title && (
-                <div className="space-y-3 pt-4 border-t border-neutral-200">
-                  <h3 className="text-lg font-medium text-black">{currentSlide.title}</h3>
-                  {currentSlide?.description && (
-                    <p className="text-neutral-700 leading-relaxed">{currentSlide.description as string}</p>
-                  )}
-                </div>
-              )}
-
-              {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags)?.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {(isFilmSlide && filmSlide ? filmSlide.tags : project.tags).map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+          {!isBetBota && (
+            <div className="md:hidden w-full min-h-0 flex-1 p-6 border-t border-neutral-200 overflow-y-auto">
+              {mobileDetailsPanel}
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

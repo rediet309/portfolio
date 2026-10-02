@@ -577,7 +577,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="w-full z-50 bg-white border-b border-neutral-200">
-        <div className="w-full px-12 lg:px-20 flex justify-between items-center py-0">
+        <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 flex justify-between items-center py-0">
           <Link href="/" className="hover:opacity-70 transition-opacity">
             <Image src="/images/logo.webp" alt="Rediet Haddis" width={800} height={300} className="h-16 w-auto" priority quality={85} />
           </Link>
@@ -608,7 +608,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
       </nav>
 
       {/* Main Content */}
-      <div className="w-full px-12 lg:px-20 py-8">
+      <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 py-8">
         {item.hasGallery ? (
           <div className="grid grid-cols-12 gap-3">
             {/* Left Side - Gallery Images */}
@@ -809,9 +809,9 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-12 gap-8">
+          <div className="grid grid-cols-12 gap-8 max-md:justify-items-center">
             {/* Left Side - Image and Panels */}
-            <div className="col-span-12 lg:col-span-4 space-y-6">
+            <div className="col-span-12 lg:col-span-4 space-y-6 w-full max-md:flex max-md:flex-col max-md:items-center">
               <div
                 className="bg-neutral-100 rounded-sm overflow-hidden w-full max-w-[31.25rem] mx-auto relative"
                 style={{ aspectRatio: mainImageAspect ?? 4 / 5 }}
@@ -830,15 +830,15 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
             </div>
 
             {/* Right Side - Product Details (Split into two columns) */}
-            <div className="col-span-12 lg:col-span-8">
+            <div className="col-span-12 lg:col-span-8 w-full max-md:max-w-lg max-md:mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 {/* Left Column - Product Info and Controls */}
-                <div className="space-y-6">
+                <div className="space-y-6 max-md:text-center max-md:flex max-md:flex-col max-md:items-center">
                   {/* Product Info */}
-                  <div>
+                  <div className="max-md:w-full">
                     <h1 className="text-3xl font-light leading-tight mb-2 text-black">{item.title}</h1>
                     <p className="font-medium text-black text-xl mb-3">{item.price}</p>
-                    <p className="text-sm leading-relaxed text-neutral-600">{item.description}</p>
+                    <p className="text-sm leading-relaxed text-neutral-600 max-md:text-center">{item.description}</p>
                   </div>
 
                   {item.hasColorOptions && (
@@ -914,9 +914,9 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
 
                   {/* Controls - Only show for items with panels */}
                   {item.panelCount > 0 && (
-                    <div className="space-y-4">
+                    <div className="space-y-4 max-md:w-full max-md:flex max-md:flex-col max-md:items-center">
                       {/* Panel Selection and Quantity */}
-                      <div className="space-y-4">
+                      <div className="space-y-4 max-md:w-full">
                         {/* Panel dropdown - show for Cargo Jacket and Haori, but NOT Cargo Pants */}
                         {item.id !== 4 && (
                           <div>
@@ -974,9 +974,9 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                           </div>
                         )}
 
-                        <div>
+                        <div className="max-md:w-full max-md:flex max-md:flex-col max-md:items-center">
                           <label className="block text-sm font-medium text-black mb-2">Quantity (10 available)</label>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-center gap-2">
                             <button
                               onClick={handleQuantityDecrease}
                               disabled={quantity <= 1}
@@ -1009,7 +1009,7 @@ export default function ItemPage({ params }: { params: Promise<{ id: string }> }
                           (item.id === 3 && (selectedExtension === null || !currentPanel?.available)) ||
                           (item.id !== 4 && item.id !== 3 && !currentPanel?.available)
                         }
-                        className="w-full h-12 text-sm rounded-full bg-black text-white hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full max-w-sm h-12 text-sm rounded-full bg-black text-white hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {item.id === 4 && selectedExtension === null
                           ? "Select an Extension"
