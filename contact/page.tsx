@@ -248,7 +248,7 @@ export default function ContactPage() {
                   <h3 className={`text-2xl font-light ${isDark ? "text-white" : "text-black"} mb-6`}>Follow</h3>
                   <div className="space-y-2">
                     <Link
-                      href="https://instagram.com/rediethaddis"
+                      href="https://www.instagram.com/rediethaddis/"
                       className={`block ${isDark ? "text-neutral-300 hover:text-white" : "text-neutral-700 hover:text-black"} transition-colors`}
                     >
                       Instagram

@@ -35,11 +35,13 @@ function TreeCard({
         className={`flex items-center justify-center py-8 md:py-12 relative overflow-hidden ${onHeaderClick ? "cursor-pointer hover:bg-muted/50 transition-colors" : ""}`}
         onClick={onHeaderClick}
       >
-        <span className="font-stardom text-2xl lg:text-3xl text-foreground tracking-wide pointer-events-none">{title}</span>
+        <span className="font-stardom text-lg sm:text-2xl lg:text-3xl text-foreground tracking-wide pointer-events-none text-center px-2">
+          {title}
+        </span>
       </div>
 
-      <div className="border-t border-border px-8 py-6">
-        <ul className="flex flex-col space-y-3">
+      <div className="border-t border-border px-3 py-4 sm:px-8 sm:py-6">
+        <ul className="flex flex-col space-y-2 sm:space-y-3">
           {items.map((item, i) => (
             <motion.li
               key={item.label}
@@ -48,14 +50,14 @@ function TreeCard({
               transition={{ duration: 0.4, delay: delay + 0.2 + i * 0.1 }}
             >
               {item.disabled ? (
-                <span className="flex items-center justify-between py-1 text-sm sm:text-base font-times italic text-muted-foreground/50 cursor-not-allowed">
+                <span className="flex items-center justify-between py-1 text-xs sm:text-base font-times italic text-muted-foreground/50 cursor-not-allowed">
                   <span>{item.label}</span>
                 </span>
               ) : item.onClick ? (
                 <button
                   type="button"
                   onClick={item.onClick}
-                  className="group/link w-full flex items-center justify-between py-1 text-sm sm:text-base font-times italic text-muted-foreground hover:text-foreground transition-all duration-300"
+                  className="group/link w-full flex items-center justify-between py-1 text-xs sm:text-base font-times italic text-muted-foreground hover:text-foreground transition-all duration-300 text-left"
                 >
                   <span>{item.label}</span>
                   <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 translate-y-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:translate-y-0 transition-all duration-300" />
@@ -63,7 +65,7 @@ function TreeCard({
               ) : (
                 <Link
                   href={item.href!}
-                  className="group/link flex items-center justify-between py-1 text-sm sm:text-base font-times italic text-muted-foreground hover:text-foreground transition-all duration-300"
+                  className="group/link flex items-center justify-between py-1 text-xs sm:text-base font-times italic text-muted-foreground hover:text-foreground transition-all duration-300 text-left"
                 >
                   <span>{item.label}</span>
                   <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 translate-y-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:translate-y-0 transition-all duration-300" />
@@ -121,13 +123,13 @@ function FamilyTreeSection({
 
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: "50%" }}
+          animate={{ width: "100%" }}
           transition={{ duration: 0.6, delay: 0.7, ease: "easeInOut" }}
-          className="hidden md:block h-px bg-border origin-center"
+          className="w-full md:w-1/2 h-px bg-border origin-center"
           aria-hidden="true"
         />
 
-        <div className="hidden md:flex justify-between w-1/2 h-8" aria-hidden="true">
+        <div className="flex justify-between w-full md:w-1/2 h-8" aria-hidden="true">
           <motion.div
             initial={{ height: 0 }}
             animate={{ height: "100%" }}
@@ -142,8 +144,8 @@ function FamilyTreeSection({
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full mt-8 md:mt-0">
-          <TreeCard title="sKINS" items={skinsLinks} delay={1.4} />
+        <div className="grid grid-cols-2 gap-3 sm:gap-8 md:gap-12 w-full mt-0">
+          <TreeCard title="sKINs" items={skinsLinks} delay={1.4} />
           <TreeCard title="Traditionalized" items={tradLinks} delay={1.6} />
         </div>
       </div>
